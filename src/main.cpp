@@ -504,6 +504,8 @@ void setup() {
   sens_config();
   disp_config();
 
+  Serial.println("Benvenuto!");
+  delay(1000);
   
   //WIFI Config
   // Check if json is correct
