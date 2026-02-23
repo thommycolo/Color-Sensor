@@ -3,6 +3,7 @@
 #include "color_table.h"
 #include <cmath>
 
+using namespace std;
 
 const table_row data[] = 
 {
@@ -142,9 +143,9 @@ const size_t MAX_ROW_DATA = sizeof(data)/sizeof(table_row);
 
 
 const char* TableHandler::getColor(int r, int g, int b){
-	r = std::round( r/64) *64;
-	g = std::round( g/64) *64;
-	b = std::round( b/64) *64;
+	r = round( r/64) *64;
+	g = round( g/64) *64;
+	b = round( b/64) *64;
 	int i=0;
 	for (size_t i = 0; i < MAX_ROW_DATA; i++) {
         

@@ -4,12 +4,15 @@
 #include <Adafruit_TCS34725.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
-#include <color_table.h>
 #include <WiFi.h>
 #include <LittleFS.h>
 #include <ArduinoJson.h>
 #include <WebServer.h>
 #include <ESPmDNS.h>
+
+//project library
+#include "ColorTable/color_table.h"
+#include "ColorSensor/color_sensor.h"
 
 // ESP32 Config
 // --------------------------------------------------
@@ -287,6 +290,7 @@ void sens_config() {
     delay(200);
   }
 }
+
 void disp_config(){
   while(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C))
   {
@@ -298,163 +302,7 @@ void disp_config(){
   display.setTextColor(SSD1306_WHITE);
   display.display();
 }
-//----------------------------------------------------
-//Calibrating the sensor
 
-uint16_t real_white;
-float r_coef=1.0;
-float g_coef=1.0;
-float b_coef=1.0; 
-
-void WhiteCalibration(){
-  display.clearDisplay();       
-  display.setCursor(0, 0);  
-  
-  delay(2000);
-  Serial.println("Starting calibration process!");
-  Serial.println("point your sensor to a white surface");
-  display.println("Starting calibration process!");
-  display.println("point your sensor to a white surface");
-  delay(5000);
-
-  display.clearDisplay();       
-  display.setCursor(0, 0);
-
-  Serial.println("Calibration starting in:");
-  display.println("Calibration starting in:");
-  display.clearDisplay();       
-  display.setCursor(0, 0);
-
-  Serial.println("5");
-  display.println("5");
-  display.clearDisplay();       
-  display.setCursor(0, 0);
-  Serial.println("4");
-  display.println("4");
-  display.clearDisplay();       
-  display.setCursor(0, 0);
-
-  Serial.println("3");
-  display.println("3");
-  display.clearDisplay();       
-  display.setCursor(0, 0);
-
-  Serial.println("2");
-  display.println("2");
-  display.clearDisplay();       
-  display.setCursor(0, 0);
-
-  Serial.println("1");
-  display.println("1");
-  display.clearDisplay();       
-  display.setCursor(0, 0);
-
-
-  Serial.println("Calibrating!!");
-  display.println("Calibrating!!");
-  
-  uint32_t tot_r=0;
-  uint32_t tot_g=0;
-  uint32_t tot_b=0;
-  uint16_t tmp_r,tmp_g,tmp_b,tmp_c;
-  for(int i=0; i<50 ; i++){
-    tcs.enable();
-    delay(10);
-    tcs.getRawData(&tmp_r,&tmp_g,&tmp_b,&tmp_c);
-    delay(10);
-    tcs.disable();
-    tot_r += tmp_r;
-    tot_g += tmp_g;
-    tot_b += tmp_b;
-
-    Serial.print(tmp_r);Serial.print(tmp_g);Serial.println(tmp_b);
-  }
-
-  tot_r /= 50;
-  tot_g /= 50;
-  tot_b /= 50;
-
-  //calculating all the adjustments
-  Serial.print("Max value:");Serial.print(max(tot_r,max(tot_g,tot_b)));
-  real_white = max(tot_r,max(tot_g,tot_b)); //real_white saving
-  r_coef = (float)real_white / (float)tot_r;
-  g_coef = (float)real_white / (float)tot_g;
-  b_coef = (float)real_white / (float)tot_b;
-  
-
-  Serial.print("\n\n");
-  Serial.print("color adjustation: ");Serial.print(r_coef);Serial.print(g_coef);Serial.println(b_coef);
-  Serial.print("\n\n");
-
-  display.clearDisplay();       
-  display.setCursor(0, 0);
-  Serial.println("Calibration Done");
-  display.println("Calibration Done");
-
-}
-//----------------------------------------------------
-
-// Color Reading
-void GetColor(int colors_rgb[3]) {
-  
-  tcs.setInterrupt(false);
-  
-  float r=0;
-  float g=0;
-  float b=0;
-
-  for (int i = 0; i < num_of_sample; i++) {
-    
-    float r_in, g_in, b_in;
-    tcs.getRGB(&r_in, &g_in, &b_in);
-    r += r_in;
-    g += g_in;
-    b += b_in;
-    delay(50);
-  }
-  tcs.setInterrupt(true);
-
-  
-  colors_rgb[0] = r / num_of_sample;
-  colors_rgb[1] = g / num_of_sample;
-  colors_rgb[2] = b / num_of_sample;
-}
-
-void GetColor2(){
-  
-  uint32_t r=0, g=0, b=0, c=0;
-
-  for(int i=0; i<10 ; i++){
-    tcs.enable();
-    delay(10);
-    uint16_t r_tmp,g_tmp,b_tmp,c_tmp;
-    tcs.getRawData(&r_tmp,&g_tmp,&b_tmp,&c_tmp);
-    r += r_tmp;
-    g += g_tmp;
-    b += b_tmp;
-    c += c_tmp;
-    delay(10);
-    tcs.disable();
-    Serial.print("R: ");Serial.print(r);Serial.print(" G: ");Serial.print(g);Serial.print(" B: ");Serial.print(b);Serial.print(" C: ");Serial.println(c);
-  }
-  Serial.print("\n\n\n");
-
-
-  r = (uint32_t)((((float)r / 10.0) * r_coef / (float)real_white * 255.0) + 0.5);
-  g = (uint32_t)((((float)g / 10.0) * g_coef / (float)real_white * 255.0) + 0.5);
-  b = (uint32_t)((((float)b / 10.0) * b_coef / (float)real_white * 255.0) + 0.5);
-  if(r>255)
-    r=255;
-  if(g>255)
-    g=255;
-  if(b>255)
-    b=255;
-  
-  Serial.println("COLORI CALIBRATI:");
-  Serial.print("R: ");Serial.print(r);Serial.print(" G: ");Serial.print(g);Serial.print(" B: ");Serial.print(b);Serial.print(" C: ");Serial.println(c);
-  Serial.print("\n\n\n");
-  delay(10000);
-}
 
 
 // Serial Printing
@@ -504,14 +352,12 @@ void setup() {
   sens_config();
   disp_config();
 
-  Serial.println("Benvenuto!");
-  delay(1000);
   
   //WIFI Config
   // Check if json is correct
   if (!LittleFS.begin(true)) {
-  Serial.println("Error: could not build LittleFS correctly");
-  return;
+    Serial.println("Error: could not build LittleFS correctly");
+    return;
   }
   else
   {
