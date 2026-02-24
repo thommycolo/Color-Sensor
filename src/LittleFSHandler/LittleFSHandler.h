@@ -11,6 +11,8 @@
 #include <LittleFS.h>
 #include <string.h>
 #include <vector>
+#include <ArduinoJson.h>
+
 
 using namespace std;
 
@@ -28,6 +30,7 @@ public:
         OPERATION_DONE,         ///< Operation completed successfully.
         FS_NOT_FOUND,           ///< LittleFS system or root path not found.
         CANNOT_OPEN_DIRECTORY,  ///< Target exists but is not a directory.
+        WRONG_INPUT_FORMAT,      ///< String given is missing ' ' divisor
         FAILED_WRITING,         ///< Writing operation failed.
         FAILED_READING          ///< Reading operation failed.
     } fs_status;
@@ -44,7 +47,7 @@ public:
      */
     static fs_status printFS(const char* dirname, int depth);
 
-    static fs_status saveFS_json(const char* path, const char* data);
+    static fs_status saveFS_json(vector<String> path, const char* data);
 
     static vector<String> loadFS_json(const char* path);
 };

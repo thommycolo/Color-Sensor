@@ -6,7 +6,7 @@
 #include <Arduino.h>
 #include <string.h>
 #include <vector>
-
+#include <ArduinoJson.h>
 
 using namespace std;
 
@@ -55,15 +55,26 @@ LittleFS_Handler ::fs_status LittleFS_Handler :: printFS(const char* dirname, in
     return OPERATION_DONE;
 }
 // USA LA VECTOR PER PASSARE PATH!
-LittleFS_Handler :: fs_status LittleFS_Handler :: saveFS_json(const char* path[], const char* data){
+LittleFS_Handler :: fs_status LittleFS_Handler :: saveFS_json(vector<String> data, const char* path){
 
     Serial.println("--- JSON Saving ---");
 
-    for(int i =0; i<strlen(path);i++){
+    JsonDocument json;
+    for(const String& d : data){
 
-        char str = path[i];
-        int separator = strchr(str,' ');
+        int spacePos = d.indexOf(' ');
 
+        if(spacePos == -1) return WRONG_INPUT_FORMAT;
+        json[d.substring(0 , spacePos)] = d.substring(spacePos +1);
+        
     }
+    // Open, write and rewrite JSON
+    File file = LittleFS.open(path, "w");
+    if (!file) return FAILED_WRITING;
 
+    //Saving the json
+    serializeJson(json, file);
+    file.close();
+    Serial.println("--- JSON Saved ---");  
+    return OPERATION_DONE;
 }
