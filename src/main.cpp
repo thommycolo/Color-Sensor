@@ -125,63 +125,6 @@ void LoadWiFiJson() {
   file.close();
 }
 
-//print all files in LittleFS
-void listDir(const char * dirname, uint8_t levels) {
-  
-  File root = LittleFS.open(dirname,"r"); 
-
-  if (!root) {
-    Serial.println("- Failed to open directory");
-    return;
-  }
-  if (!root.isDirectory()) {
-    Serial.println(" - Not a directory");
-    return;
-  }
-
-  File file = root.openNextFile();
-  while (file) {
-    
-    for (int i = 0; i < levels; i++) {
-        Serial.print("  "); 
-    }
-
-    if (file.isDirectory()) {
-      Serial.print("[DIR]  "); //stands for Directory
-      Serial.println(file.name());
-      
-      
-      if (levels) {
-        String path = String(dirname);
-        if (path != "/") path += "/";
-        path += String(file.name());
-
-        if (String(file.name()).startsWith("/")) path = String(file.name());
-        
-        listDir(path.c_str(), levels - 1);
-      } 
-
-    } else {
-      Serial.print("[FILE] "); //stands for File
-      Serial.print(file.name());
-      Serial.print("\t| SIZE: ");
-      Serial.print(file.size());
-      Serial.println(" bytes");
-    }
-
-    file = root.openNextFile();
-  }
-}
-
-void ListFS() {
-  Serial.println("---- LittleFS FILESYSTEM TREE ----");
-  
-  listDir("/", 3);
-  
-  Serial.println("---- END OF FILE LIST ----");
-}
-
-//--------------------------------------------------
 
 // ESP32 WEBAPP-------------------------------------
 //handle not found
