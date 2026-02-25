@@ -1,5 +1,5 @@
-#ifndef WEBSERVER_H
-#define WEBSERVER_H
+#ifndef WEMANAGER_H
+#define WEMANAGER_H
 
 
 
@@ -17,11 +17,11 @@ private:
 public:
     WebManager() : server(80), ws("/ws") {}
 
-    public static enum class WebType {
+    typedef enum {
         SERVER_ONLINE,
         FAILED_TO_CONNECT,
-        COLOR_UPDATED,
-    };
+        COLOR_UPDATED
+    }WebType;
 
     WebType begin(const char* folderPath);
     

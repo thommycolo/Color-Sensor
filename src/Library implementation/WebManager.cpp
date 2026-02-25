@@ -1,10 +1,10 @@
-#include "WebServer.h"
+#include "WebManager.h"
 #include <ArduinoJson.h>
 
 /**
  * Initializes the server, static files, and WebSocket events.
  */
-WebServer::WebType WebServer::begin(const char* folderPath) {
+WebManager::WebType WebManager::begin(const char* folderPath) {
     // Serve static files (HTML, CSS, JS) from LittleFS
     server.serveStatic("/", LittleFS, folderPath).setDefaultFile("index.html");
 
@@ -28,7 +28,7 @@ WebServer::WebType WebServer::begin(const char* folderPath) {
  * Sends color data to all connected clients using JSON format.
  * Matches the JS 'COLOR_JSON:' prefix.
  */
-WebServer::WebType WebServer::updateColor(int r, int g, int b, String name) {
+WebManager::WebType WebManager::updateColor(int r, int g, int b, String name) {
     StaticJsonDocument<128> doc;
     doc["r"] = r;
     doc["g"] = g;
@@ -49,7 +49,7 @@ WebServer::WebType WebServer::updateColor(int r, int g, int b, String name) {
 /**
  * Parses incoming JSON messages from the website (replaces your old getData).
  */
-void WebServer::handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
+void WebManager::handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
     StaticJsonDocument<256> doc;
     DeserializationError error = deserializeJson(doc, data, len);
 
@@ -81,6 +81,6 @@ void WebServer::handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
 /**
  * Cleans up disconnected clients to free up RAM.
  */
-void WebServer::cleanup() {
+void WebManager::cleanup() {
     ws.cleanupClients();
 }
