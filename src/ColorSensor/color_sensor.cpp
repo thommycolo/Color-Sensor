@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include <Adafruit_SSD1306.h>
 #include <Adafruit_TCS34725.h>
+#include "Types.h"
 
 
 using namespace std;
@@ -105,10 +106,10 @@ const RGB_coef SensorHandler::Calibration(Adafruit_SSD1306 &display, Adafruit_TC
 
 
 
-const RGB SensorHandler::GetColor(Adafruit_SSD1306 &display, Adafruit_TCS34725 &tcs, RGB_coef &rgb_coef){
+const RGB SensorHandler::GetColor( Adafruit_TCS34725 &tcs, RGB_coef &rgb_coef){
     uint32_t r=0, g=0, b=0, c=0;
     RGB rgb;
-    RGB_coef rgb_coef;
+    
 
     for(int i=0; i<10 ; i++){
     tcs.enable();
@@ -137,5 +138,6 @@ const RGB SensorHandler::GetColor(Adafruit_SSD1306 &display, Adafruit_TCS34725 &
     Serial.println("COLORI CALIBRATI:");
     Serial.print("R: ");Serial.print(rgb_coef.r);Serial.print(" G: ");Serial.print(rgb_coef.g);Serial.print(" B: ");Serial.print(rgb_coef.b);
     Serial.print("\n\n\n");
-delay(10000);
+    return rgb;
+
 }

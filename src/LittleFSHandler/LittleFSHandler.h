@@ -13,7 +13,7 @@
 #include <vector>
 #include <ArduinoJson.h>
 
-
+#pragma once
 using namespace std;
 
 /**

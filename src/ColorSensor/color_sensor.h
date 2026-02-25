@@ -8,17 +8,12 @@
 #include <Adafruit_SSD1306.h>
 #include <Adafruit_TCS34725.h>
 
+#include "Types.h"
+
+
 #pragma once
 
-struct RGB_coef
-{
-    uint16_t realwhite;
-    float r=1.0,g=1.0,b=1.0;
-};
-struct RGB
-{
-    int r,g,b;
-};
+
 
 class SensorHandler{
 	public:	
