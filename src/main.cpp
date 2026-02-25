@@ -11,8 +11,11 @@
 #include <ESPmDNS.h>
 
 //project library
-#include "ColorTable/color_table.h"
-#include "ColorSensor/color_sensor.h"
+#include "color_sensor.h"
+#include "color_table.h"
+#include "LittleFSHandler.h"
+#include "WebManager.h"
+#include "wifi_handler.h"
 
 // ESP32 Config
 // --------------------------------------------------
@@ -55,116 +58,7 @@ WebServer server(80);
 //Json path
 String json_wifi_path = "/json_wifi.json";
 
-void SaveWiFiJson(String new_ssid_esp32, String new_psw_esp32, String new_ssid_ext, String new_psw_ext) {
-  Serial.println("--- JSON Saving ---");
-  
-  // Build a temporary JSON
-  JsonDocument json;
 
-  json["ssid_esp32"] = new_ssid_esp32;
-  json["psw_esp32"] = new_psw_esp32;
-  json["ssid_ext"] = new_ssid_ext;
-  json["psw_ext"] = new_psw_ext;
-
-  // Open, write and rewrite JSON
-  File file = LittleFS.open(json_wifi_path, "w");
-  if (!file) {
-    Serial.println("Error while wrinting JSON file");
-    return;
-  }
-
-  // Writing the file into the json
-  serializeJson(json, file);
-  file.close();
-  
-  // Aggiorna anche le variabili in memoria
-  ssid_esp32 = new_ssid_esp32;
-  psw_esp32 = new_psw_esp32;
-  ssid_ext = new_ssid_ext;
-  psw_ext = new_psw_ext;
-  Serial.println("Wifi Configuration Saved!");
-}
-
-void LoadWiFiJson() {
-  Serial.println("--- Loading Json ---");
-
-  // Check if Json exist, if not build it 
-  if (!LittleFS.exists(json_wifi_path)) {
-    Serial.println("File path not found! File creation in progress...");
-    SaveWiFiJson(ssid_esp32, psw_esp32, ssid_ext, psw_ext); // write actual value
-    return; 
-  }
-
-  // Open File in read mode
-  File file = LittleFS.open(json_wifi_path, "r");
-  if (!file) {
-    Serial.println("Cannot read file");
-    return;
-  }
-
-  //JSON Decode
-  JsonDocument json;
-  DeserializationError error = deserializeJson(json, file);
-
-  if (error) {
-    Serial.println("Error while reading JSON");
-  } else {
-    // 5. Se tutto ok, sovrascrive le variabili con quelle del file
-    ssid_esp32  = json["ssid_esp32"].as<String>();
-    psw_esp32  = json["psw_esp32"].as<String>();
-    ssid_ext  = json["ssid_ext"].as<String>();
-    psw_ext  = json["psw_ext"].as<String>();
-
-    
-    Serial.println("Configuration loaded succesfully:");
-    Serial.println("ESP32_SSID: " + ssid_esp32);
-    Serial.println("ESP32_PSW: " + psw_esp32);
-    Serial.println("EXT_SSID: " + ssid_ext);
-    Serial.println("EXT_PSW: " + psw_ext);
-  }
-  file.close();
-}
-
-
-// ESP32 WEBAPP-------------------------------------
-//handle not found
-void handleNotFound() {
-  String message = "404 Not Found\nURI: "; message += server.uri();
-  server.send(404, "text/plain", message);
-}
-//send json to the esp32_webapp
-void Esp32_HandleGetConfig() {
-  File file = LittleFS.open(json_wifi_path, "r");
-  if (file) {
-    server.streamFile(file, "application/json");
-    file.close();
-  } else {
-    server.send(200, "application/json", "{}");
-  }
-}
-//receive new data from the webaap
-void Esp32_HandleSaveConfig() {
-  // check if the request have something in response
-  if (server.hasArg("plain") == false) {
-    server.send(400, "text/plain", "Body not received");
-    return;
-  }
-
-  String body = server.arg("plain");
-  JsonDocument doc;
-  DeserializationError error = deserializeJson(doc, body);
-
-  if (error) {
-    server.send(400, "text/plain", "Invalid JSON");
-    return;
-  }
-
-  // get new data for the external network
-  ssid_ext = doc["ssid_ext"].as<String>();
-  psw_ext = doc["psw_ext"].as<String>();
-
-  // save updated data in the JSON
-  SaveWiFiJson(ssid_esp32, psw_esp32, ssid_ext, psw_ext);
 
   // 2.OLED Feedback
   display.clearDisplay();

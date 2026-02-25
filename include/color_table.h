@@ -4,7 +4,7 @@
 
 #include <stddef.h>
 #include <arduino.h>
-
+#include "Types.h"
 struct table_row{
 	int r,g,b;
 	const char* color_name;
@@ -14,7 +14,7 @@ extern const size_t MAX_ROW_DATA;
 
 class TableHandler{
 	public:
-		static const char* getColor(int r, int g, int b);
+		static RGB getColor(RGB rgb);
 };
 
 

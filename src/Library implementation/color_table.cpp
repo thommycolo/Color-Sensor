@@ -2,6 +2,8 @@
 
 #include "color_table.h"
 #include <cmath>
+#include "Types.h"
+
 
 using namespace std;
 
@@ -142,18 +144,19 @@ const table_row data[] =
 const size_t MAX_ROW_DATA = sizeof(data)/sizeof(table_row);
 
 
-const char* TableHandler::getColor(int r, int g, int b){
-	r = round( r/64) *64;
-	g = round( g/64) *64;
-	b = round( b/64) *64;
+RGB TableHandler::getColor(RGB rgb){
+	rgb.r = round( rgb.r/64) *64;
+	rgb.g = round( rgb.g/64) *64;
+	rgb.b = round( rgb.b/64) *64;
 	int i=0;
 	for (size_t i = 0; i < MAX_ROW_DATA; i++) {
         
-        if (data[i].r == r && data[i].g == g && data[i].b == b) {
-            return data[i].color_name; 
+        if (data[i].r == rgb.r && data[i].g == rgb.g && data[i].b == rgb.b) {
+            rgb.color_name = data[i].color_name;
+            return rgb; 
         }
     }	
-	return "COLOR NOT FOUND";
+	return rgb;
 }
 
 
