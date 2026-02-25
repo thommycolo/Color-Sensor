@@ -47,9 +47,34 @@ public:
      */
     static fs_status printFS(const char* dirname, int depth);
 
+    /**
+     * @brief Parses a list of formatted strings and saves them as a JSON file in LittleFS.
+     * * This function iterates through a vector of strings, splitting each string at the first 
+     * space character to create Key-Value pairs. These pairs are then stored in a JSON 
+     * document and written to the specified file system path.
+     * * @param data A vector of Strings where each element must follow the "Key Value" format.
+     * @param path The file system path where the JSON file will be created or overwritten.
+     * * @return StatusCode (or int): 
+     * - OPERATION_DONE: File saved successfully.
+     * - WRONG_INPUT_FORMAT: Returned if a string in 'data' does not contain a space.
+     * - FAILED_WRITING: Returned if LittleFS fails to open the file for writing.
+     * * @note This function overwrites any existing file at the given path ("w" mode).
+     */
     static fs_status saveFS_json(vector<String> path, const char* data);
 
-    static vector<String> loadFS_json(const char* path);
+    /**
+     * @brief Loads specific values from a JSON file stored in LittleFS.
+     * * This function opens a JSON file at the specified path, parses its content, 
+     * and extracts values corresponding to the keys provided in the 'data' vector.
+     * * @param data A vector of Strings representing the JSON keys to be retrieved.
+     * @param path A constant char pointer representing the file system path to the JSON file.
+     * * @return std::vector<String> A vector containing the retrieved values as Strings. 
+     * Returns an empty vector {} if:
+     * - The file path does not exist.
+     * - The file cannot be opened for reading.
+     * - The JSON deserialization fails.
+     */
+    static vector<String>  loadFS_json(vector<String> data, const char* path);
 };
 
 #endif

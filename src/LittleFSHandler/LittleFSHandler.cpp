@@ -54,7 +54,7 @@ LittleFS_Handler ::fs_status LittleFS_Handler :: printFS(const char* dirname, in
     Serial.println("---- END OF FILE LIST ----");
     return OPERATION_DONE;
 }
-// USA LA VECTOR PER PASSARE PATH!
+
 LittleFS_Handler :: fs_status LittleFS_Handler :: saveFS_json(vector<String> data, const char* path){
 
     Serial.println("--- JSON Saving ---");
@@ -77,4 +77,35 @@ LittleFS_Handler :: fs_status LittleFS_Handler :: saveFS_json(vector<String> dat
     file.close();
     Serial.println("--- JSON Saved ---");  
     return OPERATION_DONE;
+}
+
+vector<String> LittleFS_Handler :: loadFS_json(vector<String> data, const char* path){
+
+    if (!LittleFS.exists(path)) { // check if the path is right
+        Serial.println("File path not found!");
+        return {}; 
+    }
+
+    File file = LittleFS.open(path, "r");
+    if (!file) { //check if the file is ok
+        Serial.println("Cannot read file");
+        return {};
+    }
+
+    //JSON Decode
+    JsonDocument json;
+    vector<String> output;
+
+    if(deserializeJson(json, file))     return {}; // check if the json is ok
+    else{
+        
+        for(const String& d : data)     output.push_back(json[d].as<String>()); //collecting all the output data
+ 
+        Serial.println("data loaded succesfully!");
+    
+    }
+
+    file.close();
+    return output;
+
 }
