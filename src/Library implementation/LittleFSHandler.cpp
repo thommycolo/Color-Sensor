@@ -59,6 +59,10 @@ LittleFS_Handler :: fs_status LittleFS_Handler :: saveFS_json(vector<String> dat
 
     Serial.println("--- JSON Saving ---");
 
+    // Open, write and rewrite JSON
+    File file = LittleFS.open(path, "w");
+    if (!file) return FAILED_WRITING;
+
     JsonDocument json;
     for(const String& d : data){
 
@@ -68,9 +72,7 @@ LittleFS_Handler :: fs_status LittleFS_Handler :: saveFS_json(vector<String> dat
         json[d.substring(0 , spacePos)] = d.substring(spacePos +1);
         
     }
-    // Open, write and rewrite JSON
-    File file = LittleFS.open(path, "w");
-    if (!file) return FAILED_WRITING;
+    
 
     //Saving the json
     serializeJson(json, file);
@@ -87,7 +89,7 @@ vector<String> LittleFS_Handler :: loadFS_json(vector<String> data, const char* 
     }
 
     File file = LittleFS.open(path, "r");
-    if (!file) { //check if the file is ok
+    if (!file) { //check if the file exist and is ok
         Serial.println("Cannot read file");
         return {};
     }
@@ -108,4 +110,12 @@ vector<String> LittleFS_Handler :: loadFS_json(vector<String> data, const char* 
     file.close();
     return output;
 
+}
+
+LittleFS_Handler :: fs_status LittleFS_Handler :: new_file(JsonDocument new_file_data, const char* path){
+
+    File new_file = LittleFS.open(path,"w");
+    serializeJson(new_file_data,new_file);
+    new_file.close();
+    return OPERATION_DONE;
 }

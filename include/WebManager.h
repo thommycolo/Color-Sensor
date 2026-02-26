@@ -5,6 +5,8 @@
 #include <ArduinoJson.h>
 #include "Types.h"
 #include "LittleFSHandler.h"
+#include <WiFi.h>
+
 
 #pragma once
 
@@ -18,13 +20,18 @@ class WebManager {
 private:
     AsyncWebServer server;
     AsyncWebSocket ws;
+    string ac_webapp_path;
+    string wifi_webapp_path;
 
 public:
     /**
      * @brief Construct a new Web Manager object.
      * Initializes the server on port 80 and the WebSocket on the "/ws" endpoint.
      */
-    WebManager() : server(80), ws("/ws") {}
+    WebManager() : server(80), ws("/ws") {
+        ac_webapp_path = "/esp32_webapp";
+        wifi_webapp_path = "/external_webapp";
+    }
 
     /**
      * @brief Return types for WebManager operations.
@@ -39,10 +46,9 @@ public:
      * @brief Initializes the web server and WebSocket handlers.
      * * Sets up LittleFS to serve static files from the provided path and 
      * attaches event listeners for WebSocket connections, disconnections, and data.
-     * * @param folderPath The directory in LittleFS containing the web files (e.g., "/www").
      * @return WebType SERVER_ONLINE upon successful setup.
      */
-    WebType begin(const char* folderPath);
+    WebType begin();
     
     /**
      * @brief Broadcasts an RGB color update to all connected WebSocket clients.

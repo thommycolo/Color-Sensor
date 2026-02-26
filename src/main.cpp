@@ -51,8 +51,6 @@ Adafruit_TCS34725 tcs(
 // Screen config
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
-//Esp32 Server
-WebServer server(80);
 
 //WIFI JSON-----------------------------------------
 //Json path
@@ -60,74 +58,8 @@ String json_wifi_path = "/json_wifi.json";
 
 
 
-  // 2.OLED Feedback
-  display.clearDisplay();
-  display.setCursor(0,0);
-  display.println("Connecting to: ");display.println(ssid_ext.c_str());
-  display.println(ssid_ext);
-  display.display();
-  
-  Serial.print("Connecting to: ");Serial.println(ssid_ext.c_str());
 
-  WiFi.disconnect();
-  delay(100);
-  WiFi.begin(ssid_ext.c_str(), psw_ext.c_str());
-  
-  display.clearDisplay();
-  display.setCursor(0,0);
-  int tries = 0;
-  while (WiFi.status() != WL_CONNECTED && tries < 10) {
-    Serial.print(".");
-    display.print(".");
-    display.display();
-    delay(1000);
-    tries++;
-  }
-
-  display.clearDisplay();
-  display.setCursor(0,0);
-  //sending server response
-  if (WiFi.status() == WL_CONNECTED) {
-    display.println("Device succesflully connected to: ");
-    display.println(ssid_ext);
-    
-    Serial.print("Device succesflully connected to: ");Serial.println(ssid_ext);
-    String successJson = "{\"status\":\"connected\", \"ssid_ext\":\"" + ssid_ext + "\"}";
-    server.send(200, "application/json", successJson);
-    Serial.println( "WiFi connection Done!");
-
-  } else {
-    display.println("WIFI CONNECTION FAILED!");
-    display.println("Check Password or wifi name");
-    
-    server.send(401, "application/json", "{\"status\":\"failed\", \"message\":\"Password errata o rete non trovata\"}");
-    Serial.println("WiFi conneciton Failed!");
-  }
-  display.display();
-  delay(2000);
-}
-//this function get called by the sites every 1s in order to take the new data
-void Esp32_HandleGetColorData() {
-  JsonDocument doc;
-  doc["r"] = global_last_red;
-  doc["g"] = global_last_green;
-  doc["b"] = global_last_blue;
-  doc["name"] = global_last_colorName;
-  
-  String response;
-  serializeJson(doc, response);
-  server.send(200, "application/json", response);
-}
-//--------------------------------------------------
-
-// Hardwares Config
-void sens_config() {
-  while (!tcs.begin()) {
-    Serial.println("Sensor not found");
-    delay(200);
-  }
-}
-
+//NEED TO GO INTO THE SETUP
 void disp_config(){
   while(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C))
   {
@@ -142,47 +74,14 @@ void disp_config(){
 
 
 
-// Serial Printing
-void Print_value(int* colors_rgb) {
-  
-  global_last_red = colors_rgb[0];
-  global_last_green = colors_rgb[1];
-  global_last_blue = colors_rgb[2];
-
-  global_last_colorName = TableHandler::getColor(global_last_red, global_last_green, global_last_blue);
-
-
-  display.clearDisplay();       
-  display.setCursor(0, 0);
-  display.print("R=");display.print(colors_rgb[0]);display.print(" G=");display.print(colors_rgb[1]);display.print(" B=");display.println(colors_rgb[2]);;      
-  display.print(TableHandler::getColor(colors_rgb[0],colors_rgb[1],colors_rgb[2]));display.display();
-}
-
-//This function help the routing beetwen the two possible sites based on the given IP
-void serveSmartFile(String internalPath, String externalPath, String mimeType) {
-    IPAddress clientIP = server.client().localIP();
-    IPAddress apIP = WiFi.softAPIP(); // usually 192.168.4.1
-    
-    String path = externalPath; // Default: MONITOR 
-    
-    // if the user is connected to the ESP32 Hotspot -> Cofniguration
-    if (clientIP == apIP) {
-        path = internalPath;
-    }
-    
-    File file = LittleFS.open(path, "r");
-    if (file) {
-        server.streamFile(file, mimeType);
-        file.close();
-    } else {
-        server.send(404, "text/plain", "File not found: " + path);
-    }
-}
-
-
 
 // SETUP
 void setup() {
+
+
+
+
+  /*
   Serial.begin(9600);
   Wire.begin(SDA_PIN, SCL_PIN);  // I2C 
 
@@ -243,6 +142,7 @@ void setup() {
 
 
   WhiteCalibration();
+  */
 }
 
 // LOOP

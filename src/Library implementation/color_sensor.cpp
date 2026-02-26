@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void starting_calibration_print(Adafruit_SSD1306 &display, Adafruit_TCS34725 &tcs){
+void starting_calibration_print(Adafruit_SSD1306 &display){
     display.clearDisplay();       
     display.setCursor(0, 0);  
 
@@ -53,9 +53,9 @@ void starting_calibration_print(Adafruit_SSD1306 &display, Adafruit_TCS34725 &tc
  * This function allow the sensor calibration.
  * it does a loop of L cycles in order to have a precise white reading
  */
-const RGB_coef SensorHandler::Calibration(Adafruit_SSD1306 &display, Adafruit_TCS34725 &tcs)
+const RGB_coef SensorHandler::Calibration()
 {
-    starting_calibration_print(display, tcs);
+    starting_calibration_print(display);
 
     RGB_coef coef;
     int L =50; //number of cycles for the sampling
@@ -106,7 +106,7 @@ const RGB_coef SensorHandler::Calibration(Adafruit_SSD1306 &display, Adafruit_TC
 
 
 
-const RGB SensorHandler::GetColor( Adafruit_TCS34725 &tcs, RGB_coef &rgb_coef){
+const RGB SensorHandler::GetColor(RGB_coef &rgb_coef){
     uint32_t r=0, g=0, b=0, c=0;
     RGB rgb;
     

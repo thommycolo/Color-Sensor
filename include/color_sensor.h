@@ -16,9 +16,22 @@
 
 
 class SensorHandler{
+        private:
+        Adafruit_SSD1306 &display;
+        Adafruit_TCS34725 &tcs;
+
 	public:	
-        static const RGB_coef Calibration(Adafruit_SSD1306 &display, Adafruit_TCS34725 &tcs);
-        static const RGB GetColor(Adafruit_SSD1306 &display , Adafruit_TCS34725 &tcs, RGB_coef &rgb_coef);
+        SensorHandler(Adafruit_SSD1306 &display , Adafruit_TCS34725 &tcs) : display(display), tcs(tcs) {
+                display.clearDisplay();
+                while (!tcs.begin()) {
+                        display.setCursor(0,0);
+                        display.print("Sensor not found");
+                        delay(100);
+                }
+        } 
+
+        const RGB_coef Calibration();
+        const RGB GetColor(RGB_coef &rgb_coef);
 
 };
 

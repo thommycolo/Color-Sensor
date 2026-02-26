@@ -60,7 +60,7 @@ public:
      * - FAILED_WRITING: Returned if LittleFS fails to open the file for writing.
      * * @note This function overwrites any existing file at the given path ("w" mode).
      */
-    static fs_status saveFS_json(vector<String> path, const char* data);
+    static fs_status saveFS_json(vector<String> data, const char* path);
 
     /**
      * @brief Loads specific values from a JSON file stored in LittleFS.
@@ -75,6 +75,11 @@ public:
      * - The JSON deserialization fails.
      */
     static vector<String>  loadFS_json(vector<String> data, const char* path);
+
+    static fs_status new_file(JsonDocument new_file_data, const char* path);
+
 };
+
+
 
 #endif

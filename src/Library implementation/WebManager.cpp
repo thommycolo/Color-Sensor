@@ -5,13 +5,22 @@
 #include <ESPAsyncWebServer.h>
 #include <Arduino.h>
 #include "LittleFSHandler.h"
+#include <WiFi.h>
 
-/**
- * Initializes the server, static files, and WebSocket events.
- */
-WebManager::WebType WebManager::begin(const char* folderPath) {
-    // Serve static files (HTML, CSS, JS) from LittleFS
-    server.serveStatic("/", LittleFS, folderPath).setDefaultFile("index.html");
+
+WebManager::WebType WebManager::begin() {
+
+    server.on("/",HTTP_GET, [this](AsyncWebServerRequest *request){
+        if (request->client()->localIP() == WiFi.softAPIP())
+            request->redirect(String(ac_webapp_path.c_str()) + "/index.html");
+        else
+            request->redirect(String(wifi_webapp_path.c_str()) + "/index.html");
+    });
+
+    // Serve static files (CSS, JS) from LittleFS
+    server.serveStatic(ac_webapp_path.c_str(), LittleFS, ac_webapp_path.c_str());
+    server.serveStatic(wifi_webapp_path.c_str(), LittleFS, wifi_webapp_path.c_str());
+
 
     // Configure the WebSocket event handler
     ws.onEvent([this](AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len) {
