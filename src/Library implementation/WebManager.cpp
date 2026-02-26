@@ -70,8 +70,8 @@ void WebManager::getData(void *arg, uint8_t *data, size_t len) {
 
     if (type && strcmp(type, "SET_WIFI") == 0) {
 
-        LittleFS_Handler fs;
-        vector<String> data;
+        LittleFSHandler fs;
+        std :: vector<String> data;
         data.push_back(doc["ssid"]);
         data.push_back(doc["psw"]);
 

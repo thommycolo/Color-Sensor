@@ -59,86 +59,13 @@ void setup() {
 
   WifiHandler wifi_handler(display); // Initialize WifiHandler
 
-  
+  WebManager web_manager();
 
-
-
-
-  /*
-  Serial.begin(9600);
-  Wire.begin(SDA_PIN, SCL_PIN);  // I2C 
-
-  sens_config();
-  disp_config();
-
-  
-  //WIFI Config
-  // Check if json is correct
-  if (!LittleFS.begin(true)) {
-    Serial.println("Error: could not build LittleFS correctly");
-    return;
-  }
-  else
-  {
-    LoadWiFiJson();
-    ListFS();
-  }
-  //Uncomment this line for update
-  //SaveWiFiJson(ssid_esp32, psw_esp32, ssid_ext, psw_ext); // write actual value
-  
-
-  WiFi.mode(WIFI_AP_STA);
-  WiFi.softAP(ssid_esp32.c_str(), psw_esp32.c_str()); //create his own network
-  WiFi.begin(ssid_ext.c_str(), psw_ext.c_str()); //connect to a third network
-
-  if (MDNS.begin("color-reader")) {
-    Serial.println("MDNS responder started (color-reader.local)");
-  }
-
-  //Esp32 webapp config
-  server.on("/", HTTP_GET, []() {
-      serveSmartFile("/esp32_webapp/index.html", "/external_webapp/index.html", "text/html");
-  });
-
-  // 2. CSS (/style.css): Serve lo stile corretto per il sito visualizzato
-  server.on("/style.css", HTTP_GET, []() {
-      serveSmartFile("/esp32_webapp/style.css", "/external_webapp/style.css", "text/css");
-  });
-
-  // 3. JS (/script.js): Serve lo script corretto
-  server.on("/script.js", HTTP_GET, []() {
-      serveSmartFile("/esp32_webapp/script.js", "/external_webapp/script.js", "application/javascript");
-  });
-
-  // API Standard
-  server.on("/api/Esp32_GetConfig", HTTP_GET, Esp32_HandleGetConfig);
-  server.on("/api/Esp32_SaveConfig", HTTP_POST, Esp32_HandleSaveConfig);
-  server.on("/api/Esp32_GetColor", HTTP_GET, Esp32_HandleGetColorData);
-  
-  // Se vuoi ancora accedere esplicitamente alla config da esterno
-  server.serveStatic("/config", LittleFS, "/esp32_webapp/index.html");
-  
-  server.onNotFound(handleNotFound);
-
-  server.begin();
-  Serial.println("Web server started");
-
-
-  WhiteCalibration();
-  */
 }
 
 // LOOP
 void loop() {
-  //create server
-  server.handleClient();
-
-  int colors_rgb[3];
   
-  //GetColor(colors_rgb);
-
-  //Print_value(colors_rgb);
   
-  GetColor2();
-  delay(500);
+
 }

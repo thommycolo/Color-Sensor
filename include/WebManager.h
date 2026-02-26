@@ -20,8 +20,8 @@ class WebManager {
 private:
     AsyncWebServer server;
     AsyncWebSocket ws;
-    string ac_webapp_path;
-    string wifi_webapp_path;
+    String ac_webapp_path;
+    String wifi_webapp_path;
 
 public:
     /**

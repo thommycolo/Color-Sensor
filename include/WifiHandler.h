@@ -19,7 +19,7 @@ class WifiHandler{
             display.setTextColor(SSD1306_WHITE);
 
             LittleFSHandler fs;
-            vector<String> data = fs.loadFS_json({"ssid_ac","psw_ac"},"/wifi.json");
+            std :: vector<String> data = fs.loadFS_json({"ssid_ac","psw_ac"},"/wifi.json");
             while(data.empty()){
                 JsonDocument json;
                 json["ssid_ac"] = "ESP32_ACCES";
@@ -32,7 +32,7 @@ class WifiHandler{
 
             if(!ACturnOn(ssid,psw))
                 display.print("Something went wrong, please restart");
-            WiFi.mode(WIFI_AP_STA); //act as AccesPoint as Client
+            WiFi.mode(WIFI_AP_STA); //act as an AccesPoint as a Client
         }
         
         bool ACturnOn(const char* ssid, const char* psw);
