@@ -1,5 +1,5 @@
-#ifndef WIFI_HANDLER_H
-#define WIFI_HANDLER_H
+#ifndef WIFIHANDLER_H
+#define WIFIHANDLER_H
 
 #include <WiFi.h>
 #include <Adafruit_GFX.h>
@@ -8,16 +8,17 @@
 #include <ArduinoJson.h>
 #pragma once
 
-class wifi_handler{
+class WifiHandler{
     private:
         Adafruit_SSD1306 &display;
         const char* ssid ;
         const char* psw ;
     public:
-        wifi_handler(Adafruit_SSD1306 &display): display(display) {
+        WifiHandler(Adafruit_SSD1306 &display): display(display) {
             display.setTextSize(1);
             display.setTextColor(SSD1306_WHITE);
-            LittleFS_Handler fs;
+
+            LittleFSHandler fs;
             vector<String> data = fs.loadFS_json({"ssid_ac","psw_ac"},"/wifi.json");
             while(data.empty()){
                 JsonDocument json;
@@ -29,7 +30,8 @@ class wifi_handler{
                 data = fs.loadFS_json({"ssid_ac","psw_ac"},"/wifi.json");
             }
 
-            ACturnOn(ssid,psw);
+            if(!ACturnOn(ssid,psw))
+                display.print("Something went wrong, please restart");
             WiFi.mode(WIFI_AP_STA); //act as AccesPoint as Client
         }
         

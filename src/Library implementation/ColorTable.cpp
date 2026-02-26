@@ -1,6 +1,6 @@
-// color_table population and implementation
+// ColorTable population and implementation
 
-#include "color_table.h"
+#include "ColorTable.h"
 #include <cmath>
 #include "Types.h"
 

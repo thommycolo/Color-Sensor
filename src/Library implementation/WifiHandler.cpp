@@ -1,11 +1,11 @@
-//wifi_handler.h implementation
+//WifiHandler.h implementation
 
-#include "wifi_handler.h"
+#include "WifiHandler.h"
 #include <wifi.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
-bool wifi_handler :: ACturnOn(const char* ssid, const char*psw){
+bool WifiHandler :: ACturnOn(const char* ssid, const char*psw){
     display.clearDisplay();
     display.setCursor(0,0);
     
@@ -27,7 +27,7 @@ bool wifi_handler :: ACturnOn(const char* ssid, const char*psw){
     return true;
 }   
 
-bool wifi_handler :: WifiConnect(const char* ssid, const char* psw){
+bool WifiHandler :: WifiConnect(const char* ssid, const char* psw){
     display.clearDisplay();
     display.setCursor(0,0);
     

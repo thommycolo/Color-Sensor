@@ -11,7 +11,7 @@
 using namespace std;
 
 
-LittleFS_Handler ::fs_status LittleFS_Handler :: printFS(const char* dirname, int depth){
+LittleFSHandler ::fs_status LittleFSHandler :: printFS(const char* dirname, int depth){
     Serial.println("---- LittleFS FILESYSTEM TREE ----");
 
     if ( !LittleFS.open(dirname,"r")) return FS_NOT_FOUND;
@@ -55,7 +55,7 @@ LittleFS_Handler ::fs_status LittleFS_Handler :: printFS(const char* dirname, in
     return OPERATION_DONE;
 }
 
-LittleFS_Handler :: fs_status LittleFS_Handler :: saveFS_json(vector<String> data, const char* path){
+LittleFSHandler :: fs_status LittleFSHandler :: saveFS_json(vector<String> data, const char* path){
 
     Serial.println("--- JSON Saving ---");
 
@@ -81,7 +81,7 @@ LittleFS_Handler :: fs_status LittleFS_Handler :: saveFS_json(vector<String> dat
     return OPERATION_DONE;
 }
 
-vector<String> LittleFS_Handler :: loadFS_json(vector<String> data, const char* path){
+vector<String> LittleFSHandler :: loadFS_json(vector<String> data, const char* path){
 
     if (!LittleFS.exists(path)) { // check if the path is right
         Serial.println("File path not found!");
@@ -112,7 +112,7 @@ vector<String> LittleFS_Handler :: loadFS_json(vector<String> data, const char* 
 
 }
 
-LittleFS_Handler :: fs_status LittleFS_Handler :: new_file(JsonDocument new_file_data, const char* path){
+LittleFSHandler :: fs_status LittleFSHandler :: new_file(JsonDocument new_file_data, const char* path){
 
     File new_file = LittleFS.open(path,"w");
     serializeJson(new_file_data,new_file);

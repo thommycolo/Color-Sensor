@@ -11,11 +11,12 @@
 #include <ESPmDNS.h>
 
 //project library
-#include "color_sensor.h"
-#include "color_table.h"
+#include "ColorSensor.h"
+#include "ColorTable.h"
 #include "LittleFSHandler.h"
 #include "WebManager.h"
-#include "wifi_handler.h"
+#include "WifiHandler.h"
+
 
 // ESP32 Config
 // --------------------------------------------------
@@ -23,33 +24,14 @@
 #define SCL_PIN 22
 // 3.3V 
 // --------------------------------------------------
-// Screen dimension
+
+
+// DISPLAY CONFIG
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
-
-//global varaible for sites
-int global_last_red =0;
-int global_last_green =0;
-int global_last_blue =0;
-String global_last_colorName ="no color";
-
-// WiFi configuration
-// Board Network
-String ssid_esp32 = "Color Reader";
-String psw_esp32 = "12345678";
-// External Network
-String ssid_ext = "aaa"; 
-String psw_ext = "12345678";
-
-int num_of_sample = 10;
-
-// TCS34725 sensor config
-Adafruit_TCS34725 tcs(
-  TCS34725_INTEGRATIONTIME_50MS,  
-  TCS34725_GAIN_4X                 
-);
-// Screen config
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+
+
 
 
 //WIFI JSON-----------------------------------------
@@ -59,24 +41,25 @@ String json_wifi_path = "/json_wifi.json";
 
 
 
-//NEED TO GO INTO THE SETUP
-void disp_config(){
-  while(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C))
-  {
-    Serial.println("Display not found");
-    delay(200);
-  }
-  display.clearDisplay();
-  display.setTextSize(1);
-  display.setTextColor(SSD1306_WHITE);
-  display.display();
-}
-
-
-
 
 // SETUP
 void setup() {
+
+  //main configuration
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+
+  Serial.begin(9600);
+  Wire.begin(SDA_PIN, SCL_PIN);  // I2C
+
+  LittleFSHandler fs_handler; // Initialize LittleFS_Handler
+  fs_handler.begin(); 
+
+  WifiHandler wifi_handler(display); // Initialize WifiHandler
+
+  
 
 
 
