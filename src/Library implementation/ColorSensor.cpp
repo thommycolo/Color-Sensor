@@ -2,12 +2,25 @@
 
 #include "ColorSensor.h"
 #include <Arduino.h>
+#include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <Adafruit_TCS34725.h>
 #include "Types.h"
 
 
 using namespace std;
+
+SensorHandler :: SensorHandler(Adafruit_SSD1306 &display ) : display(display),tcs(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X) {
+                
+                
+                display.clearDisplay();
+                while (!tcs.begin()) {
+                        display.setCursor(0,0);
+                        display.print("Sensor not found");
+                        delay(100);
+                }
+        } 
+
 
 void starting_calibration_print(Adafruit_SSD1306 &display){
     display.clearDisplay();       
