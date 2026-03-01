@@ -10,8 +10,8 @@ struct RGB_coef
 };
 struct RGB
 {
-    int r,g,b;
-    std :: string color_name ;
+    int r=0,g=0,b=0;
+    std :: string color_name = "";
 };
 
 

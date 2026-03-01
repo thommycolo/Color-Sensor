@@ -1,65 +1,47 @@
 //ColorSensor implementation 
 
-#include "ColorSensor.h"
+#include "SensorHandler.h"
+#include "DisplayHandler.h"
 #include <Arduino.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
 #include <Adafruit_TCS34725.h>
 #include "Types.h"
 
 
 using namespace std;
 
-SensorHandler :: SensorHandler(Adafruit_SSD1306 &display ) : display(display),tcs(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X) {
-                
-                
-                display.clearDisplay();
-                while (!tcs.begin()) {
-                        display.setCursor(0,0);
-                        display.print("Sensor not found");
-                        delay(100);
-                }
-        } 
-
-
-void starting_calibration_print(Adafruit_SSD1306 &display){
-    display.clearDisplay();       
-    display.setCursor(0, 0);  
-
+void starting_calibration_print(DisplayHandler display){
+    
     delay(2000);
     Serial.println("Starting calibration process!");
     Serial.println("point your sensor to a white surface");
-    display.println("Starting calibration process!");
-    display.println("point your sensor to a white surface");
-    delay(5000);    
-    display.clearDisplay();       
-    display.setCursor(0, 0);    
+    display.print("Starting calibration process!","point your sensor to a white surface");
+
+    delay(5000);        
     Serial.println("Calibration starting in:");
-    display.println("Calibration starting in:");
-    display.clearDisplay();       
-    display.setCursor(0, 0);    
+    display.print("Calibration starting in:");
+      
     Serial.println("5");
-    display.println("5");
-    display.clearDisplay();       
-    display.setCursor(0, 0);
+    display.print("5");
+    delay(1000);
+
     Serial.println("4");
-    display.println("4");
-    display.clearDisplay();       
-    display.setCursor(0, 0);    
+    display.print("4");
+    delay(1000);
+
     Serial.println("3");
-    display.println("3");
-    display.clearDisplay();       
-    display.setCursor(0, 0);    
+    display.print("3");
+    delay(1000);
+
     Serial.println("2");
-    display.println("2");
-    display.clearDisplay();       
-    display.setCursor(0, 0);    
+    display.print("2");
+    delay(1000);
+
     Serial.println("1");
-    display.println("1");
-    display.clearDisplay();       
-    display.setCursor(0, 0);    
+    display.print("1");
+    delay(1000);
+
     Serial.println("Calibrating!!");
-    display.println("Calibrating!!");
+    display.print("Calibrating!!");
 }
 
 /***
@@ -107,11 +89,10 @@ const RGB_coef SensorHandler::Calibration()
 
     Serial.print("\n\n");
     Serial.print("color adjustation: ");Serial.print(coef.r);Serial.print(coef.g);Serial.println(coef.b);
-    Serial.print("\n\n");   
-    display.clearDisplay();       
-    display.setCursor(0, 0);
+    Serial.print("\n\n"); 
+    
     Serial.println("Calibration Done");
-    display.println("Calibration Done");
+    display.print("Calibration Done");
 
     return coef;
 }

@@ -40,7 +40,7 @@ WebManager::WebType WebManager::begin() {
 
 
 WebManager::WebType WebManager::updateColor(RGB rgb) {
-    StaticJsonDocument<128> doc;
+    JsonDocument doc;
     doc["r"] = rgb.r;
     doc["g"] = rgb.g;
     doc["b"] = rgb.b;
@@ -58,7 +58,7 @@ WebManager::WebType WebManager::updateColor(RGB rgb) {
 
 
 void WebManager::getData(void *arg, uint8_t *data, size_t len) {
-    StaticJsonDocument<256> doc;
+    JsonDocument doc;
 
     if (deserializeJson(doc, data, len)) {
         Serial.print("JSON Deserialization failed: ");
