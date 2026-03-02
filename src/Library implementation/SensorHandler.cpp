@@ -5,6 +5,7 @@
 #include <Arduino.h>
 #include <Adafruit_TCS34725.h>
 #include "Types.h"
+#include "TableHandler.h"
 
 
 using namespace std;
@@ -44,11 +45,19 @@ void starting_calibration_print(DisplayHandler display){
     display.print("Calibrating!!");
 }
 
+void SensorHandler :: begin(){
+    display.begin();
+    while (!tcs.begin()) {
+            display.print("Sensor not found");
+            delay(100);
+    }
+}
+
 /***
  * This function allow the sensor calibration.
  * it does a loop of L cycles in order to have a precise white reading
  */
-const RGB_coef SensorHandler::Calibration()
+const bool SensorHandler::Calibration()
 {
     starting_calibration_print(display);
 
@@ -93,18 +102,21 @@ const RGB_coef SensorHandler::Calibration()
     
     Serial.println("Calibration Done");
     display.print("Calibration Done");
-
-    return coef;
+    
+    SensorHandler ::rgb_coef = coef;
+    return true;
 }
 
 
 
 
-const RGB SensorHandler::GetColor(RGB_coef &rgb_coef){
+const RGB SensorHandler::GetColor(){
     uint32_t r=0, g=0, b=0, c=0;
     RGB rgb;
     
-
+    display.print("getting color");
+    Serial.print("getting color");
+    delay(100);
     for(int i=0; i<10 ; i++){
     tcs.enable();
         delay(10);
@@ -122,15 +134,20 @@ const RGB SensorHandler::GetColor(RGB_coef &rgb_coef){
     rgb.r = (int)((((float)r / 10.0) * rgb_coef.r / (float)rgb_coef.realwhite * 255.0) + 0.5);
     rgb.g = (int)((((float)g / 10.0) * rgb_coef.g / (float)rgb_coef.realwhite * 255.0) + 0.5);
     rgb.b = (int)((((float)b / 10.0) * rgb_coef.b / (float)rgb_coef.realwhite * 255.0) + 0.5);
-    if(rgb_coef.r>255)
-        rgb_coef.r=255;
-    if(rgb_coef.g>255)
-        rgb_coef.g=255;
-    if(rgb_coef.b>255)
-        rgb_coef.b=255;
+    if(rgb.r>255)
+        rgb.r=255;
+    if(rgb.g>255)
+        rgb.g=255;
+    if(rgb.b>255)
+        rgb.b=255;
+
+
+    TableHandler colorTB;
+    rgb = colorTB.getColor(rgb);
 
     Serial.println("COLORI CALIBRATI:");
-    Serial.print("R: ");Serial.print(rgb_coef.r);Serial.print(" G: ");Serial.print(rgb_coef.g);Serial.print(" B: ");Serial.print(rgb_coef.b);
+    Serial.print("R: ");Serial.print(rgb.r);Serial.print(" G: ");Serial.print(rgb.g);Serial.print(" B: ");Serial.print(rgb.b);
+    display.print("COLORE: " + rgb.color_name , "R: " + (String)rgb.r + " G: " + (String)rgb.g + " B: " + (String)rgb.b);
     Serial.print("\n\n\n");
     return rgb;
 

@@ -1,0 +1,288 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+-> esp32_webapp/
+       index.html (3693 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1612 bytes)
+       script.js (1055 bytes)
+       style.css (3872 bytes)
+   json_wifi.json (0 bytes)
+   wifi.json (101 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Casa Colombo
+psw_wifi   C0l0mb0Family!
+WIFI CONNECTION
+**Casa Colombo****C0l0mb0Family!**60000000Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+230230164
+234233167
+231231165
+234233167
+237236169
+230230164
+235234167
+232232166
+229228163
+231231165
+232232165
+235235168
+229229163
+232232165
+235235168
+232232165
+232232165
+232232165
+233232166
+234233167
+228228163
+234234167
+232232166
+234233167
+232232166
+232231165
+237236169
+230230164
+231231165
+231231165
+233232166
+233233167
+230230165
+233232166
+234234167
+231230165
+234234167
+234234167
+236236169
+232232165
+234234167
+237236169
+234233167
+234234167
+235235168
+234233167
+234234167
+230230164
+236236169
+234234167
+Max value:232
+
+color adjustation: 1.001.001.40
+
+
+Calibration Done
+getting colorR: 225 G: 224 B: 160 C: 645
+R: 448 G: 446 B: 319 C: 1284
+R: 673 G: 670 B: 479 C: 1928
+R: 893 G: 889 B: 635 C: 2558
+R: 1116 G: 1112 B: 794 C: 3198
+R: 1340 G: 1335 B: 953 C: 3840
+R: 1566 G: 1560 B: 1114 C: 4486
+R: 1788 G: 1781 B: 1272 C: 5121
+R: 2015 G: 2007 B: 1433 C: 5771
+R: 2240 G: 2232 B: 1593 C: 6417
+
+
+
+COLORI CALIBRATI:
+R: 246 G: 245 B: 245
+
+
+getting colorR: 143 G: 121 B: 49 C: 332
+R: 285 G: 241 B: 97 C: 661
+R: 425 G: 359 B: 145 C: 985
+R: 566 G: 477 B: 193 C: 1310
+R: 713 G: 601 B: 243 C: 1651
+R: 860 G: 725 B: 293 C: 1992
+R: 1007 G: 849 B: 343 C: 2332
+R: 1155 G: 974 B: 394 C: 2675
+R: 1306 G: 1101 B: 445 C: 3024
+R: 1457 G: 1228 B: 497 C: 3373
+
+
+
+COLORI CALIBRATI:
+R: 160 G: 135 B: 76
+
+
+getting colorR: 35 G: 30 B: 20 C: 86
+R: 70 G: 59 B: 40 C: 171
+R: 104 G: 88 B: 59 C: 254
+R: 139 G: 117 B: 78 C: 338
+R: 174 G: 146 B: 98 C: 423
+R: 210 G: 176 B: 118 C: 509
+R: 245 G: 206 B: 138 C: 594
+R: 281 G: 236 B: 158 C: 681
+R: 317 G: 266 B: 178 C: 769
+R: 354 G: 297 B: 199 C: 858
+
+
+
+COLORI CALIBRATI:
+R: 39 G: 33 B: 31
+
+
+[ 71499][E][vfs_api.cpp:105] open(): /littlefs/external_webapp/index.html.gz does not exist, no permits for creation
+getting color
+assert failed: block_locate_free heap_tlsf.c:441 (block_size(block) >= size)
+
+
+Backtrace: 0x40083bd5:0x3ffbabb0 0x4008dc91:0x3ffbabd0 0x40093479:0x3ffbabf0 0x400928d2:0x3ffbad20 0x40092f97:0x3ffbad40 0x400930d4:0x3ffbad60 0x40084098:0x3ffbad80 0x400840ad:0x3ffbadb0 0x400840d6:0x3ffbadd0 0x40093489:0x3ffbadf0 0x40083dc9:0x3ffbae10 0x40151073:0x3ffbae30 0x4013e45d:0x3ffbae50 0x4012368b:0x3ffbae70
+  #0  0x40083bd5 in panic_abort at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/esp_system/panic.c:408
+  #1  0x4008dc91 in esp_system_abort at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/esp_system/esp_system.c:137
+  #2  0x40093479 in __assert_func at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/newlib/assert.c:85
+  #3  0x400928d2 in block_locate_free at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/heap/heap_tlsf.c:441
+      (inlined by) tlsf_malloc at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/heap/heap_tlsf.c:850
+  #4  0x40092f97 in multi_heap_malloc_impl at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/heap/multi_heap.c:187
+  #5  0x400930d4 in multi_heap_malloc at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/heap/multi_heap_poisoning.c:234
+      (inlined by) multi_heap_malloc at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/heap/multi_heap_poisoning.c:223
+  #6  0x40084098 in heap_caps_malloc_base at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/heap/heap_caps.c:175
+      (inlined by) heap_caps_malloc_base at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/heap/heap_caps.c:120
+  #7  0x400840ad in heap_caps_malloc at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/heap/heap_caps.c:195
+  #8  0x400840d6 in heap_caps_malloc_default at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/heap/heap_caps.c:220
+  #9  0x40093489 in malloc at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/newlib/heap.c:24
+  #10 0x40083dc9 in wifi_malloc at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/esp_wifi/esp32/esp_adapter.c:72
+  #11 0x40151073 in ieee80211_timer_process at ??:?
+  #12 0x4013e45d in ieee80211_hostapd_beacon_txcb at ??:?
+  #13 0x4012368b in timer_process_alarm at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/esp_timer/src/esp_timer.c:396
+      (inlined by) timer_task at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/esp_timer/src/esp_timer.c:422
+
+
+
+
+
+ELF file SHA256: b2bb0fdd35927970
+
+Rebooting...
+ets Jul 29 2019 12:21:46
+
+rst:0xc (SW_CPU_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+-> esp32_webapp/
+       index.html (3693 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1612 bytes)
+       script.js (1055 bytes)
+       style.css (3872 bytes)
+   json_wifi.json (0 bytes)
+   wifi.json (101 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Casa Colombo
+psw_wifi   C0l0mb0Family!
+WIFI CONNECTION
+**Casa Colombo****C0l0mb0Family!**6000Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+341347248
+334340243
+341346247
+334340243
+337343245
+336342244
+338344246
+336342244
+335340243
+340346247
+338344246
+342348249
+335341244
+339345246
+340346247
+342348248
+332337241
+338343246
+332337241
+329334239
+325330236
+330335240
+328332238
+329334239
+325330236
+328333238
+332337241
+332337241
+335340243
+332336241
+332337241
+329334239
+337342245
+335340243
+338344246
+332337241
+337342244
+334340243
+339344246
+332337241
+339344246
+337342244
+334339243
+331336240
+330335240
+335340243
+334339242
+334340243
+330335240
+333338242
+Max value:339
+
+color adjustation: 1.011.001.40
+
+
+Calibration Done
+getting colorR: 337 G: 343 B: 245 C: 980
+R: 676 G: 687 B: 491 C: 1966
+R: 1014 G: 1030 B: 736 C: 2948
+R: 1355 G: 1376 B: 983 C: 3938
+R: 1689 G: 1715 B: 1226 C: 4910
+R: 2026 G: 2057 B: 1471 C: 5890
+R: 2362 G: 2398 B: 1715 C: 6866
+R: 2689 G: 2730 B: 1952 C: 7816
+R: 3016 G: 3061 B: 2189 C: 8765
+R: 3347 G: 3396 B: 2429 C: 9726
+
+
+
+COLORI CALIBRATI:
+R: 255 G: 255 B: 255
+
+

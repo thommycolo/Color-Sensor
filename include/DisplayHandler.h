@@ -13,17 +13,12 @@
 
 class DisplayHandler{
     private:
-        Adafruit_SSD1306 display{SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1};
+        Adafruit_SSD1306 display;
 
     
     public:
-        DisplayHandler(){
-            Serial.println("bebbo");
-            display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
-            display.clearDisplay();
-            display.setTextSize(1);
-            display.setTextColor(SSD1306_WHITE);
-        }
+        DisplayHandler(): display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1){};
+        void begin();
         void print(String row1);
         void print(String row1, String row2);
 

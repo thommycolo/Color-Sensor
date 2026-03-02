@@ -35,9 +35,7 @@ public:
      * @brief Initializes the LittleFS file system.
      * @note If mounting fails, the system will attempt to format the storage automatically.
      */
-    static void begin() {
-        LittleFS.begin(true); 
-    }; 
+    static void begin(); 
 
     /**
      * @brief Recursively prints the file system structure to the Serial Monitor.
@@ -48,7 +46,7 @@ public:
      * @return fs_status Returns OPERATION_DONE on success, or an error code.
      * @note Directories are marked with [DIR], files with [FILE] and their size.
      */
-    static fs_status printFS(const char* dirname, int depth);
+    static fs_status printFS(const char * dirname, uint8_t levels, int indent);
 
     /**
      * @brief Converts a list of formatted strings into a JSON file.
@@ -62,7 +60,7 @@ public:
      * - FAILED_WRITING: Could not open the file for writing.
      * @warning This function overwrites existing files (mode "w").
      */
-    static fs_status saveFS_json(std::vector<String> data, const char* path);
+    fs_status saveFS_json(JsonDocument& nuoviDati, const char* path);
 
     /**
      * @brief Loads specific values from a saved JSON file.

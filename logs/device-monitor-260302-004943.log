@@ -1,0 +1,88 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+-> esp32_webapp/
+       index.html (3693 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1612 bytes)
+       script.js (1055 bytes)
+       style.css (3872 bytes)
+   json_wifi.json (0 bytes)
+   wifi.json (75 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   
+psw_wifi   
+[ 36523][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/index.html.gz does not exist, no permits for creation
+WebSocket client #1 connected from 192.168.4.2
+--- JSON Saving ---
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   
+psw_wifi   
+E (81576) task_wdt: Task watchdog got triggered. The following tasks did not reset the watchdog in time:
+E (81576) task_wdt:  - async_tcp (CPU 0/1)
+E (81576) task_wdt: Tasks currently running:
+E (81576) task_wdt: CPU 0: IDLE0
+E (81576) task_wdt: CPU 1: IDLE1
+E (81576) task_wdt: Aborting.
+
+abort() was called at PC 0x401040ac on core 0
+  #0  0x401040ac in task_wdt_isr at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/esp_system/task_wdt.c:176 (discriminator 3)
+
+
+
+Backtrace: 0x40083bd5:0x3ffbeccc |<-CORRUPTED
+  #0  0x40083bd5 in panic_abort at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/esp_system/panic.c:408
+  #1  0x3ffbeccc in port_IntStack at ??:?
+
+
+
+
+
+ELF file SHA256: ef1f12ef0d132db3
+
+Rebooting...
+ets Jul 29 2019 12:21:46
+
+rst:0xc (SW_CPU_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+-> esp32_webapp/
+       index.html (3693 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1612 bytes)
+       script.js (1055 bytes)
+       style.css (3872 bytes)
+   json_wifi.json (0 bytes)
+   wifi.json (75 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   
+psw_wifi   

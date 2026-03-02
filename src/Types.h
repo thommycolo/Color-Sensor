@@ -1,6 +1,8 @@
 #ifndef TYPES_H
 #define TYPES_H
 
+#include<Arduino.h>
+
 #pragma once
 
 struct RGB_coef
@@ -11,7 +13,7 @@ struct RGB_coef
 struct RGB
 {
     int r=0,g=0,b=0;
-    std :: string color_name = "";
+    String color_name = "";
 };
 
 

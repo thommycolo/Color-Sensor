@@ -21,16 +21,12 @@ class SensorHandler{
         Adafruit_TCS34725 tcs;
 
 	public:	
-        SensorHandler() : tcs(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X){                
-                while (!tcs.begin()) {
-                        display.print("Sensor not found");
-                        delay(100);
-                }
-        } 
+        RGB_coef rgb_coef;
+        SensorHandler() : tcs(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X){}; 
         
-
-        const RGB_coef Calibration();
-        const RGB GetColor(RGB_coef &rgb_coef);
+        void begin();
+        const bool Calibration();
+        const RGB GetColor();
 
 };
 

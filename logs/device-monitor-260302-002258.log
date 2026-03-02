@@ -1,0 +1,25 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+---- LittleFS FILESYSTEM TREE ----
+    [DIR]  esp32_webapp
+---- LittleFS FILESYSTEM TREE ----
+  [FILE] index.html	| SIZE: 3693 bytes
+---- END OF FILE LIST ----
+    [FILE] index.html	| SIZE: 3693 bytes
+---- END OF FILE LIST ----
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   
+psw_wifi   

@@ -1,0 +1,88 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   wifi.json (75 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   
+psw_wifi   
+WebSocket client #1 connesso da 192.168.4.2
+[ 42670][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/index.html.gz does not exist, no permits for creation
+[ 42751][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/script.js.gz does not exist, no permits for creation
+[ 42882][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico.gz does not exist, no permits for creation
+[ 42893][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico does not exist, no permits for creation
+[ 42904][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm.gz does not exist, no permits for creation
+[ 42915][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm does not exist, no permits for creation
+WebSocket client #2 connesso da 192.168.4.2
+--- JSON Update (Object Input) ---
+--- JSON Merge & Save Completato ---
+Credenziali salvate e conferma inviata al client.
+data loaded succesfully!
+WIFI CONNECTION
+**Casa Colombo****C0l0mb0Family**666666666666666666666666666666666666666--- JSON Update (Object Input) ---
+--- JSON Merge & Save Completato ---
+Credenziali salvate e conferma inviata al client.
+data loaded succesfully!
+WIFI CONNECTION
+**Casa Colombo****C0l0mb0Family!**60000[ 94579][E][vfs_api.cpp:105] open(): /littlefs/external_webapp/index.html.gz does not exist, no permits for creation
+[ 94768][E][vfs_api.cpp:105] open(): /littlefs/external_webapp/style.css.gz does not exist, no permits for creation
+[ 94848][E][vfs_api.cpp:105] open(): /littlefs/external_webapp/script.js.gz does not exist, no permits for creation
+[ 94960][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico.gz does not exist, no permits for creation
+[ 94972][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico does not exist, no permits for creation
+[ 94983][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm.gz does not exist, no permits for creation
+[ 94995][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm does not exist, no permits for creation
+WebSocket client #3 connesso da 192.168.1.24
+getting colorR: 20 G: 15 B: 9 C: 44
+R: 39 G: 29 B: 17 C: 85
+R: 57 G: 42 B: 25 C: 124
+R: 74 G: 55 B: 33 C: 162
+R: 92 G: 68 B: 41 C: 200
+R: 109 G: 81 B: 49 C: 237
+R: 127 G: 94 B: 57 C: 275
+R: 144 G: 106 B: 65 C: 312
+R: 161 G: 119 B: 73 C: 349
+R: 178 G: 131 B: 81 C: 386
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 192
+
+
+Sending to WS: {"r":192,"g":192,"b":192,"name":"Grigio Chiaro"}
+[116274][E][vfs_api.cpp:105] open(): /littlefs/api/Esp32_GetColor.gz does not exist, no permits for creation
+[116286][E][vfs_api.cpp:105] open(): /littlefs/api/Esp32_GetColor does not exist, no permits for creation
+[116298][E][vfs_api.cpp:105] open(): /littlefs/api/Esp32_GetColor/index.htm.gz does not exist, no permits for creation
+[116312][E][vfs_api.cpp:105] open(): /littlefs/api/Esp32_GetColor/index.htm does not exist, no permits for creation
+[176181][E][vfs_api.cpp:105] open(): /littlefs/api/Esp32_GetColor.gz does not exist, no permits for creation
+[176193][E][vfs_api.cpp:105] open(): /littlefs/api/Esp32_GetColor does not exist, no permits for creation
+[176204][E][vfs_api.cpp:105] open(): /littlefs/api/Esp32_GetColor/index.htm.gz does not exist, no permits for creation
+[176217][E][vfs_api.cpp:105] open(): /littlefs/api/Esp32_GetColor/index.htm does not exist, no permits for creation
+[236086][E][vfs_api.cpp:105] open(): /littlefs/api/Esp32_GetColor.gz does not exist, no permits for creation
+[236099][E][vfs_api.cpp:105] open(): /littlefs/api/Esp32_GetColor does not exist, no permits for creation
+[236111][E][vfs_api.cpp:105] open(): /littlefs/api/Esp32_GetColor/index.htm.gz does not exist, no permits for creation
+[236124][E][vfs_api.cpp:105] open(): /littlefs/api/Esp32_GetColor/index.htm does not exist, no permits for creation
+[296240][E][vfs_api.cpp:105] open(): /littlefs/api/Esp32_GetColor.gz does not exist, no permits for creation
+[296252][E][vfs_api.cpp:105] open(): /littlefs/api/Esp32_GetColor does not exist, no permits for creation
+[296264][E][vfs_api.cpp:105] open(): /littlefs/api/Esp32_GetColor/index.htm.gz does not exist, no permits for creation
+[296276][E][vfs_api.cpp:105] open(): /littlefs/api/Esp32_GetColor/index.htm does not exist, no permits for creation

@@ -1,6 +1,6 @@
 // ColorTable population and implementation
 
-#include "ColorTable.h"
+#include "TableHandler.h"
 #include <cmath>
 #include "Types.h"
 

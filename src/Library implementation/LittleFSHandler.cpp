@@ -10,74 +10,82 @@
 
 using namespace std;
 
+void LittleFSHandler :: begin(){
+    if(!LittleFS.begin(true)){
+     Serial.println("Ancora errore critico su LittleFS!");
+    } else {
+        Serial.println("LittleFS montato correttamente!");
+    } 
+    LittleFSHandler :: printFS("/", 2,0);
+}
 
-LittleFSHandler ::fs_status LittleFSHandler :: printFS(const char* dirname, int depth){
-    Serial.println("---- LittleFS FILESYSTEM TREE ----");
+LittleFSHandler :: fs_status LittleFSHandler::printFS(const char * dirname, uint8_t levels, int indent) {
+    File root = LittleFS.open(dirname);
+    if (!root || !root.isDirectory()) {
+        return FS_NOT_FOUND;
+    }
 
-    if ( !LittleFS.open(dirname,"r")) return FS_NOT_FOUND;
-    if (!LittleFS.open(dirname,"r").isDirectory()) return CANNOT_OPEN_DIRECTORY;
- 
-    File file = LittleFS.open(dirname,"r").openNextFile();
+    File file = root.openNextFile();
     while (file) {
-
-        for (int i = 0; i < depth; i++) {
-            Serial.print("  "); 
-        }
+        // Crea lo spazio per l'indentazione
+        String space = "";
+        for (int i = 0; i < indent; i++) space += "    ";
 
         if (file.isDirectory()) {
-            Serial.print("[DIR]  "); 
-            Serial.println(file.name());
-
-
-            if (depth) {
+            // Se è una cartella, aggiungi la freccia e lo slash
+            Serial.printf("%s-> %s/\n", space.c_str(), file.name());
+            
+            // Se non abbiamo raggiunto il limite di livelli, entra nella cartella
+            if (levels > 0) {
+                // Costruisce il percorso completo per la ricorsione
                 String path = String(dirname);
-                if (path != "/") 
-                    path += "/";
-                path += String(file.name());
-
-                if (String(file.name()).startsWith("/")) 
-                    path = String(file.name());
+                if (!path.endsWith("/")) path += "/";
+                path += file.name();
                 
-                printFS(path.c_str(), depth - 1);
-            }           
-
+                printFS(path.c_str(), levels - 1, indent + 1);
+            }
         } else {
-            Serial.print("[FILE] ");
-            Serial.print(file.name());
-            Serial.print("\t| SIZE: ");
-            Serial.print(file.size());
-            Serial.println(" bytes");
+            // Se è un file, stampa solo il nome (indentato)
+            Serial.printf("%s   %s (%u bytes)\n", space.c_str(), file.name(), file.size());
         }
-
-        file = file.openNextFile();
+        file = root.openNextFile();
     }
-    Serial.println("---- END OF FILE LIST ----");
+
     return OPERATION_DONE;
 }
 
-LittleFSHandler :: fs_status LittleFSHandler :: saveFS_json(vector<String> data, const char* path){
+LittleFSHandler::fs_status LittleFSHandler::saveFS_json(JsonDocument& nuoviDati, const char* path) {
+    Serial.println("--- JSON Update (Object Input) ---");
+    JsonDocument docEsistente;
 
-    Serial.println("--- JSON Saving ---");
-
-    // Open, write and rewrite JSON
-    File file = LittleFS.open(path, "w");
-    if (!file) return FAILED_WRITING;
-
-    JsonDocument json;
-    for(const String& d : data){
-
-        int spacePos = d.indexOf(' ');
-
-        if(spacePos == -1) return WRONG_INPUT_FORMAT;
-        json[d.substring(0 , spacePos)] = d.substring(spacePos +1);
-        
+    // 1. LEGGI il file attuale (se esiste)
+    if (LittleFS.exists(path)) {
+        File readFile = LittleFS.open(path, "r");
+        if (readFile) {
+            DeserializationError error = deserializeJson(docEsistente, readFile);
+            readFile.close();
+            if (error) Serial.println("File esistente corrotto, creo nuovo documento.");
+        }
     }
-    
 
-    //Saving the json
-    serializeJson(json, file);
-    file.close();
-    Serial.println("--- JSON Saved ---");  
+    // 2. UNISCI (Merge) i dati
+    // Questo ciclo scorre le chiavi del JSON in input e le sovrascrive nel documento principale
+    JsonObject objNuovi = nuoviDati.as<JsonObject>();
+    for (JsonPair p : objNuovi) {
+        docEsistente[p.key()] = p.value();
+    }
+
+    // 3. SCRIVI il risultato finale
+    File writeFile = LittleFS.open(path, "w");
+    if (!writeFile) return FAILED_WRITING;
+
+    if (serializeJson(docEsistente, writeFile) == 0) {
+        writeFile.close();
+        return FAILED_WRITING;
+    }
+
+    writeFile.close();
+    Serial.println("--- JSON Merge & Save Completato ---");
     return OPERATION_DONE;
 }
 

@@ -1,0 +1,48 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   wifi.json (101 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Casa Colombo
+psw_wifi   C0l0mb0Family!
+WIFI CONNECTION
+**Casa Colombo****C0l0mb0Family!**6000000WebSocket client #1 connesso da 192.168.4.2
+getting colorR: 18 G: 13 B: 8 C: 39
+R: 36 G: 26 B: 16 C: 78
+R: 54 G: 39 B: 25 C: 117
+R: 72 G: 52 B: 34 C: 157
+R: 90 G: 65 B: 43 C: 196
+R: 108 G: 78 B: 52 C: 235
+R: 126 G: 91 B: 61 C: 274
+R: 144 G: 104 B: 70 C: 314
+R: 161 G: 117 B: 79 C: 353
+R: 178 G: 130 B: 88 C: 392
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 192
+
+
+Sending to WS: {"r":192,"g":192,"b":192,"name":"Grigio Chiaro"}
+WebSocket client #2 connesso da 192.168.1.24

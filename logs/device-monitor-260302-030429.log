@@ -1,0 +1,273 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+-> esp32_webapp/
+       index.html (3693 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1612 bytes)
+       script.js (1055 bytes)
+       style.css (3872 bytes)
+   json_wifi.json (0 bytes)
+   wifi.json (101 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Casa Colombo
+psw_wifi   C0l0mb0Family!
+WIFI CONNECTION
+**Casa Colombo****C0l0mb0Family!**6660000000getting colorR: 303 G: 307 B: 220 C: 880
+R: 598 G: 605 B: 433 C: 1735
+R: 891 G: 901 B: 644 C: 2582
+R: 1183 G: 1196 B: 855 C: 3428
+R: 1480 G: 1496 B: 1070 C: 4289
+R: 1770 G: 1789 B: 1280 C: 5130
+R: 2064 G: 2086 B: 1493 C: 5983
+R: 2358 G: 2384 B: 1706 C: 6836
+R: 2656 G: 2685 B: 1922 C: 7699
+R: 2951 G: 2983 B: 2135 C: 8553
+
+
+
+COLORI CALIBRATI:
+R: 1.00 G: 1.00 B: 1.00
+
+
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+348355254
+345351251
+334340243
+335341244
+335341244
+338344246
+340346247
+332338242
+342348249
+339345247
+335341244
+332338242
+339345247
+344350251
+337343246
+341347249
+339345247
+343349250
+336342245
+335341244
+344350251
+340346248
+341348249
+336342245
+343349250
+339345248
+338345247
+347354254
+346353253
+345352252
+344351251
+350357256
+355362259
+350357256
+354361259
+355363260
+357365261
+353361258
+354361259
+365373267
+361369264
+359367263
+351359257
+361369264
+362370265
+356365261
+363371266
+364372266
+364373267
+357365261
+Max value:353
+
+color adjustation: 1.021.001.40
+
+
+Calibration Done
+getting colorR: 340 G: 346 B: 248 C: 992
+R: 674 G: 686 B: 492 C: 1966
+R: 1002 G: 1019 B: 731 C: 2921
+R: 1324 G: 1346 B: 965 C: 3857
+R: 1651 G: 1678 B: 1203 C: 4808
+R: 1978 G: 2010 B: 1441 C: 5760
+R: 2307 G: 2344 B: 1681 C: 6718
+R: 2638 G: 2681 B: 1923 C: 7683
+R: 2974 G: 3023 B: 2168 C: 8662
+R: 3304 G: 3358 B: 2408 C: 9622
+
+
+
+COLORI CALIBRATI:
+R: 1.02 G: 1.00 B: 1.40
+
+
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+CORRUPT HEAP: Bad head at 0x3ffd4918. Expected 0xabba1234 got 0x3ffc8f74
+
+assert failed: multi_heap_free multi_heap_poisoning.c:259 (head != NULL)
+
+
+Backtrace: 0x40083bd5:0x3ffb1f60 0x4008dc91:0x3ffb1f80 0x40093479:0x3ffb1fa0 0x40093075:0x3ffb20d0 0x40084145:0x3ffb20f0 0x400934a9:0x3ffb2110 0x400e4f4f:0x3ffb2130 0x400dc1d3:0x3ffb2150 0x400e3ab6:0x3ffb21f0 0x400f8bd9:0x3ffb2290
+  #0  0x40083bd5 in panic_abort at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/esp_system/panic.c:408
+  #1  0x4008dc91 in esp_system_abort at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/esp_system/esp_system.c:137
+  #2  0x40093479 in __assert_func at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/newlib/assert.c:85
+  #3  0x40093075 in multi_heap_free at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/heap/multi_heap_poisoning.c:259 (discriminator 1)
+  #4  0x40084145 in heap_caps_free at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/heap/heap_caps.c:382
+  #5  0x400934a9 in free at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/newlib/heap.c:39
+  #6  0x400e4f4f in Adafruit_SSD1306::~Adafruit_SSD1306() at .pio/libdeps/esp32doit-devkit-v1/Adafruit SSD1306/Adafruit_SSD1306.cpp:344
+  #7  0x400dc1d3 in DisplayHandler::~DisplayHandler() at include/DisplayHandler.h:14
+      (inlined by) SensorHandler::Calibration() at src/Library implementation/SensorHandler.cpp:61
+  #8  0x400e3ab6 in loop() at src/main.cpp:61
+  #9  0x400f8bd9 in loopTask(void*) at C:/Users/thomm/.platformio/packages/framework-arduinoespressif32/cores/esp32/main.cpp:50
+
+
+
+
+
+ELF file SHA256: 3f6626bc145ba1a4
+
+Rebooting...
+ets Jul 29 2019 12:21:46
+
+rst:0xc (SW_CPU_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+-> esp32_webapp/
+       index.html (3693 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1612 bytes)
+       script.js (1055 bytes)
+       style.css (3872 bytes)
+   json_wifi.json (0 bytes)
+   wifi.json (101 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Casa Colombo
+psw_wifi   C0l0mb0Family!
+WIFI CONNECTION
+**Casa Colombo****C0l0mb0Family!**6000Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+318325233
+313320229
+312319229
+301307220
+312319228
+314321230
+310317227
+318325233
+318326233
+311318228
+318326233
+318326233
+325333239
+319327234
+317325233
+321329236
+316323231
+318325233
+317324232
+322330237
+327335240
+312319229
+318326233
+320327234
+323331237
+323330237
+319326234
+325332238
+315322231
+315322231
+325332238
+319326234
+324331237
+315321230
+320327235
+326333239
+316324232
+323330237
+325332238
+325333238
+324332238
+321329236
+333341245
+330338242
+326334239
+330338243
+325333239
+332340244
+326335240
+326334240
+Max value:327
+
+color adjustation: 1.021.001.40
+
+
+Calibration Done
+getting colorR: 309 G: 316 B: 226 C: 903
+R: 616 G: 629 B: 451 C: 1800
+R: 913 G: 932 B: 668 C: 2666
+R: 1222 G: 1248 B: 894 C: 3569
+R: 1531 G: 1564 B: 1121 C: 4474
+R: 1845 G: 1885 B: 1351 C: 5392
+R: 2153 G: 2200 B: 1576 C: 6292
+R: 2466 G: 2520 B: 1805 C: 7207
+R: 2774 G: 2835 B: 2030 C: 8107
+R: 3082 G: 3150 B: 2256 C: 9008
+
+
+
+COLORI CALIBRATI:
+R: 1.02 G: 1.00 B: 1.40
+
+

@@ -18,12 +18,15 @@
  */
 class WebManager {
 private:
+    
     AsyncWebServer server;
     AsyncWebSocket ws;
     String ac_webapp_path;
     String wifi_webapp_path;
 
 public:
+    bool new_credentials = false;
+    
     /**
      * @brief Construct a new Web Manager object.
      * Initializes the server on port 80 and the WebSocket on the "/ws" endpoint.

@@ -1,6 +1,6 @@
 //ColorTable.h
-#ifndef COLORTABLE_H
-#define COLORTABLE_H
+#ifndef TABLEHANDLER_H
+#define TABLEHANDLER_H
 
 #include <stddef.h>
 #include <arduino.h>
