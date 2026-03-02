@@ -141,3 +141,154 @@ load:0x3fff0030,len:1184
 load:0x40078000,len:13232
 load:0x40080400,len:3028
 entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   wifi.json (107 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Thomas's Galaxy s25 edge
+psw_wifi   Password
+WIFI CONNECTION
+**Thomas's Galaxy s25 edge****Password**6660WebSocket client #1 connesso da 10.32.61.27
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+939568
+939568
+939569
+939569
+939569
+939569
+939569
+939569
+939569
+939669
+939669
+939669
+939569
+939569
+939568
+939568
+939669
+939669
+939669
+949670
+939670
+939669
+939669
+939669
+939669
+939669
+939569
+939669
+949669
+949670
+949670
+949871
+959871
+949871
+949871
+949871
+959871
+959871
+949870
+959871
+959871
+959871
+959871
+959871
+959871
+949871
+939770
+949871
+949770
+949870
+Max value:96
+
+color adjustation: 1.031.001.39
+
+
+Calibration Done
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+CORRUPT HEAP: Bad head at 0x3ffd4af0. Expected 0xabba1234 got 0x3ffc8f74
+
+assert failed: multi_heap_free multi_heap_poisoning.c:259 (head != NULL)
+
+
+Backtrace: 0x40083bd5:0x3ffb1f60 0x4008dc91:0x3ffb1f80 0x40093479:0x3ffb1fa0 0x40093075:0x3ffb20d0 0x40084145:0x3ffb20f0 0x400934a9:0x3ffb2110 0x400e6363:0x3ffb2130 0x400dc0e7:0x3ffb2150 0x400e4eb6:0x3ffb21f0 0x400fa109:0x3ffb2290
+
+
+
+
+ELF file SHA256: 83e8139c3beb93a5
+
+Rebooting...
+ets Jul 29 2019 12:21:46
+
+rst:0xc (SW_CPU_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   wifi.json (107 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Thomas's Galaxy s25 edge
+psw_wifi   Password
+WIFI CONNECTION
+**Thomas's Galaxy s25 edge****Password**6666666666666666666666getting colorR: 95 G: 98 B: 70 C: 271
+R: 190 G: 196 B: 140 C: 542
+R: 285 G: 294 B: 210 C: 813
+R: 380 G: 391 B: 280 C: 1084
+R: 475 G: 488 B: 350 C: 1355
+R: 570 G: 585 B: 420 C: 1625
+R: 665 G: 682 B: 490 C: 1896
+R: 760 G: 779 B: 560 C: 2166
+R: 855 G: 876 B: 630 C: 2436
+R: 950 G: 973 B: 700 C: 2707
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 192
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":192,"b":192,"name":"Grigio Chiaro"}
+WebSocket client #1 connesso da 10.32.61.27
