@@ -7,6 +7,8 @@
 #include "Types.h"
 #include "TableHandler.h"
 
+#define COLOR_CALIBRATION_CYCLES 50
+#define GET_COLOR_CYCLES 10
 
 using namespace std;
 
@@ -62,7 +64,6 @@ const bool SensorHandler::Calibration()
     starting_calibration_print(display);
 
     RGB_coef coef;
-    int L =50; //number of cycles for the sampling
     
     
     // temporary variable for all the 3 color
@@ -71,7 +72,7 @@ const bool SensorHandler::Calibration()
     uint32_t tot_b=0;
     uint16_t tmp_r,tmp_g,tmp_b,tmp_c;
 
-    for(int i=0; i<L ; i++){
+    for(int i=0; i<COLOR_CALIBRATION_CYCLES ; i++){
         tcs.enable();
         delay(10);
         tcs.getRawData(&tmp_r,&tmp_g,&tmp_b,&tmp_c);
@@ -82,9 +83,9 @@ const bool SensorHandler::Calibration()
         tot_b += tmp_b;   
         Serial.print(tmp_r);Serial.print(tmp_g);Serial.println(tmp_b);
     }   
-    tot_r /= L;
-    tot_g /= L;
-    tot_b /= L;    
+    tot_r /= COLOR_CALIBRATION_CYCLES;
+    tot_g /= COLOR_CALIBRATION_CYCLES;
+    tot_b /= COLOR_CALIBRATION_CYCLES;    
 
     //evaluating the real white
     Serial.print("Max value:");Serial.print(max(tot_r,max(tot_g,tot_b)));
@@ -117,7 +118,7 @@ const RGB SensorHandler::GetColor(){
     display.print("getting color");
     Serial.print("getting color");
     delay(100);
-    for(int i=0; i<10 ; i++){
+    for(int i=0; i<GET_COLOR_CYCLES ; i++){
     tcs.enable();
         delay(10);
         uint16_t r_tmp,g_tmp,b_tmp,c_tmp;
@@ -131,9 +132,10 @@ const RGB SensorHandler::GetColor(){
         Serial.print("R: ");Serial.print(r);Serial.print(" G: ");Serial.print(g);Serial.print(" B: ");Serial.print(b);Serial.print(" C: ");Serial.println(c);
     }
     Serial.print("\n\n\n"); 
-    rgb.r = (int)((((float)r / 10.0) * rgb_coef.r / (float)rgb_coef.realwhite * 255.0) + 0.5);
-    rgb.g = (int)((((float)g / 10.0) * rgb_coef.g / (float)rgb_coef.realwhite * 255.0) + 0.5);
-    rgb.b = (int)((((float)b / 10.0) * rgb_coef.b / (float)rgb_coef.realwhite * 255.0) + 0.5);
+    //adding 0.5 in order to permform a round up
+    rgb.r = (int)((((float)r / (float)GET_COLOR_CYCLES) * rgb_coef.r / (float)rgb_coef.realwhite * 255.0) + 0.5); 
+    rgb.g = (int)((((float)g / (float)GET_COLOR_CYCLES) * rgb_coef.g / (float)rgb_coef.realwhite * 255.0) + 0.5);
+    rgb.b = (int)((((float)b / (float)GET_COLOR_CYCLES) * rgb_coef.b / (float)rgb_coef.realwhite * 255.0) + 0.5);
     if(rgb.r>255)
         rgb.r=255;
     if(rgb.g>255)
