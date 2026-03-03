@@ -3,10 +3,9 @@
 
 #include <ESPAsyncWebServer.h>
 #include <ArduinoJson.h>
-#include "Types.h"
-#include "LittleFSHandler.h"
-#include <WiFi.h>
 
+#include "Types.h"
+#include "WifiHandler.h"
 
 #pragma once
 

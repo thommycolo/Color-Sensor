@@ -1,8 +1,5 @@
 //WifiHandler.h implementation
-
 #include "WifiHandler.h"
-#include "DisplayHandler.h"
-#include <wifi.h>
 
 
 void WifiHandler :: begin(){

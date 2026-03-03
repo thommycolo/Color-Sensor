@@ -2,8 +2,6 @@
 #ifndef TABLEHANDLER_H
 #define TABLEHANDLER_H
 
-#include <stddef.h>
-#include <arduino.h>
 #include "Types.h"
 struct table_row{
 	int r,g,b;

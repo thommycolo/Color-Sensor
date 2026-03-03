@@ -1,8 +1,7 @@
 // ColorTable population and implementation
-
 #include "TableHandler.h"
+
 #include <cmath>
-#include "Types.h"
 
 
 using namespace std;

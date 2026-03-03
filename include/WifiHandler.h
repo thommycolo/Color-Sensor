@@ -1,10 +1,11 @@
 #ifndef WIFIHANDLER_H
 #define WIFIHANDLER_H
 
+#include <ArduinoJson.h>
 #include <WiFi.h>
+
 #include "DisplayHandler.h"
 #include "LittleFSHandler.h"
-#include <ArduinoJson.h>
 #pragma once
 
 class WifiHandler{

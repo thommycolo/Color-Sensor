@@ -17,36 +17,35 @@
 // 3.3V 
 // --------------------------------------------------
 //INITIALIZZATION
-DisplayHandler display; //     Display
-LittleFSHandler fs_handler; // LittleFS_Handler
-WifiHandler wifi_handler; //   WifiHandler
-WebManager web_manager; //     WebManager
-SensorHandler sensor;
+DisplayHandler display;       //Display
+LittleFSHandler fs_handler;   //LittleFS_Handler
+WifiHandler wifi_handler;     //WifiHandler
+WebManager web_manager;       //WebManager
+SensorHandler sensor;         //Sensor
 
 
 
 // SETUP
 void setup() {
 
-  //main configuration
   Serial.begin(115200);
 
   pinMode(SCAN_TRIGGER, INPUT_PULLUP);
   pinMode(CALI_TRIGGER, INPUT_PULLUP);
   
+  //Everything that need a .begin()
   Wire.begin(SDA_PIN, SCL_PIN);  // I2C
-  
   display.begin();
+  fs_handler.begin(); 
+  wifi_handler.begin(); 
+  web_manager.begin();
+  sensor.begin();
+
 
   display.print("Welcome!");
   delay(1000);
-  fs_handler.begin(); 
 
-  wifi_handler.begin(); 
-
-  web_manager.begin();
-
-  sensor.begin();
+  
 }
 
 // LOOP

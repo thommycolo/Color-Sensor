@@ -1,13 +1,11 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-#include<Arduino.h>
-
 #pragma once
 
 struct RGB_coef
 {
-    int realwhite;
+    int realwhite = 0;
     float r=1.0,g=1.0,b=1.0;
 };
 struct RGB

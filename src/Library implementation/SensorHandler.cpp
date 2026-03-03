@@ -1,14 +1,10 @@
-//ColorSensor implementation 
-
+//SensorHandler implementation 
 #include "SensorHandler.h"
-#include "DisplayHandler.h"
-#include <Arduino.h>
-#include <Adafruit_TCS34725.h>
-#include "Types.h"
-#include "TableHandler.h"
+
 
 #define COLOR_CALIBRATION_CYCLES 50
 #define GET_COLOR_CYCLES 10
+#define CONFIG_JSON_PATH "/sensor_config.json"
 
 using namespace std;
 
@@ -53,19 +49,38 @@ void SensorHandler :: begin(){
             display.print("Sensor not found");
             delay(100);
     }
+
+    LittleFSHandler fs;
+    vector<String> data = fs.loadFS_json({"r_coef","g_coef","b_coef","real_white_coef"},CONFIG_JSON_PATH);
+
+    if(data.size()<4){
+        SensorHandler:: calib_saving();
+        display.print("Nessuna Configurazione disponibile");
+    }
+    else
+    {
+        calibration_coef.r = data[0].toFloat();
+        calibration_coef.g = data[1].toFloat();
+        calibration_coef.b = data[2].toFloat();
+        calibration_coef.realwhite = data[3].toInt();
+    }
 }
 
-/***
- * This function allow the sensor calibration.
- * it does a loop of L cycles in order to have a precise white reading
- */
+void SensorHandler :: calib_saving(){
+    LittleFSHandler fs;
+    JsonDocument json;
+    json["r_coef"] = calibration_coef.r;
+    json["g_coef"] = calibration_coef.g;
+    json["b_coef"] = calibration_coef.b;
+    json["real_white_coef"] =calibration_coef.realwhite;
+    fs.new_file(json,CONFIG_JSON_PATH);
+}
+
+
 const bool SensorHandler::Calibration()
 {
     starting_calibration_print(display);
 
-    RGB_coef coef;
-    
-    
     // temporary variable for all the 3 color
     uint32_t tot_r=0;
     uint32_t tot_g=0;
@@ -89,22 +104,21 @@ const bool SensorHandler::Calibration()
 
     //evaluating the real white
     Serial.print("Max value:");Serial.print(max(tot_r,max(tot_g,tot_b)));
-    coef.realwhite = max(tot_r,max(tot_g,tot_b)); //real_white saving
+    calibration_coef.realwhite = max(tot_r,max(tot_g,tot_b)); //real_white saving
 
 
     
-    coef.r = (float)coef.realwhite / (float)tot_r;
-    coef.g = (float)coef.realwhite / (float)tot_g;
-    coef.b = (float)coef.realwhite / (float)tot_b;
+    calibration_coef.r = (float)calibration_coef.realwhite / (float)tot_r;
+    calibration_coef.g = (float)calibration_coef.realwhite / (float)tot_g;
+    calibration_coef.b = (float)calibration_coef.realwhite / (float)tot_b;
 
     Serial.print("\n\n");
-    Serial.print("color adjustation: ");Serial.print(coef.r);Serial.print(coef.g);Serial.println(coef.b);
+    Serial.print("color adjustation: ");Serial.print(calibration_coef.r);Serial.print(calibration_coef.g);Serial.println(calibration_coef.b);
     Serial.print("\n\n"); 
     
     Serial.println("Calibration Done");
     display.print("Calibration Done");
     
-    SensorHandler ::rgb_coef = coef;
     return true;
 }
 
@@ -113,7 +127,6 @@ const bool SensorHandler::Calibration()
 
 const RGB SensorHandler::GetColor(){
     uint32_t r=0, g=0, b=0, c=0;
-    RGB rgb;
     
     display.print("getting color");
     Serial.print("getting color");
@@ -133,9 +146,9 @@ const RGB SensorHandler::GetColor(){
     }
     Serial.print("\n\n\n"); 
     //adding 0.5 in order to permform a round up
-    rgb.r = (int)((((float)r / (float)GET_COLOR_CYCLES) * rgb_coef.r / (float)rgb_coef.realwhite * 255.0) + 0.5); 
-    rgb.g = (int)((((float)g / (float)GET_COLOR_CYCLES) * rgb_coef.g / (float)rgb_coef.realwhite * 255.0) + 0.5);
-    rgb.b = (int)((((float)b / (float)GET_COLOR_CYCLES) * rgb_coef.b / (float)rgb_coef.realwhite * 255.0) + 0.5);
+    rgb.r = (int)((((float)r / (float)GET_COLOR_CYCLES) * calibration_coef.r / (float)calibration_coef.realwhite * 255.0) + 0.5); 
+    rgb.g = (int)((((float)g / (float)GET_COLOR_CYCLES) * calibration_coef.g / (float)calibration_coef.realwhite * 255.0) + 0.5);
+    rgb.b = (int)((((float)b / (float)GET_COLOR_CYCLES) * calibration_coef.b / (float)calibration_coef.realwhite * 255.0) + 0.5);
     if(rgb.r>255)
         rgb.r=255;
     if(rgb.g>255)
@@ -152,5 +165,4 @@ const RGB SensorHandler::GetColor(){
     display.print("COLORE: " + rgb.color_name , "R: " + (String)rgb.r + " G: " + (String)rgb.g + " B: " + (String)rgb.b);
     Serial.print("\n\n\n");
     return rgb;
-
 }

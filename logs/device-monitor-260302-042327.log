@@ -10,3 +10,285 @@ load:0x40080400,len:3028
   #0  0x40080400 in _init at ??:?
 
 entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   wifi.json (101 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Casa Colombo
+psw_wifi   C0l0mb0Family!
+WIFI CONNECTION
+**Casa Colombo****C0l0mb0Family!**60getting colorR: 79 G: 74 B: 50 C: 212
+R: 159 G: 149 B: 101 C: 428
+R: 240 G: 225 B: 153 C: 646
+R: 327 G: 306 B: 209 C: 881
+R: 417 G: 390 B: 267 C: 1125
+R: 507 G: 475 B: 326 C: 1371
+R: 599 G: 561 B: 385 C: 1620
+R: 690 G: 647 B: 444 C: 1868
+R: 783 G: 734 B: 504 C: 2121
+R: 876 G: 822 B: 565 C: 2376
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 192
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":192,"b":192,"name":"Grigio Chiaro"}
+Starting calibration process!
+point your sensor to a white surface
+WebSocket client #1 connesso da 192.168.4.2
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+11410976
+11210875
+11410976
+11410976
+11511076
+11410976
+11511076
+11410976
+11310875
+11410976
+11410976
+11511077
+11310875
+11410976
+11310875
+11511077
+11511076
+11811379
+11711278
+11711278
+11511076
+11711278
+11611178
+11711278
+11611278
+11811379
+11711278
+11711378
+11711278
+11811379
+11811379
+11611278
+11611177
+11511177
+11611278
+11410976
+11511077
+11511076
+11511077
+11410976
+11511077
+11511077
+11511177
+11410976
+11511077
+11511177
+11711278
+11511077
+11511077
+11511077
+Max value:115
+
+color adjustation: 1.001.051.51
+
+
+Calibration Done
+WebSocket client #2 connesso da 192.168.1.24
+[ 41951][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/index.html.gz does not exist, no permits for creation
+[ 44551][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico.gz does not exist, no permits for creation
+[ 44563][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico does not exist, no permits for creation
+[ 44574][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm.gz does not exist, no permits for creation
+[ 44586][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm does not exist, no permits for creation
+WebSocket client #3 connesso da 192.168.4.2
+ets Jul 29 2019 12:21:46
+
+rst:0x7 (TG0WDT_SYS_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   wifi.json (101 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Casa Colombo
+psw_wifi   C0l0mb0Family!
+WIFI CONNECTION
+**Casa Colombo****C0l0mb0Family!**6000WebSocket client #1 connesso da 192.168.4.2
+getting colorR: 88 G: 83 B: 57 C: 240
+R: 173 G: 164 B: 113 C: 473
+R: 256 G: 242 B: 167 C: 699
+R: 341 G: 322 B: 222 C: 930
+R: 425 G: 402 B: 277 C: 1160
+R: 508 G: 480 B: 331 C: 1385
+R: 588 G: 556 B: 383 C: 1604
+R: 672 G: 636 B: 438 C: 1834
+R: 757 G: 716 B: 493 C: 2065
+R: 841 G: 795 B: 548 C: 2294
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 192
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":192,"b":192,"name":"Grigio Chiaro"}
+WebSocket client #2 connesso da 192.168.1.24
+[ 39378][E][vfs_api.cpp:105] open(): /littlefs/external_webapp/index.html.gz does not exist, no permits for creation
+WebSocket client #3 connesso da 192.168.1.24
+[ 39669][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico.gz does not exist, no permits for creation
+[ 39680][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico does not exist, no permits for creation
+[ 39691][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm.gz does not exist, no permits for creation
+[ 39703][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm does not exist, no permits for creation
+getting colorR: 90 G: 85 B: 59 C: 246
+R: 183 G: 173 B: 119 C: 499
+R: 275 G: 260 B: 179 C: 749
+R: 367 G: 347 B: 239 C: 1000
+R: 459 G: 434 B: 299 C: 1251
+R: 551 G: 521 B: 359 C: 1501
+R: 644 G: 609 B: 419 C: 1754
+R: 739 G: 699 B: 481 C: 2013
+R: 833 G: 788 B: 542 C: 2270
+R: 927 G: 877 B: 603 C: 2527
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 192
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":192,"b":192,"name":"Grigio Chiaro"}
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+938961
+948962
+959162
+969163
+948962
+969163
+959062
+969263
+949062
+969163
+959062
+959163
+959062
+969163
+969163
+959163
+959063
+949062
+969263
+948962
+959163
+959062
+959163
+959062
+979264
+959163
+979264
+948962
+969163
+949062
+959163
+959163
+969163
+969163
+959163
+969163
+959062
+989364
+959062
+969163
+969163
+979264
+959062
+959063
+959163
+979264
+959163
+959163
+969163
+969163
+Max value:95
+
+color adjustation: 1.001.061.53
+
+
+Calibration Done
+getting colorR: 90 G: 74 B: 31 C: 204
+R: 179 G: 148 B: 61 C: 407
+R: 268 G: 222 B: 91 C: 610
+R: 360 G: 297 B: 122 C: 819
+R: 451 G: 372 B: 153 C: 1027
+R: 542 G: 447 B: 184 C: 1235
+R: 631 G: 520 B: 214 C: 1437
+R: 721 G: 594 B: 245 C: 1642
+R: 811 G: 668 B: 276 C: 1847
+R: 901 G: 742 B: 307 C: 2050
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 64
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":192,"b":64,"name":"Giallo Chiaro"}
+getting colorR: 52 G: 22 B: 14 C: 87
+R: 103 G: 44 B: 28 C: 174
+R: 154 G: 66 B: 42 C: 260
+R: 206 G: 88 B: 56 C: 347
+R: 257 G: 110 B: 70 C: 433
+R: 309 G: 132 B: 84 C: 520
+R: 360 G: 154 B: 98 C: 606
+R: 411 G: 176 B: 112 C: 692
+R: 462 G: 198 B: 126 C: 778
+R: 513 G: 220 B: 140 C: 864
+
+
+
+COLORI CALIBRATI:
+R: 128 G: 0 B: 0
+
+
+Sending to WS: COLOR_JSON:{"r":128,"g":0,"b":0,"name":"Rosso Scuro"}

@@ -1,11 +1,8 @@
+// WebManager.h implementation
 #include "WebManager.h"
 
 
-#include <ArduinoJson.h>
-#include <ESPAsyncWebServer.h>
-#include <Arduino.h>
-#include "LittleFSHandler.h"
-#include "WifiHandler.h"
+
 
 
 WebManager::WebType WebManager::begin() {
