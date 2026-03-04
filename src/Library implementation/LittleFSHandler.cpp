@@ -2,13 +2,9 @@
 
 #include "LittleFSHandler.h"
 
-#include <Arduino.h>
 #include <LittleFS.h>
-#include <string.h>
-#include <vector>
-#include <ArduinoJson.h>
 
-using namespace std;
+
 
 void LittleFSHandler :: begin(){
     if(!LittleFS.begin(true)){
@@ -89,7 +85,7 @@ LittleFSHandler::fs_status LittleFSHandler::saveFS_json(JsonDocument& nuoviDati,
     return OPERATION_DONE;
 }
 
-vector<String> LittleFSHandler :: loadFS_json(vector<String> data, const char* path){
+std :: vector<String> LittleFSHandler :: loadFS_json(std :: vector<String> data, const char* path){
 
     if (!LittleFS.exists(path)) { // check if the path is right
         Serial.println("File path not found!");
@@ -104,7 +100,7 @@ vector<String> LittleFSHandler :: loadFS_json(vector<String> data, const char* p
 
     //JSON Decode
     JsonDocument json;
-    vector<String> output;
+    std :: vector<String> output;
 
     if(deserializeJson(json, file))     return {}; // check if the json is ok
     else{

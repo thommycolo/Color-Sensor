@@ -6,6 +6,7 @@
 #include "WebManager.h"
 #include "WifiHandler.h"
 #include "DisplayHandler.h"
+#include "Types.h"
 
 
 // ESP32 Config
@@ -23,7 +24,7 @@ WifiHandler wifi_handler;     //WifiHandler
 WebManager web_manager;       //WebManager
 SensorHandler sensor;         //Sensor
 
-
+sensor_status calibration_status = SENSOR_NEED_CALIBRATION;
 
 // SETUP
 void setup() {
@@ -39,12 +40,11 @@ void setup() {
   fs_handler.begin(); 
   wifi_handler.begin(); 
   web_manager.begin();
-  sensor.begin();
+  calibration_status =  sensor.begin();
 
 
   display.print("Welcome!");
   delay(1000);
-
   
 }
 
@@ -58,10 +58,18 @@ void loop() {
   if (digitalRead(CALI_TRIGGER) == LOW) {
     if(!sensor.Calibration())
       Serial.println("Error while calibrating");
+    else
+      calibration_status = SENSOR_OK_AND_CALIBRATED;
     delay(50); 
   }
   if (digitalRead(SCAN_TRIGGER) == LOW) {
-    web_manager.updateColor(sensor.GetColor());
+    if(calibration_status == SENSOR_OK_AND_CALIBRATED)
+      web_manager.updateColor(sensor.GetColor());
+    else
+    {
+      display.print("sensor is not calibrated, please do");
+      Serial.println("sensor is not calibrated, please do");
+    }
     delay(50);
   }
   

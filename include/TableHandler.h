@@ -3,6 +3,7 @@
 #define TABLEHANDLER_H
 
 #include "Types.h"
+#include <Arduino.h>
 struct table_row{
 	int r,g,b;
 	const char* color_name;

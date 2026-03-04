@@ -1,6 +1,8 @@
 #ifndef TYPES_H
 #define TYPES_H
 
+#include <Arduino.h>
+
 #pragma once
 
 struct RGB_coef
@@ -14,6 +16,10 @@ struct RGB
     String color_name = "";
 };
 
-
+typedef enum {
+    SENSOR_OK_AND_CALIBRATED,
+    SENSOR_NOT_OK,
+    SENSOR_NEED_CALIBRATION
+}sensor_status;
 
 #endif

@@ -1,12 +1,14 @@
 //SensorHandler implementation 
 #include "SensorHandler.h"
 
+#include <vector>
+
+
 
 #define COLOR_CALIBRATION_CYCLES 50
 #define GET_COLOR_CYCLES 10
 #define CONFIG_JSON_PATH "/sensor_config.json"
 
-using namespace std;
 
 void starting_calibration_print(DisplayHandler display){
     
@@ -43,7 +45,7 @@ void starting_calibration_print(DisplayHandler display){
     display.print("Calibrating!!");
 }
 
-void SensorHandler :: begin(){
+sensor_status SensorHandler :: begin(){
     display.begin();
     while (!tcs.begin()) {
             display.print("Sensor not found");
@@ -51,7 +53,7 @@ void SensorHandler :: begin(){
     }
 
     LittleFSHandler fs;
-    vector<String> data = fs.loadFS_json({"r_coef","g_coef","b_coef","real_white_coef"},CONFIG_JSON_PATH);
+    std :: vector<String> data = fs.loadFS_json({"r_coef","g_coef","b_coef","real_white_coef"},CONFIG_JSON_PATH);
 
     if(data.size()<4){
         SensorHandler:: calib_saving();

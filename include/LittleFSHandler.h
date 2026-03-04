@@ -2,7 +2,9 @@
 #ifndef LITTLEFSHANDLER_H
 #define LITTLEFSHANDLER_H
 
-
+#include <Arduino.h>
+#include <ArduinoJson.h>
+#include <vector>
 
 #pragma once
 
@@ -67,7 +69,7 @@ public:
      * @return std::vector<String> A vector containing the retrieved values. 
      * Returns an empty vector if the file is missing, unreadable, or the JSON is invalid.
      */
-    static std::vector<String> loadFS_json(std::vector<String> data, const char* path);
+    static std :: vector<String> loadFS_json(std::vector<String> data, const char* path);
 
     /**
      * @brief Creates a new file from an existing JsonDocument object.

@@ -29,7 +29,7 @@ class SensorHandler{
         //RGB_coef rgb_coef;
         SensorHandler() : tcs(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X){}; 
         
-        void begin();
+        sensor_status begin();
         const bool Calibration();
         const RGB GetColor();
 
