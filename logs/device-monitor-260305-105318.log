@@ -1,0 +1,166 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   sensor_config.json (54 bytes)
+   wifi.json (107 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Thomas's Galaxy s25 edge
+psw_wifi   Password
+WIFI CONNECTION
+**Thomas's Galaxy s25 edge****Password**6data loaded succesfully!
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+676257
+676257
+676257
+676257
+676257
+676257
+676257
+676257
+676257
+686257
+676257
+676257
+676257
+686257
+686257
+676257
+686257
+686258
+686258
+686257
+686257
+686257
+686257
+686257
+676257
+686257
+676257
+686257
+676257
+686257
+676257
+676257
+676257
+676257
+676257
+676257
+676257
+676257
+676257
+676257
+676257
+676257
+676257
+676257
+676257
+676257
+676257
+686257
+676257
+686257
+Max value:67
+
+color adjustation: 1.001.081.18
+
+
+Calibration Done
+getting colorR: 68 G: 62 B: 57 C: 154
+R: 136 G: 124 B: 114 C: 308
+R: 204 G: 186 B: 172 C: 462
+R: 272 G: 248 B: 230 C: 616
+R: 340 G: 310 B: 288 C: 770
+R: 408 G: 372 B: 346 C: 924
+R: 476 G: 434 B: 404 C: 1078
+R: 543 G: 496 B: 461 C: 1232
+R: 611 G: 558 B: 518 C: 1386
+R: 678 G: 620 B: 575 C: 1540
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 192CORRUPT HEAP: Bad tail at 0x3ffd4890. Expected 0xbaad5678 got 0x00414949
+
+assert failed: multi_heap_free multi_heap_poisoning.c:259 (head != NULL)
+
+
+Backtrace: 0x40083bd9:0x3ffb1f10 0x4008dc9d:0x3ffb1f30 0x40093485:0x3ffb1f50 0x40093081:0x3ffb2080 0x40084149:0x3ffb20a0 0x400934b5:0x3ffb20c0 0x400f7dd5:0x3ffb20e0 0x400f7de5:0x3ffb2100 0x400dc671:0x3ffb2120 0x400e596d:0x3ffb21f0 0x400fac75:0x3ffb2290
+  #0  0x40083bd9 in panic_abort at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/esp_system/panic.c:408
+  #1  0x4008dc9d in esp_system_abort at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/esp_system/esp_system.c:137
+  #2  0x40093485 in __assert_func at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/newlib/assert.c:85
+  #3  0x40093081 in multi_heap_free at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/heap/multi_heap_poisoning.c:259 (discriminator 1)
+  #4  0x40084149 in heap_caps_free at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/heap/heap_caps.c:382
+  #5  0x400934b5 in free at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/newlib/heap.c:39
+  #6  0x400f7dd5 in String::invalidate() at C:/Users/thomm/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.cpp:158
+  #7  0x400f7de5 in String::~String() at C:/Users/thomm/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.cpp:142
+  #8  0x400dc671 in SensorHandler::GetColor() at src/Library implementation/SensorHandler.cpp:169 (discriminator 27)
+  #9  0x400e596d in loop() at src/main.cpp:71
+  #10 0x400fac75 in loopTask(void*) at C:/Users/thomm/.platformio/packages/framework-arduinoespressif32/cores/esp32/main.cpp:50
+
+
+
+
+
+ELF file SHA256: 801d82e06bdaeb22
+
+Rebooting...
+ets Jul 29 2019 12:21:46
+
+rst:0xc (SW_CPU_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   sensor_config.json (54 bytes)
+   wifi.json (107 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Thomas's Galaxy s25 edge
+psw_wifi   Password
+WIFI CONNECTION
+**Thomas's Galaxy s25 edge****Password**6data loaded succesfully!

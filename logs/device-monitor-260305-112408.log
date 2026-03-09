@@ -1,0 +1,170 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   sensor_config.json (54 bytes)
+   wifi.json (107 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Thomas's Galaxy s25 edge
+psw_wifi   Password
+WIFI CONNECTION
+**Thomas's Galaxy s25 edge****Password**6data loaded succesfully!
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+736965
+736965
+736865
+736964
+736965
+736864
+736965
+736864
+736964
+736864
+736864
+736965
+736864
+736965
+736965
+736864
+736965
+736865
+736965
+736864
+736864
+736965
+736864
+736965
+736864
+736965
+736965
+736865
+736965
+736865
+736965
+736965
+736865
+736965
+736865
+736965
+736865
+736865
+736965
+736864
+736964
+736864
+736864
+736864
+736864
+736864
+736864
+736864
+736864
+736864
+Max value:73
+
+color adjustation: 1.001.071.14
+
+
+Calibration Done
+getting colorR: 73 G: 68 B: 64 C: 165
+R: 146 G: 136 B: 128 C: 330
+R: 219 G: 204 B: 192 C: 495
+R: 292 G: 272 B: 256 C: 660
+R: 365 G: 340 B: 320 C: 825
+R: 438 G: 408 B: 384 C: 990
+R: 511 G: 476 B: 448 C: 1155
+R: 584 G: 544 B: 512 C: 1320
+R: 657 G: 612 B: 576 C: 1486
+R: 730 G: 680 B: 640 C: 1651
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 192CORRUPT HEAP: Bad tail at 0x3ffd4890. Expected 0xbaad5678 got 0x00414949
+
+assert failed: multi_heap_free multi_heap_poisoning.c:259 (head != NULL)
+
+
+Backtrace: 0x40083bd9:0x3ffb1f00 0x4008dc9d:0x3ffb1f20 0x40093485:0x3ffb1f40 0x40093081:0x3ffb2070 0x40084149:0x3ffb2090 0x400934b5:0x3ffb20b0 0x400f7e35:0x3ffb20d0 0x400f7e45:0x3ffb20f0 0x400dc6ad:0x3ffb2110 0x400e59cd:0x3ffb21f0 0x400facd5:0x3ffb2290
+  #0  0x40083bd9 in panic_abort at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/esp_system/panic.c:408
+  #1  0x4008dc9d in esp_system_abort at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/esp_system/esp_system.c:137
+  #2  0x40093485 in __assert_func at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/newlib/assert.c:85
+  #3  0x40093081 in multi_heap_free at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/heap/multi_heap_poisoning.c:259 (discriminator 1)
+  #4  0x40084149 in heap_caps_free at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/heap/heap_caps.c:382
+  #5  0x400934b5 in free at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/newlib/heap.c:39
+  #6  0x400f7e35 in String::buffer() const at C:/Users/thomm/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:339
+      (inlined by) String::move(String&) at C:/Users/thomm/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.cpp:235
+  #7  0x400f7e45 in String::move(String&) at C:/Users/thomm/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.cpp:243
+  #8  0x400dc6ad in ArduinoJson::V742PB22::detail::MemoryPoolList<ArduinoJson::V742PB22::detail::ResourceManager::SlotData>::allocFromLastPool() at .pio/libdeps/esp32doit-devkit-v1/ArduinoJson/src/ArduinoJson/Memory/MemoryPoolList.hpp:163
+      (inlined by) ArduinoJson::V742PB22::detail::MemoryPoolList<ArduinoJson::V742PB22::detail::ResourceManager::SlotData>::allocSlot(ArduinoJson::V742PB22::Allocator*) at .pio/libdeps/esp32doit-devkit-v1/ArduinoJson/src/ArduinoJson/Memory/MemoryPoolList.hpp:90
+      (inlined by) ArduinoJson::V742PB22::detail::ResourceManager::allocExtension() at .pio/libdeps/esp32doit-devkit-v1/ArduinoJson/src/ArduinoJson/Memory/ResourceManagerImpl.hpp:34
+      (inlined by) ArduinoJson::V742PB22::detail::enable_if<ArduinoJson::V742PB22::detail::is_signed<int>::value, bool>::type ArduinoJson::V742PB22::detail::VariantData::setInteger<int>(int, ArduinoJson::V742PB22::detail::ResourceManager*) at .pio/libdeps/esp32doit-devkit-v1/ArduinoJson/src/ArduinoJson/Variant/VariantImpl.hpp:112
+  #9  0x400e59cd in WebManager::WebManager() at include/WebManager.h:34 (discriminator 6)
+  #10 0x400facd5 in removeApbChangeCallback at C:/Users/thomm/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-cpu.c:146
+
+
+
+
+
+ELF file SHA256: c2ca06e454fb46bc
+
+Rebooting...
+ets Jul 29 2019 12:21:46
+
+rst:0xc (SW_CPU_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   sensor_config.json (54 bytes)
+   wifi.json (107 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Thomas's Galaxy s25 edge
+psw_wifi   Password
+WIFI CONNECTION
+**Thomas's Galaxy s25 edge****Password**6data loaded succesfully!

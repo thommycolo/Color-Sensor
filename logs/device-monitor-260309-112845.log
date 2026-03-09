@@ -1,0 +1,115 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DOUT, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   sensor_config.json (66 bytes)
+   wifi.json (107 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Thomas's Galaxy s25 edge
+psw_wifi   Password
+WIFI CONNECTION
+Cannot connceted to WIFI!
+data loaded succesfully!
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+746765
+746865
+746865
+746865
+746865
+746865
+746865
+746765
+746865
+746765
+746865
+746865
+746765
+736765
+746764
+746865
+746865
+746865
+746865
+746865
+746865
+746865
+746865
+746865
+746765
+746865
+746865
+746865
+746765
+746765
+746865
+746865
+746865
+746865
+746865
+746865
+746865
+746865
+746765
+746865
+746865
+746865
+746865
+746865
+746865
+746865
+746865
+746865
+746865
+746865
+Max value:73
+
+color adjustation: 1.001.091.14
+
+
+Calibration Done
+getting colorR: 73 G: 67 B: 64 C: 162
+R: 147 G: 134 B: 128 C: 324
+R: 220 G: 201 B: 192 C: 486
+R: 294 G: 268 B: 257 C: 649
+R: 368 G: 335 B: 321 C: 811
+R: 442 G: 402 B: 385 C: 973
+R: 515 G: 469 B: 449 C: 1135
+R: 589 G: 536 B: 513 C: 1297
+R: 663 G: 603 B: 577 C: 1460
+R: 737 G: 670 B: 641 C: 1622
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 192
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":192,"b":192,"name":"Grigio Chiaro"}

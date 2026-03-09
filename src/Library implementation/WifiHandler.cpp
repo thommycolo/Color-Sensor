@@ -1,6 +1,9 @@
 //WifiHandler.h implementation
 #include "WifiHandler.h"
 
+#define NETWORK_JSON_PATH "/wifi.json"
+const std::vector<String> KEY_NAME_NETWORK_JSON = {"ssid_ac","psw_ac","ssid_wifi","psw_wifi"};
+
 
 void WifiHandler :: begin(){
     {
@@ -8,15 +11,18 @@ void WifiHandler :: begin(){
 
             LittleFSHandler fs;
             Serial.println("loading data");
-            std :: vector<String> data = fs.loadFS_json({"ssid_ac","psw_ac","ssid_wifi","psw_wifi"},"/wifi.json");
-            while(data.size()<4){
+            std::vector<String> data;
+            data.reserve(KEY_NAME_NETWORK_JSON.size());
+            fs.loadFS_json(data,KEY_NAME_NETWORK_JSON,NETWORK_JSON_PATH);
+            while(data.size()<KEY_NAME_NETWORK_JSON.size()){
                 JsonDocument json;
-                json["ssid_ac"] = "ESP32_ACCES";
-                json["psw_ac"] = "ESP32_PSW";
-                json["ssid_wifi"] ="";
-                json["psw_wifi"] ="";
-                fs.new_file(json,"/wifi.json");
-                data = fs.loadFS_json({"ssid_ac","psw_ac","ssid_wifi","psw_wifi"},"/wifi.json");
+                json[KEY_NAME_NETWORK_JSON[0]] = "ESP32_ACCES";
+                json[KEY_NAME_NETWORK_JSON[1]] = "ESP32_PSW";
+                json[KEY_NAME_NETWORK_JSON[2]] = "";
+                json[KEY_NAME_NETWORK_JSON[3]] = "";
+                fs.new_file(json,NETWORK_JSON_PATH);
+                if(!fs.loadFS_json(data,KEY_NAME_NETWORK_JSON,NETWORK_JSON_PATH))
+                   display.print("Error while loading"); 
             }
 
             this->ssid = data[0];
@@ -40,7 +46,8 @@ void WifiHandler :: begin(){
 bool WifiHandler :: ACturnOn(String ssid, String psw){
     
     display.print("Starting AC ");
-    
+    delay(500);
+
     int start=millis();
     
     if(WiFi.softAP(ssid.c_str(),psw.c_str())){
@@ -57,29 +64,34 @@ bool WifiHandler :: WifiConnect(String ssid, String psw){
     WiFi.disconnect();
     Serial.println("WIFI CONNECTION");
     display.print("WIFI CONNECTING");
+    delay(500);
     if (ssid.length() == 0) {
         display.print("WiFi Error:", "SSID is empty");
+        delay(500);
         return false;
     }
 
     display.print("Connecting to ",ssid);
     ssid.trim();
     psw.trim();
-
+    delay(500);
     WiFi.begin(ssid.c_str(), psw.c_str());
     
-    Serial.print("**");Serial.print(ssid);Serial.print("**");
-    Serial.print("**");Serial.print(psw);Serial.print("**");
+
 
     int start=millis();
     while(WiFi.status() != WL_CONNECTED){
-        Serial.print(WiFi.status());
-        display.print(".");
+        //Serial.print(WiFi.status());
+        display.print("connecting");
         delay(500);
         if(millis()-start > 20000)
+            display.print("Cannot connceted to WIFI!", "IP: " + WiFi.localIP().toString());
+            Serial.println("Cannot connceted to WIFI!");
             return false;
     }
 
     display.print("Succesfully connceted to WIFI!", "IP: " + WiFi.localIP().toString());
+    Serial.println("Succesfully connceted to WIFI!");
+
     return true;
 }

@@ -26,6 +26,12 @@ SensorHandler sensor;         //Sensor
 
 sensor_status calibration_status = SENSOR_NEED_CALIBRATION;
 
+//wifi const
+#define NETWORK_JSON_PATH "/wifi.json"
+const std::vector<String> KEY_NAME_NETWORK_JSON = {"ssid_wifi","psw_wifi"};
+
+
+
 // SETUP
 void setup() {
 
@@ -37,9 +43,13 @@ void setup() {
   //Everything that need a .begin()
   Wire.begin(SDA_PIN, SCL_PIN);  // I2C
   display.begin();
+  delay(1000);
   fs_handler.begin(); 
+  delay(1000);
   wifi_handler.begin(); 
+  delay(1000);
   web_manager.begin();
+  delay(1000);
   calibration_status =  sensor.begin();
 
 
@@ -51,7 +61,10 @@ void setup() {
 // LOOP
 void loop() {
   if(web_manager.new_credentials == true){
-    std:: vector<String> value = fs_handler.loadFS_json({"ssid_wifi","psw_wifi"},"/wifi.json");
+    std:: vector<String> value;
+    value.reserve(KEY_NAME_NETWORK_JSON.size());
+    if(!fs_handler.loadFS_json(value, KEY_NAME_NETWORK_JSON, NETWORK_JSON_PATH))
+      display.print("Error while loading");
     wifi_handler.WifiConnect(value[0],value[1]);
     web_manager.new_credentials = false;
   }

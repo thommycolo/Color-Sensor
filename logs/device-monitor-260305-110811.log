@@ -1,0 +1,220 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   sensor_config.json (54 bytes)
+   wifi.json (107 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Thomas's Galaxy s25 edge
+psw_wifi   Password
+WIFI CONNECTION
+**Thomas's Galaxy s25 edge****Password**6data loaded succesfully!
+getting colorR: 51 G: 48 B: 45 C: 117
+R: 105 G: 98 B: 92 C: 240
+R: 160 G: 149 B: 139 C: 365
+R: 216 G: 200 B: 186 C: 492
+R: 272 G: 251 B: 233 C: 619
+R: 328 G: 303 B: 280 C: 747
+R: 383 G: 354 B: 327 C: 874
+R: 438 G: 405 B: 374 C: 1000
+R: 492 G: 455 B: 421 C: 1125
+R: 545 G: 504 B: 467 C: 1246
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 192
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":192,"b":192,"name":"Grigio Chiaro"}
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+565147
+565148
+565147
+565248
+565147
+565247
+565248
+565147
+565247
+565147
+565147
+565147
+565147
+565147
+565147
+565147
+565147
+565147
+565147
+565147
+565147
+565147
+565147
+565147
+565147
+555147
+565147
+555147
+565147
+565147
+555147
+565147
+555147
+565147
+565147
+565147
+565147
+565147
+565147
+565248
+565147
+565148
+565147
+565147
+565147
+565147
+565147
+565147
+555147
+565147
+Max value:55
+
+color adjustation: 1.001.081.17
+
+
+Calibration Done
+getting colorR: 54 G: 50 B: 46 C: 123
+R: 107 G: 100 B: 92 C: 246
+R: 161 G: 150 B: 138 C: 369
+R: 215 G: 200 B: 184 C: 492
+R: 269 G: 250 B: 230 C: 615
+R: 323 G: 300 B: 276 C: 739
+R: 378 G: 350 B: 322 C: 864
+R: 432 G: 400 B: 368 C: 989
+R: 487 G: 451 B: 415 C: 1115
+R: 542 G: 501 B: 461 C: 1240
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 192CORRUPT HEAP: Bad tail at 0x3ffd4890. Expected 0xbaad5678 got 0x00414949
+
+assert failed: multi_heap_free multi_heap_poisoning.c:259 (head != NULL)
+
+
+Backtrace: 0x40083bd9:0x3ffb1f00 0x4008dc9d:0x3ffb1f20 0x40093485:0x3ffb1f40 0x40093081:0x3ffb2070 0x40084149:0x3ffb2090 0x400934b5:0x3ffb20b0 0x400f7e35:0x3ffb20d0 0x400f7e45:0x3ffb20f0 0x400dc6ad:0x3ffb2110 0x400e59cd:0x3ffb21f0 0x400facd5:0x3ffb2290
+  #0  0x40083bd9 in panic_abort at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/esp_system/panic.c:408
+  #1  0x4008dc9d in esp_system_abort at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/esp_system/esp_system.c:137
+  #2  0x40093485 in __assert_func at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/newlib/assert.c:85
+  #3  0x40093081 in multi_heap_free at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/heap/multi_heap_poisoning.c:259 (discriminator 1)
+  #4  0x40084149 in heap_caps_free at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/heap/heap_caps.c:382
+  #5  0x400934b5 in free at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/newlib/heap.c:39
+  #6  0x400f7e35 in String::invalidate() at C:/Users/thomm/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.cpp:158
+  #7  0x400f7e45 in String::~String() at C:/Users/thomm/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.cpp:142
+  #8  0x400dc6ad in SensorHandler::GetColor() at src/Library implementation/SensorHandler.cpp:171 (discriminator 27)
+  #9  0x400e59cd in loop() at src/main.cpp:71
+  #10 0x400facd5 in loopTask(void*) at C:/Users/thomm/.platformio/packages/framework-arduinoespressif32/cores/esp32/main.cpp:50
+
+
+
+
+
+ELF file SHA256: c2ca06e454fb46bc
+
+Rebooting...
+ets Jul 29 2019 12:21:46
+
+rst:0xc (SW_CPU_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   sensor_config.json (54 bytes)
+   wifi.json (107 bytes)
+loading data
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Thomas's Galaxy s25 edge
+psw_wifi   Password
+WIFI CONNECTION
+**Thomas's Galaxy s25 edge****Password**6data loaded succesfully!
+getting colorR: 54 G: 49 B: 45 C: 123
+R: 107 G: 98 B: 90 C: 244
+R: 160 G: 147 B: 135 C: 367
+R: 212 G: 196 B: 180 C: 488
+R: 265 G: 245 B: 225 C: 611
+R: 319 G: 294 B: 271 C: 735
+R: 372 G: 343 B: 317 C: 859
+R: 425 G: 392 B: 363 C: 982
+R: 479 G: 442 B: 409 C: 1106
+R: 533 G: 492 B: 455 C: 1230
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 192
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":192,"b":192,"name":"Grigio Chiaro"}
+getting colorR: 52 G: 48 B: 44 C: 120
+R: 104 G: 97 B: 88 C: 241
+R: 156 G: 145 B: 132 C: 361
+R: 208 G: 193 B: 176 C: 482
+R: 260 G: 241 B: 220 C: 602
+R: 312 G: 289 B: 264 C: 722
+R: 364 G: 337 B: 308 C: 842
+R: 416 G: 385 B: 352 C: 962
+R: 468 G: 433 B: 396 C: 1082
+R: 520 G: 481 B: 440 C: 1202
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 192
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":192,"b":192,"name":"Grigio Chiaro"}

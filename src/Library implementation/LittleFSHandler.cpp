@@ -85,7 +85,7 @@ LittleFSHandler::fs_status LittleFSHandler::saveFS_json(JsonDocument& nuoviDati,
     return OPERATION_DONE;
 }
 
-std :: vector<String> LittleFSHandler :: loadFS_json(std :: vector<String> data, const char* path){
+bool LittleFSHandler :: loadFS_json(std :: vector<String>& output, const std :: vector<String>& data, const char* path){
 
     if (!LittleFS.exists(path)) { // check if the path is right
         Serial.println("File path not found!");
@@ -97,26 +97,22 @@ std :: vector<String> LittleFSHandler :: loadFS_json(std :: vector<String> data,
         Serial.println("Cannot read file");
         return {};
     }
-
     //JSON Decode
-    JsonDocument json;
-    std :: vector<String> output;
-
-    if(deserializeJson(json, file))     return {}; // check if the json is ok
-    else{
-        
+    {
+        JsonDocument json;
+        output.reserve(data.size());
+        if(deserializeJson(json, file))     return false; // check if the json is ok
+        file.close(); 
         for(const String& d : data)     output.push_back(json[d].as<String>()); //collecting all the output data
- 
+        for (const String& d:output) Serial.println(d);
         Serial.println("data loaded succesfully!");
-    
     }
-
-    file.close();
-    return output;
+    
+    return true;
 
 }
 
-LittleFSHandler :: fs_status LittleFSHandler :: new_file(JsonDocument new_file_data, const char* path){
+LittleFSHandler :: fs_status LittleFSHandler :: new_file(JsonDocument& new_file_data, const char* path){
 
     File new_file = LittleFS.open(path,"w");
     serializeJson(new_file_data,new_file);

@@ -69,7 +69,7 @@ public:
      * @return std::vector<String> A vector containing the retrieved values. 
      * Returns an empty vector if the file is missing, unreadable, or the JSON is invalid.
      */
-    static std :: vector<String> loadFS_json(std::vector<String> data, const char* path);
+    bool loadFS_json(std :: vector<String>& output, const std :: vector<String>& data, const char* path);
 
     /**
      * @brief Creates a new file from an existing JsonDocument object.
@@ -77,7 +77,7 @@ public:
      * @param path Destination path in the file system.
      * @return fs_status OPERATION_DONE if saved correctly, FAILED_WRITING otherwise.
      */
-    static fs_status new_file(JsonDocument new_file_data, const char* path);
+    static fs_status new_file(JsonDocument& new_file_data, const char* path);
 
 };
 

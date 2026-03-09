@@ -8,9 +8,10 @@
 #define COLOR_CALIBRATION_CYCLES 50
 #define GET_COLOR_CYCLES 10
 #define CONFIG_JSON_PATH "/sensor_config.json"
+const std::vector<String> KEY_NAME_CONFIG_JSON = {"r_coef", "g_coef", "b_coef", "real_white_coef"};
 
 
-void starting_calibration_print(DisplayHandler display){
+void starting_calibration_print(DisplayHandler &display){
     
     delay(2000);
     Serial.println("Starting calibration process!");
@@ -52,29 +53,35 @@ sensor_status SensorHandler :: begin(){
             delay(100);
     }
 
-    LittleFSHandler fs;
-    std :: vector<String> data = fs.loadFS_json({"r_coef","g_coef","b_coef","real_white_coef"},CONFIG_JSON_PATH);
 
-    if(data.size()<4){
-        SensorHandler:: calib_saving();
+    LittleFSHandler fs;
+    std :: vector<String> data;
+    data.reserve(KEY_NAME_CONFIG_JSON.size());
+    if(!fs.loadFS_json(data,KEY_NAME_CONFIG_JSON,CONFIG_JSON_PATH))
+        display.print("Error while loading");
+
+    if(data.empty()){
+        //SensorHandler:: calib_saving();
         display.print("Nessuna Configurazione disponibile");
+        return SENSOR_NEED_CALIBRATION;
     }
-    else
-    {
-        calibration_coef.r = data[0].toFloat();
-        calibration_coef.g = data[1].toFloat();
-        calibration_coef.b = data[2].toFloat();
-        calibration_coef.realwhite = data[3].toInt();
-    }
+    
+    calibration_coef.r = data[0].toFloat();
+    calibration_coef.g = data[1].toFloat();
+    calibration_coef.b = data[2].toFloat();
+    calibration_coef.realwhite = data[3].toInt();
+    
+    return SENSOR_OK_AND_CALIBRATED;
+
 }
 
 void SensorHandler :: calib_saving(){
     LittleFSHandler fs;
     JsonDocument json;
-    json["r_coef"] = calibration_coef.r;
-    json["g_coef"] = calibration_coef.g;
-    json["b_coef"] = calibration_coef.b;
-    json["real_white_coef"] =calibration_coef.realwhite;
+    json[KEY_NAME_CONFIG_JSON[0]] = calibration_coef.r;
+    json[KEY_NAME_CONFIG_JSON[1]] = calibration_coef.g;
+    json[KEY_NAME_CONFIG_JSON[2]] = calibration_coef.b;
+    json[KEY_NAME_CONFIG_JSON[3]] =calibration_coef.realwhite;
     fs.new_file(json,CONFIG_JSON_PATH);
 }
 
@@ -114,13 +121,14 @@ const bool SensorHandler::Calibration()
     calibration_coef.g = (float)calibration_coef.realwhite / (float)tot_g;
     calibration_coef.b = (float)calibration_coef.realwhite / (float)tot_b;
 
+    calib_saving();
+
     Serial.print("\n\n");
     Serial.print("color adjustation: ");Serial.print(calibration_coef.r);Serial.print(calibration_coef.g);Serial.println(calibration_coef.b);
     Serial.print("\n\n"); 
     
     Serial.println("Calibration Done");
     display.print("Calibration Done");
-    
     return true;
 }
 
@@ -164,7 +172,11 @@ const RGB SensorHandler::GetColor(){
 
     Serial.println("COLORI CALIBRATI:");
     Serial.print("R: ");Serial.print(rgb.r);Serial.print(" G: ");Serial.print(rgb.g);Serial.print(" B: ");Serial.print(rgb.b);
-    display.print("COLORE: " + rgb.color_name , "R: " + (String)rgb.r + " G: " + (String)rgb.g + " B: " + (String)rgb.b);
+    char str[32];
+    char str1[64];
+    snprintf(str,sizeof(str),"COLORE: %s",rgb.color_name); 
+    snprintf(str1,sizeof(str),"R: %d G: %d B: %d", rgb.r, rgb.g, rgb.b);
+    display.print(str,str1);
     Serial.print("\n\n\n");
     return rgb;
 }
