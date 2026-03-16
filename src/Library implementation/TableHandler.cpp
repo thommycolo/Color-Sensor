@@ -1,7 +1,6 @@
 // ColorTable population and implementation
 #include "TableHandler.h"
 
-#include <cmath>
 
 
 using namespace std;
@@ -144,10 +143,7 @@ const size_t MAX_ROW_DATA = sizeof(data)/sizeof(table_row);
 
 
 RGB TableHandler::getColor(RGB rgb){
-	//rgb.r = round( rgb.r/64) *64;
-	//rgb.g = round( rgb.g/64) *64;
-	//rgb.b = round( rgb.b/64) *64;
-
+	
     rgb.r = (int)(((float)rgb.r/64.0)+0.5) *64;
     rgb.g = (int)(((float)rgb.g/64.0)+0.5) *64;
     rgb.b = (int)(((float)rgb.b/64.0)+0.5) *64;
