@@ -160,12 +160,14 @@ const RGB SensorHandler::GetColor(){
     rgb.g = (int)((((float)g / (float)GET_COLOR_CYCLES) * calibration_coef.g / (float)calibration_coef.realwhite * 255.0) + 0.5);
     rgb.b = (int)((((float)b / (float)GET_COLOR_CYCLES) * calibration_coef.b / (float)calibration_coef.realwhite * 255.0) + 0.5);
     if(rgb.r>255)
-        rgb.r=255;
+        rgb.r=256;
     if(rgb.g>255)
-        rgb.g=255;
+        rgb.g=256;
     if(rgb.b>255)
-        rgb.b=255;
+        rgb.b=256;
 
+    Serial.println("COLORI CALIBRATI:");
+    Serial.print("R: ");Serial.print(rgb.r);Serial.print(" G: ");Serial.print(rgb.g);Serial.print(" B: ");Serial.print(rgb.b);
 
     TableHandler colorTB;
     rgb = colorTB.getColor(rgb);

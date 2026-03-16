@@ -1,0 +1,122 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DOUT, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   sensor_config.json (66 bytes)
+   wifi.json (75 bytes)
+loading data
+ESP32_ACCES
+ESP32_PSW
+
+
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   
+psw_wifi   
+1.159091
+1
+1.25
+510
+data loaded succesfully!
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+440503400
+440503400
+439501399
+439502399
+438501398
+440503400
+441504400
+439501398
+438500397
+438501398
+439502399
+441503400
+441504401
+439502399
+438501398
+438500398
+438500398
+440502400
+439502399
+438500397
+438500397
+437499396
+438500397
+441503399
+440503399
+440503398
+439502398
+438501397
+439502398
+441503399
+441504399
+441503399
+440501398
+438501397
+440502398
+440502398
+441503399
+443505401
+441503399
+440502398
+440502398
+440502398
+441504399
+443505401
+441504399
+440502398
+439501397
+439501397
+441504399
+442505400
+Max value:502
+
+color adjustation: 1.141.001.26
+
+
+Calibration Done
+getting colorR: 309 G: 107 B: 81 C: 483
+R: 617 G: 212 B: 161 C: 962
+R: 926 G: 319 B: 242 C: 1445
+R: 1233 G: 424 B: 322 C: 1923
+R: 1541 G: 530 B: 402 C: 2403
+R: 1851 G: 637 B: 484 C: 2888
+R: 2159 G: 743 B: 565 C: 3368
+R: 2467 G: 850 B: 646 C: 3850
+R: 2776 G: 956 B: 727 C: 4332
+R: 3086 G: 1063 B: 809 C: 4818
+
+
+
+COLORI CALIBRATI:
+R: 179 G: 54 B: 52COLORI CALIBRATI:
+R: 128 G: 0 B: 0
+
+
+Sending to WS: COLOR_JSON:{"r":128,"g":0,"b":0,"name":"Rosso Scuro"}

@@ -19,6 +19,7 @@ LittleFS montato correttamente!
        index.html (1613 bytes)
        script.js (5027 bytes)
        style.css (3872 bytes)
+   sensor_config.json (70 bytes)
    wifi.json (75 bytes)
 loading data
 ESP32_ACCES
@@ -30,7 +31,8 @@ ssid_ac   ESP32_ACCES
 psw_ac   ESP32_PSW
 ssid_wifi   
 psw_wifi   
-[  5991][E][vfs_api.cpp:105] open(): /littlefs/sensor_config.json does not exist, no permits for creation
-File path not found!
-sensor is not calibrated, please do
-sensor is not calibrated, please do
+1.142292
+1
+1.284444
+578
+data loaded succesfully!

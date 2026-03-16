@@ -1,0 +1,160 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DOUT, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   sensor_config.json (70 bytes)
+   wifi.json (75 bytes)
+loading data
+ESP32_ACCES
+ESP32_PSW
+
+
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   
+psw_wifi   
+1.143508
+1
+1.261307
+502
+data loaded succesfully!
+getting colorR: 410 G: 471 B: 372 C: 1289
+R: 817 G: 941 B: 743 C: 2572
+R: 1225 G: 1411 B: 1115 C: 3857
+R: 1634 G: 1881 B: 1487 C: 5144
+R: 2042 G: 2350 B: 1858 C: 6429
+R: 2451 G: 2820 B: 2230 C: 7716
+R: 2861 G: 3292 B: 2603 C: 9007
+R: 3269 G: 3762 B: 2975 C: 10293
+R: 3681 G: 4237 B: 3350 C: 11590
+R: 4091 G: 4709 B: 3723 C: 12880
+
+
+
+COLORI CALIBRATI:
+R: 238 G: 239 B: 239COLORI CALIBRATI:
+R: 192 G: 192 B: 192
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":192,"b":192,"name":"Grigio Chiaro"}
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+423488383
+424489384
+424490385
+422487383
+422487383
+422487383
+424490385
+426492387
+426492387
+426492387
+423490385
+424490386
+425491386
+426492386
+427492386
+424490385
+424490384
+425491385
+426493386
+428495388
+427494387
+426493386
+424491384
+425492385
+427493387
+426493387
+426492386
+424490384
+425491385
+427494387
+426493387
+427494387
+424491385
+425492386
+426493386
+427494387
+427494388
+425492386
+425492386
+425492385
+427494387
+428495388
+427495388
+427494387
+427494388
+429497389
+431498391
+429496390
+429496389
+426493387
+Max value:492
+
+color adjustation: 1.161.001.27
+
+
+Calibration Done
+getting colorR: 307 G: 111 B: 80 C: 507
+R: 612 G: 221 B: 160 C: 1010
+R: 920 G: 333 B: 241 C: 1520
+R: 1226 G: 444 B: 321 C: 2025
+R: 1532 G: 556 B: 402 C: 2534
+R: 1838 G: 666 B: 482 C: 3040
+R: 2145 G: 778 B: 563 C: 3548
+R: 2450 G: 889 B: 643 C: 4053
+R: 2758 G: 1001 B: 724 C: 4563
+R: 3065 G: 1112 B: 805 C: 5072
+
+
+
+COLORI CALIBRATI:
+R: 184 G: 58 B: 53COLORI CALIBRATI:
+R: 128 G: 0 B: 0
+
+
+Sending to WS: COLOR_JSON:{"r":128,"g":0,"b":0,"name":"Rosso Scuro"}
+getting colorR: 336 G: 153 B: 257 C: 760
+R: 672 G: 305 B: 515 C: 1521
+R: 1009 G: 459 B: 773 C: 2286
+R: 1345 G: 613 B: 1031 C: 3050
+R: 1683 G: 769 B: 1290 C: 3820
+R: 2020 G: 923 B: 1548 C: 4585
+R: 2356 G: 1077 B: 1805 C: 5348
+R: 2691 G: 1230 B: 2062 C: 6110
+R: 3027 G: 1384 B: 2320 C: 6874
+R: 3363 G: 1537 B: 2577 C: 7636
+
+
+
+COLORI CALIBRATI:
+R: 202 G: 80 B: 170COLORI CALIBRATI:
+R: 192 G: 64 B: 128
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":64,"b":128,"name":"Rosso-Magenta Chiaro"}

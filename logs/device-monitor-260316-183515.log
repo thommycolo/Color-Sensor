@@ -1,0 +1,330 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DOUT, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   sensor_config.json (63 bytes)
+   wifi.json (75 bytes)
+loading data
+ESP32_ACCES
+ESP32_PSW
+
+
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   
+psw_wifi   
+null
+null
+null
+0
+data loaded succesfully!
+getting colorR: 91 G: 77 B: 62 C: 139
+R: 181 G: 154 B: 123 C: 278
+R: 271 G: 230 B: 184 C: 417
+R: 361 G: 306 B: 245 C: 556
+R: 451 G: 382 B: 307 C: 695
+R: 541 G: 458 B: 368 C: 834
+R: 631 G: 534 B: 429 C: 973
+R: 721 G: 610 B: 490 C: 1112
+R: 811 G: 686 B: 551 C: 1251
+R: 901 G: 762 B: 612 C: 1390
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 192
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":192,"b":192,"name":"Grigio Chiaro"}
+getting colorR: 1103 G: 809 B: 574 C: 2565
+R: 2096 G: 1525 B: 1084 C: 4843
+R: 3071 G: 2229 B: 1585 C: 7080
+R: 4008 G: 2898 B: 2063 C: 9215
+R: 5079 G: 3684 B: 2622 C: 11706
+R: 6209 G: 4527 B: 3222 C: 14369
+R: 7489 G: 5501 B: 3920 C: 17442
+R: 8636 G: 6353 B: 4530 C: 20147
+R: 9892 G: 7308 B: 5217 C: 23167
+R: 11142 G: 8261 B: 5906 C: 26181
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 192
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":192,"b":192,"name":"Grigio Chiaro"}
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+250237167
+248235166
+249236166
+249236166
+247234165
+250236166
+250237167
+250236167
+252238168
+250236167
+249236166
+249236166
+249235166
+250236166
+251237167
+250236166
+250237167
+252238168
+251237167
+251238168
+251237167
+247233165
+248235166
+250236167
+247234165
+248235166
+249236166
+248235166
+249235166
+250236167
+250236167
+252239168
+252239168
+250237168
+252239169
+254241170
+253240169
+254241170
+255242171
+255242171
+255242171
+253240169
+251238168
+253240169
+253240169
+251238168
+252239168
+251237167
+249236167
+251238168
+Max value:250
+
+color adjustation: 1.001.051.50
+
+
+Calibration Done
+getting colorR: 246 G: 233 B: 164 C: 607
+R: 491 G: 465 B: 328 C: 1212
+R: 737 G: 698 B: 492 C: 1819
+R: 982 G: 929 B: 655 C: 2423
+R: 1228 G: 1162 B: 819 C: 3031
+R: 1472 G: 1393 B: 982 C: 3634
+R: 1716 G: 1624 B: 1145 C: 4237
+R: 1962 G: 1857 B: 1309 C: 4845
+R: 2208 G: 2089 B: 1473 C: 5451
+R: 2455 G: 2323 B: 1638 C: 6061
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 192
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":192,"b":192,"name":"Grigio Chiaro"}
+getting colorR: 251 G: 238 B: 167 C: 622
+R: 503 G: 477 B: 335 C: 1249
+R: 754 G: 715 B: 503 C: 1873
+R: 1007 G: 955 B: 672 C: 2501
+R: 1257 G: 1192 B: 839 C: 3122
+R: 1507 G: 1429 B: 1006 C: 3741
+R: 1755 G: 1664 B: 1172 C: 4355
+R: 2003 G: 1899 B: 1338 C: 4970
+R: 2252 G: 2135 B: 1504 C: 5588
+R: 2501 G: 2370 B: 1670 C: 6204
+
+
+
+COLORI CALIBRATI:
+R: 192 G: 192 B: 192
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":192,"b":192,"name":"Grigio Chiaro"}
+getting colorR: 57 G: 52 B: 37 C: 112
+R: 116 G: 105 B: 75 C: 228
+R: 174 G: 157 B: 113 C: 340
+R: 232 G: 209 B: 151 C: 452
+R: 289 G: 260 B: 188 C: 562
+R: 347 G: 312 B: 226 C: 674
+R: 405 G: 364 B: 264 C: 786
+R: 462 G: 415 B: 301 C: 896
+R: 519 G: 467 B: 339 C: 1008
+R: 577 G: 519 B: 377 C: 1120
+
+
+
+COLORI CALIBRATI:
+R: 0 G: 0 B: 0
+
+
+Sending to WS: COLOR_JSON:{"r":0,"g":0,"b":0,"name":"Nero"}
+getting colorR: 60 G: 68 B: 71 C: 164
+R: 120 G: 135 B: 141 C: 325
+R: 180 G: 202 B: 211 C: 483
+R: 241 G: 270 B: 282 C: 646
+R: 302 G: 339 B: 354 C: 809
+R: 363 G: 408 B: 426 C: 972
+R: 425 G: 477 B: 498 C: 1136
+R: 491 G: 552 B: 577 C: 1319
+R: 557 G: 628 B: 656 C: 1504
+R: 624 G: 705 B: 736 C: 1691
+
+
+
+COLORI CALIBRATI:
+R: 64 G: 64 B: 64
+
+
+Sending to WS: COLOR_JSON:{"r":64,"g":64,"b":64,"name":"Grigio Scuro"}
+getting colorR: 165 G: 150 B: 90 C: 398
+R: 329 G: 300 B: 180 C: 794
+R: 489 G: 446 B: 268 C: 1180
+R: 650 G: 593 B: 356 C: 1568
+R: 814 G: 742 B: 446 C: 1962
+R: 977 G: 891 B: 536 C: 2355
+R: 1139 G: 1038 B: 625 C: 2743
+R: 1299 G: 1184 B: 713 C: 3127
+R: 1462 G: 1333 B: 803 C: 3520
+R: 1625 G: 1481 B: 892 C: 3911
+
+
+
+COLORI CALIBRATI:
+R: 128 G: 128 B: 128
+
+
+Sending to WS: COLOR_JSON:{"r":128,"g":128,"b":128,"name":"Grigio Chiaro"}
+getting colorR: 100 G: 89 B: 57 C: 224
+R: 198 G: 176 B: 113 C: 442
+R: 296 G: 263 B: 169 C: 661
+R: 395 G: 351 B: 225 C: 882
+R: 493 G: 439 B: 281 C: 1101
+R: 589 G: 524 B: 335 C: 1314
+R: 686 G: 611 B: 390 C: 1531
+R: 785 G: 700 B: 446 C: 1754
+R: 884 G: 788 B: 502 C: 1974
+R: 981 G: 875 B: 557 C: 2190
+
+
+
+COLORI CALIBRATI:
+R: 64 G: 64 B: 64
+
+
+Sending to WS: COLOR_JSON:{"r":64,"g":64,"b":64,"name":"Grigio Scuro"}
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+324318216
+324319216
+319313212
+317312211
+318313212
+316311211
+309304206
+316311211
+313308209
+309304206
+302297202
+305300204
+304299203
+307302205
+304300203
+310305207
+309305207
+302297202
+302297202
+308303206
+310305207
+302297201
+302297202
+308303205
+305300203
+297292198
+295290197
+297292198
+298293199
+308304206
+306301204
+304299203
+301296201
+302297202
+305300203
+306301204
+298293199
+304299203
+302297202
+301296201
+295291197
+298293199
+303298202
+300295200
+300295200
+304300203
+304299203
+296291198
+298293199
+299294200
+Max value:305
+
+color adjustation: 1.001.021.50
+
+
+Calibration Done
+getting colorR: 78 G: 113 B: 58 C: 228
+R: 156 G: 225 B: 116 C: 453
+R: 234 G: 337 B: 174 C: 679
+R: 312 G: 449 B: 232 C: 905
+R: 390 G: 561 B: 290 C: 1131
+R: 468 G: 674 B: 348 C: 1358
+R: 546 G: 786 B: 406 C: 1584
+R: 624 G: 898 B: 464 C: 1811
+R: 702 G: 1011 B: 522 C: 2038
+R: 780 G: 1123 B: 580 C: 2265
+
+
+
+COLORI CALIBRATI:
+R: 64 G: 64 B: 64
+
+
+Sending to WS: COLOR_JSON:{"r":64,"g":64,"b":64,"name":"Grigio Scuro"}

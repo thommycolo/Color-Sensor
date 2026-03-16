@@ -1,6 +1,5 @@
 //WifiHandler.h implementation
 #include "WifiHandler.h"
-
 #define NETWORK_JSON_PATH "/wifi.json"
 const std::vector<String> KEY_NAME_NETWORK_JSON = {"ssid_ac","psw_ac","ssid_wifi","psw_wifi"};
 
@@ -51,7 +50,9 @@ bool WifiHandler :: ACturnOn(String ssid, String psw){
     int start=millis();
     
     if(WiFi.softAP(ssid.c_str(),psw.c_str())){
-        display.print("AC online!","IP : "+WiFi.softAPIP().toString() );        
+        display.print("AC online!","IP : "+WiFi.softAPIP().toString() );  
+        Serial.print("AC online! ");Serial.print("IP : "); Serial.println(WiFi.softAPIP().toString() );
+
         return true;
     }
     

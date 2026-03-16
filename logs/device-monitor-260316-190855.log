@@ -1,0 +1,320 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DOUT, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   sensor_config.json (70 bytes)
+   wifi.json (75 bytes)
+loading data
+ESP32_ACCES
+ESP32_PSW
+
+
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   
+psw_wifi   
+AC online! IP : 192.168.4.1
+1.142292
+1
+1.284444
+578
+data loaded succesfully!
+[154314][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/index.html.gz does not exist, no permits for creation
+[154416][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/style.css.gz does not exist, no permits for creation
+[154490][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/script.js.gz does not exist, no permits for creation
+[176192][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/index.html.gz does not exist, no permits for creation
+[209163][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/index.html.gz does not exist, no permits for creation
+[238557][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/index.html.gz does not exist, no permits for creation
+[238655][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/style.css.gz does not exist, no permits for creation
+[238732][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/script.js.gz does not exist, no permits for creation
+[238837][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico.gz does not exist, no permits for creation
+[238851][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico does not exist, no permits for creation
+[238863][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm.gz does not exist, no permits for creation
+[238874][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm does not exist, no permits for creation
+WebSocket client #1 connesso da 192.168.4.3
+getting colorR: 24 G: 22 B: 12 C: 60
+R: 48 G: 44 B: 23 C: 120
+R: 72 G: 66 B: 35 C: 180
+R: 96 G: 88 B: 47 C: 241
+R: 121 G: 110 B: 59 C: 302
+R: 146 G: 132 B: 71 C: 364
+R: 171 G: 154 B: 83 C: 426
+R: 196 G: 176 B: 95 C: 488
+R: 221 G: 199 B: 107 C: 551
+R: 247 G: 222 B: 119 C: 615
+
+
+
+COLORI CALIBRATI:
+R: 12 G: 10 B: 7COLORI CALIBRATI:
+R: 0 G: 0 B: 0
+
+
+Sending to WS: COLOR_JSON:{"r":0,"g":0,"b":0,"name":"Nero"}
+getting colorR: 89 G: 80 B: 44 C: 226
+R: 185 G: 166 B: 91 C: 470
+R: 265 G: 237 B: 130 C: 673
+R: 346 G: 309 B: 170 C: 879
+R: 432 G: 386 B: 212 C: 1099
+R: 523 G: 468 B: 257 C: 1332
+R: 611 G: 546 B: 300 C: 1555
+R: 700 G: 626 B: 344 C: 1782
+R: 789 G: 706 B: 388 C: 2010
+R: 878 G: 785 B: 432 C: 2236
+
+
+
+COLORI CALIBRATI:
+R: 44 G: 35 B: 24COLORI CALIBRATI:
+R: 0 G: 0 B: 0
+
+
+Sending to WS: COLOR_JSON:{"r":0,"g":0,"b":0,"name":"Nero"}
+getting colorR: 213 G: 192 B: 108 C: 550
+R: 428 G: 385 B: 217 C: 1102
+R: 643 G: 579 B: 326 C: 1656
+R: 860 G: 774 B: 436 C: 2214
+R: 1077 G: 969 B: 546 C: 2772
+R: 1292 G: 1163 B: 655 C: 3326
+R: 1507 G: 1356 B: 764 C: 3879
+R: 1727 G: 1554 B: 875 C: 4445
+R: 1953 G: 1758 B: 990 C: 5027
+R: 2179 G: 1961 B: 1104 C: 5609
+
+
+
+COLORI CALIBRATI:
+R: 110 G: 87 B: 63COLORI CALIBRATI:
+R: 64 G: 64 B: 0
+
+
+Sending to WS: COLOR_JSON:{"r":64,"g":64,"b":0,"name":"Giallo Scuro"}
+getting colorR: 62 G: 111 B: 118 C: 309
+R: 128 G: 231 B: 246 C: 643
+R: 195 G: 353 B: 376 C: 983
+R: 264 G: 479 B: 512 C: 1335
+R: 333 G: 605 B: 647 C: 1686
+R: 405 G: 737 B: 791 C: 2055
+R: 478 G: 871 B: 937 C: 2430
+R: 546 G: 992 B: 1067 C: 2767
+R: 613 G: 1110 B: 1195 C: 3098
+R: 678 G: 1225 B: 1319 C: 3421
+
+
+
+COLORI CALIBRATI:
+R: 34 G: 54 B: 75COLORI CALIBRATI:
+R: 0 G: 0 B: 64
+
+
+Sending to WS: COLOR_JSON:{"r":0,"g":0,"b":64,"name":"Blu-Magenta Scuro"}
+getting colorR: 89 G: 114 B: 119 C: 347
+R: 178 G: 228 B: 238 C: 693
+R: 265 G: 340 B: 354 C: 1033
+R: 350 G: 448 B: 466 C: 1361
+R: 432 G: 552 B: 574 C: 1677
+R: 514 G: 657 B: 682 C: 1994
+R: 598 G: 765 B: 794 C: 2321
+R: 679 G: 869 B: 904 C: 2639
+R: 758 G: 969 B: 1008 C: 2947
+R: 838 G: 1070 B: 1111 C: 3258
+
+
+
+COLORI CALIBRATI:
+R: 42 G: 47 B: 63COLORI CALIBRATI:
+R: 0 G: 0 B: 0
+
+
+Sending to WS: COLOR_JSON:{"r":0,"g":0,"b":0,"name":"Nero"}
+getting colorR: 28 G: 30 B: 25 C: 88
+R: 55 G: 60 B: 50 C: 175
+R: 83 G: 91 B: 75 C: 264
+R: 111 G: 122 B: 101 C: 354
+R: 138 G: 152 B: 126 C: 440
+R: 165 G: 182 B: 151 C: 527
+R: 193 G: 213 B: 177 C: 616
+R: 220 G: 243 B: 202 C: 703
+R: 247 G: 273 B: 227 C: 791
+R: 275 G: 304 B: 253 C: 881
+
+
+
+COLORI CALIBRATI:
+R: 14 G: 13 B: 14COLORI CALIBRATI:
+R: 0 G: 0 B: 0
+
+
+Sending to WS: COLOR_JSON:{"r":0,"g":0,"b":0,"name":"Nero"}
+WebSocket client #2 connesso da 192.168.4.2
+WebSocket client #3 connesso da 192.168.4.3
+getting colorR: 28 G: 31 B: 42 C: 106
+R: 56 G: 62 B: 85 C: 212
+R: 83 G: 92 B: 127 C: 315
+R: 111 G: 123 B: 169 C: 421
+R: 139 G: 154 B: 212 C: 527
+R: 166 G: 184 B: 254 C: 631
+R: 193 G: 215 B: 296 C: 736
+R: 221 G: 246 B: 339 C: 842
+R: 248 G: 276 B: 381 C: 946
+R: 276 G: 307 B: 423 C: 1052
+
+
+
+COLORI CALIBRATI:
+R: 14 G: 14 B: 24COLORI CALIBRATI:
+R: 0 G: 0 B: 0
+
+
+Sending to WS: COLOR_JSON:{"r":0,"g":0,"b":0,"name":"Nero"}
+getting colorR: 34 G: 69 B: 189 C: 303
+R: 69 G: 139 B: 378 C: 608
+R: 104 G: 208 B: 567 C: 912
+R: 138 G: 276 B: 756 C: 1213
+R: 173 G: 345 B: 945 C: 1517
+R: 207 G: 414 B: 1134 C: 1819
+R: 240 G: 481 B: 1322 C: 2118
+R: 274 G: 549 B: 1510 C: 2420
+R: 308 G: 617 B: 1697 C: 2720
+R: 341 G: 685 B: 1884 C: 3018
+
+
+
+COLORI CALIBRATI:
+R: 17 G: 30 B: 107COLORI CALIBRATI:
+R: 0 G: 0 B: 64
+
+
+Sending to WS: COLOR_JSON:{"r":0,"g":0,"b":64,"name":"Blu-Magenta Scuro"}
+getting colorR: 53 G: 85 B: 195 C: 346
+R: 105 G: 169 B: 389 C: 688
+R: 157 G: 253 B: 584 C: 1032
+R: 211 G: 339 B: 780 C: 1381
+R: 265 G: 424 B: 975 C: 1728
+R: 320 G: 510 B: 1170 C: 2078
+R: 379 G: 600 B: 1370 C: 2442
+R: 437 G: 690 B: 1569 C: 2803
+R: 494 G: 778 B: 1766 C: 3159
+R: 552 G: 867 B: 1965 C: 3520
+
+
+
+COLORI CALIBRATI:
+R: 28 G: 38 B: 111COLORI CALIBRATI:
+R: 0 G: 0 B: 64
+
+
+Sending to WS: COLOR_JSON:{"r":0,"g":0,"b":64,"name":"Blu-Magenta Scuro"}
+getting colorR: 123 G: 161 B: 262 C: 575
+R: 238 G: 311 B: 514 C: 1117
+R: 352 G: 459 B: 765 C: 1656
+R: 463 G: 605 B: 1014 C: 2186
+R: 575 G: 751 B: 1263 C: 2718
+R: 683 G: 893 B: 1508 C: 3237
+R: 790 G: 1033 B: 1752 C: 3751
+R: 901 G: 1178 B: 2000 C: 4281
+R: 1021 G: 1333 B: 2257 C: 4839
+R: 1148 G: 1497 B: 2519 C: 5422
+
+
+
+COLORI CALIBRATI:
+R: 58 G: 66 B: 143COLORI CALIBRATI:
+R: 0 G: 64 B: 128
+
+
+Sending to WS: COLOR_JSON:{"r":0,"g":64,"b":128,"name":"Blu-Ciano Scuro"}
+getting colorR: 380 G: 191 B: 277 C: 874
+R: 759 G: 380 B: 554 C: 1744
+R: 1143 G: 573 B: 835 C: 2629
+R: 1528 G: 768 B: 1116 C: 3518
+R: 1918 G: 971 B: 1403 C: 4427
+R: 2314 G: 1179 B: 1694 C: 5352
+R: 2709 G: 1385 B: 1984 C: 6272
+R: 3102 G: 1591 B: 2274 C: 7191
+R: 3496 G: 1798 B: 2564 C: 8112
+R: 3889 G: 2003 B: 2853 C: 9028
+
+
+
+COLORI CALIBRATI:
+R: 196 G: 88 B: 162COLORI CALIBRATI:
+R: 192 G: 64 B: 128
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":64,"b":128,"name":"Rosso-Magenta Chiaro"}
+getting colorR: 402 G: 217 B: 163 C: 823
+R: 802 G: 433 B: 326 C: 1642
+R: 1204 G: 651 B: 491 C: 2468
+R: 1609 G: 870 B: 656 C: 3298
+R: 2009 G: 1085 B: 818 C: 4114
+R: 2412 G: 1305 B: 983 C: 4943
+R: 2814 G: 1522 B: 1147 C: 5766
+R: 3213 G: 1736 B: 1308 C: 6579
+R: 3614 G: 1953 B: 1472 C: 7401
+R: 4012 G: 2166 B: 1633 C: 8212
+
+
+
+COLORI CALIBRATI:
+R: 202 G: 96 B: 93COLORI CALIBRATI:
+R: 192 G: 64 B: 64
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":64,"b":64,"name":"Rosso Scuro"}
+getting colorR: 554 G: 640 B: 492 C: 1766
+R: 1108 G: 1283 B: 986 C: 3536
+R: 1665 G: 1928 B: 1481 C: 5313
+R: 2216 G: 2565 B: 1971 C: 7070
+R: 2771 G: 3208 B: 2464 C: 8841
+R: 3326 G: 3852 B: 2958 C: 10614
+R: 3872 G: 4485 B: 3445 C: 12357
+R: 4425 G: 5126 B: 3938 C: 14124
+R: 4976 G: 5765 B: 4429 C: 15885
+R: 5521 G: 6399 B: 4917 C: 17630
+
+
+
+COLORI CALIBRATI:
+R: 256 G: 256 B: 256COLORI CALIBRATI:
+R: 256 G: 256 B: 256
+
+
+Sending to WS: COLOR_JSON:{"r":256,"g":256,"b":256,"name":"Rosso Scuro"}
+getting colorR: 599 G: 703 B: 539 C: 1937
+R: 1202 G: 1408 B: 1080 C: 3883
+R: 1800 G: 2108 B: 1616 C: 5812
+R: 2403 G: 2814 B: 2156 C: 7758
+R: 3005 G: 3520 B: 2697 C: 9705
+R: 3607 G: 4229 B: 3239 C: 11657
+R: 4208 G: 4935 B: 3780 C: 13602
+R: 4812 G: 5645 B: 4324 C: 15558
+R: 5415 G: 6353 B: 4866 C: 17509
+R: 6013 G: 7055 B: 5404 C: 19443
+
+
+
+COLORI CALIBRATI:
+R: 256 G: 256 B: 256COLORI CALIBRATI:
+R: 256 G: 256 B: 256
+
+
+Sending to WS: COLOR_JSON:{"r":256,"g":256,"b":256,"name":"Rosso Scuro"}
