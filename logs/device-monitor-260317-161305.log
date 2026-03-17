@@ -1,0 +1,240 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DOUT, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html.gz (1209 bytes)
+       index.html (3694 bytes)
+       script.js.gz (1517 bytes)
+       script.js (4394 bytes)
+       style.css.gz (2188 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html.gz (627 bytes)
+       index.html (1613 bytes)
+       script.js.gz (1763 bytes)
+       script.js (5027 bytes)
+       style.css.gz (1250 bytes)
+       style.css (3872 bytes)
+   wifi.json (75 bytes)
+loading data
+ESP32_ACCES
+ESP32_PSW
+
+
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   
+psw_wifi   
+AC online! IP : 192.168.4.1
+[  6091][E][vfs_api.cpp:105] open(): /littlefs/sensor_config.json does not exist, no permits for creation
+File path not found!
+[ 42119][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/index.html.gz.gz does not exist, no permits for creation
+WebSocket client #1 connesso da 192.168.4.2
+[104292][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico.gz does not exist, no permits for creation
+[104303][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico does not exist, no permits for creation
+[104314][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm.gz does not exist, no permits for creation
+[104327][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm does not exist, no permits for creation
+[112900][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico.gz does not exist, no permits for creation
+[112912][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico does not exist, no permits for creation
+[112923][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm.gz does not exist, no permits for creation
+[112934][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm does not exist, no permits for creation
+WebSocket client #2 connesso da 192.168.4.2
+sensor is not calibrated, please do
+sensor is not calibrated, please do
+sensor is not calibrated, please do
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+133124122
+133124122
+133124122
+133124122
+133124122
+133124122
+133124123
+133124123
+133124123
+133125123
+133124123
+133124123
+133124123
+133124122
+133124122
+133124122
+132124122
+133124122
+133124122
+133124122
+132124122
+132124122
+132123122
+132123122
+132123122
+132123122
+132123122
+132123122
+132123122
+132123122
+132123122
+132123122
+132123122
+132123121
+132123122
+132123122
+132123122
+132123122
+132123121
+132123121
+132123121
+132123121
+132123121
+132123121
+132123122
+132123121
+132123121
+132123121
+131123121
+132123121
+Max value:132
+
+color adjustation: 1.001.071.09
+
+
+Calibration Done
+getting colorR: 130 G: 119 B: 117 C: 276
+R: 259 G: 238 B: 233 C: 551
+R: 389 G: 357 B: 349 C: 827
+R: 518 G: 475 B: 465 C: 1101
+R: 646 G: 592 B: 580 C: 1373
+R: 773 G: 708 B: 694 C: 1642
+R: 901 G: 825 B: 808 C: 1913
+R: 1029 G: 942 B: 923 C: 2185
+R: 1157 G: 1060 B: 1038 C: 2458
+R: 1285 G: 1178 B: 1153 C: 2731
+
+
+
+COLORI CALIBRATI:
+R: 248 G: 244 B: 243COLORI CALIBRATI:
+R: 256 G: 256 B: 256
+
+
+Sending to WS: COLOR_JSON:{"r":256,"g":256,"b":256,"name":"Bianco"}
+getting colorR: 125 G: 116 B: 113 C: 271
+R: 249 G: 231 B: 226 C: 540
+R: 373 G: 346 B: 338 C: 809
+R: 496 G: 460 B: 450 C: 1076
+R: 618 G: 573 B: 561 C: 1342
+R: 739 G: 685 B: 671 C: 1606
+R: 860 G: 797 B: 781 C: 1869
+R: 981 G: 909 B: 891 C: 2132
+R: 1101 G: 1020 B: 1000 C: 2394
+R: 1221 G: 1131 B: 1109 C: 2656
+
+
+
+COLORI CALIBRATI:
+R: 236 G: 234 B: 234COLORI CALIBRATI:
+R: 256 G: 256 B: 256
+
+
+Sending to WS: COLOR_JSON:{"r":256,"g":256,"b":256,"name":"Bianco"}
+getting colorR: 1160 G: 862 B: 645 C: 2751
+R: 2346 G: 1670 B: 1234 C: 5407
+R: 3552 G: 2558 B: 1895 C: 8253
+R: 4740 G: 3429 B: 2543 C: 11046
+R: 5925 G: 4288 B: 3185 C: 13816
+R: 7100 G: 5107 B: 3791 C: 16484
+R: 8288 G: 5900 B: 4364 C: 19096
+R: 9414 G: 6728 B: 4985 C: 21747
+R: 10450 G: 7502 B: 5573 C: 24218
+R: 11396 G: 8195 B: 6101 C: 26442
+
+
+
+COLORI CALIBRATI:
+R: 256 G: 256 B: 256COLORI CALIBRATI:
+R: 256 G: 256 B: 256
+
+
+Sending to WS: COLOR_JSON:{"r":256,"g":256,"b":256,"name":"Bianco"}
+[194941][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico.gz does not exist, no permits for creation
+[194953][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico does not exist, no permits for creation
+[194964][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm.gz does not exist, no permits for creation
+[194976][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm does not exist, no permits for creation
+WebSocket client #3 connesso da 192.168.4.2
+getting colorR: 1059 G: 772 B: 588 C: 2485
+R: 2107 G: 1535 B: 1170 C: 4943
+R: 3106 G: 2258 B: 1723 C: 7276
+R: 4079 G: 2957 B: 2259 C: 9537
+R: 5022 G: 3630 B: 2777 C: 11718
+R: 5977 G: 4315 B: 3304 C: 13935
+R: 6973 G: 5035 B: 3855 C: 16257
+R: 7967 G: 5757 B: 4408 C: 18581
+R: 9009 G: 6519 B: 4991 C: 21032
+R: 10070 G: 7306 B: 5592 C: 23548
+
+
+
+COLORI CALIBRATI:
+R: 256 G: 256 B: 256COLORI CALIBRATI:
+R: 256 G: 256 B: 256
+
+
+Sending to WS: COLOR_JSON:{"r":256,"g":256,"b":256,"name":"Bianco"}
+[223681][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico.gz does not exist, no permits for creation
+[223695][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico does not exist, no permits for creation
+[223707][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm.gz does not exist, no permits for creation
+[223719][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm does not exist, no permits for creation
+WebSocket client #4 connesso da 192.168.4.2
+[322282][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico.gz does not exist, no permits for creation
+[322297][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico does not exist, no permits for creation
+[322309][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm.gz does not exist, no permits for creation
+[322321][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm does not exist, no permits for creation
+WebSocket client #5 connesso da 192.168.4.2
+[325234][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico.gz does not exist, no permits for creation
+[325246][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico does not exist, no permits for creation
+[325257][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm.gz does not exist, no permits for creation
+[325269][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm does not exist, no permits for creation
+WebSocket client #6 connesso da 192.168.4.2
+[339288][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico.gz does not exist, no permits for creation
+[339301][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico does not exist, no permits for creation
+[339313][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm.gz does not exist, no permits for creation
+[339326][E][vfs_api.cpp:105] open(): /littlefs/favicon.ico/index.htm does not exist, no permits for creation
+WebSocket client #7 connesso da 192.168.4.2
+getting colorR: 132 G: 121 B: 118 C: 279
+R: 265 G: 242 B: 236 C: 558
+R: 397 G: 363 B: 354 C: 836
+R: 529 G: 483 B: 472 C: 1114
+R: 661 G: 603 B: 590 C: 1391
+R: 793 G: 724 B: 708 C: 1669
+R: 925 G: 844 B: 826 C: 1946
+R: 1057 G: 964 B: 944 C: 2224
+R: 1189 G: 1084 B: 1062 C: 2501
+R: 1321 G: 1204 B: 1180 C: 2778
+
+
+
+COLORI CALIBRATI:
+R: 255 G: 250 B: 249COLORI CALIBRATI:
+R: 256 G: 256 B: 256
+
+
+Sending to WS: COLOR_JSON:{"r":256,"g":256,"b":256,"name":"Bianco"}

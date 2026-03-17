@@ -4,23 +4,35 @@
 #include <LittleFS.h>
 
 
-
 WebManager::WebType WebManager::begin() {
 
-    server.on("/",HTTP_GET, [this](AsyncWebServerRequest *request){
-        if (request->client()->localIP() == WiFi.softAPIP())
-            request->redirect(String(ac_webapp_path.c_str()) + "/index.html");
-        else
-            request->redirect(String(wifi_webapp_path.c_str()) + "/index.html");
+    // 1. Gestione della ROOT (Home Page) senza redirect per stabilità su iPad
+    server.on("/", HTTP_GET, [this](AsyncWebServerRequest *request){
+        const char* path;
+        if (request->client()->localIP() == WiFi.softAPIP()) {
+            path = "/esp32_webapp/index.html";
+        } else {
+            path = "/external_webapp/index.html";
+        }
+        // Invio diretto del file. Il 'false' finale impedisce la ricerca di .gz
+        request->send(LittleFS, path, "text/html", false);
     });
+
+    // 2. Risposta immediata per la favicon (evita caricamenti infiniti su iOS/iPadOS)
+    server.on("/favicon.ico", HTTP_GET, [](AsyncWebServerRequest *request){
+        request->send(204);
+    });
+
     server.on("/test", HTTP_GET, [](AsyncWebServerRequest *request){
-             request->send(200, "text/plain", "Il server funziona, il problema è LittleFS!");});
+        request->send(200, "text/plain", "Il server funziona!");
+    });
+
     // Serve static files (CSS, JS) from LittleFS
-    server.serveStatic(ac_webapp_path.c_str(), LittleFS, ac_webapp_path.c_str());
-    server.serveStatic(wifi_webapp_path.c_str(), LittleFS, wifi_webapp_path.c_str());
+    server.serveStatic(ac_webapp_path.c_str(), LittleFS, ac_webapp_path.c_str()).setCacheControl("max-age=600"); 
+    server.serveStatic(wifi_webapp_path.c_str(), LittleFS, wifi_webapp_path.c_str()).setCacheControl("max-age=600");
     server.serveStatic("/", LittleFS, "/");
 
-    // Configure the WebSocket event handler
+    // --- Parte WebSocket (Inalterata come richiesto) ---
     ws.onEvent([this](AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len) {
         
         if (type == WS_EVT_CONNECT) {
@@ -44,17 +56,12 @@ WebManager::WebType WebManager::begin() {
         else if (type == WS_EVT_PONG) {
             Serial.printf("WebSocket client #%u ha risposto al ping\n", client->id());
         }
-
-        
-
     });
 
     server.addHandler(&ws);
     server.begin();
     return SERVER_ONLINE;
 }
-
-
 WebManager::WebType WebManager::updateColor(RGB rgb) {
     JsonDocument doc;
     doc["r"] = rgb.r;

@@ -1,0 +1,200 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DOUT, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   wifi.json (75 bytes)
+loading data
+ESP32_ACCES
+ESP32_PSW
+
+
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   
+psw_wifi   
+AC online! IP : 192.168.4.1
+[  5991][E][vfs_api.cpp:105] open(): /littlefs/sensor_config.json does not exist, no permits for creation
+File path not found!
+[ 32966][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/index.html.gz does not exist, no permits for creation
+WebSocket client #1 connesso da 192.168.4.2
+WebSocket client #2 connesso da 192.168.4.2
+[ 37965][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/index.html.gz does not exist, no permits for creation
+WebSocket client #3 connesso da 192.168.4.2
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+553676575
+553679577
+555683579
+551680577
+552680577
+553682579
+550681580
+550679578
+548676575
+552680578
+549678578
+553684582
+546676576
+551681580
+550682581
+552685583
+549681579
+548679578
+552684583
+552685582
+553685581
+548679576
+554685580
+553684581
+557688584
+550680578
+551682579
+555689585
+553687584
+554685582
+549680579
+550675575
+547673575
+553684583
+551683582
+554685584
+557689588
+558691589
+556691588
+557696593
+561705599
+556697592
+557692588
+557696593
+554694590
+554693589
+550689586
+555693588
+552691586
+553693587
+Max value:684
+
+color adjustation: 1.241.001.18
+
+
+Calibration Done
+getting colorR: 551 G: 684 B: 582 C: 1883
+R: 1101 G: 1366 B: 1162 C: 3761
+R: 1652 G: 2051 B: 1744 C: 5645
+R: 2212 G: 2749 B: 2338 C: 7566
+R: 2764 G: 3437 B: 2922 C: 9456
+R: 3320 G: 4129 B: 3509 C: 11359
+R: 3879 G: 4833 B: 4107 C: 13292
+R: 4442 G: 5545 B: 4712 C: 15246
+R: 5003 G: 6250 B: 5310 C: 17181
+R: 5560 G: 6945 B: 5900 C: 19091
+
+
+
+COLORI CALIBRATI:
+R: 256 G: 256 B: 256COLORI CALIBRATI:
+R: 256 G: 256 B: 256
+
+
+Sending to WS: COLOR_JSON:{"r":256,"g":256,"b":256,"name":"Bianco"}
+getting colorR: 431 G: 263 B: 198 C: 927
+R: 862 G: 523 B: 396 C: 1850
+R: 1297 G: 788 B: 597 C: 2785
+R: 1729 G: 1050 B: 796 C: 3711
+R: 2165 G: 1319 B: 1001 C: 4661
+R: 2604 G: 1591 B: 1207 C: 5617
+R: 3043 G: 1862 B: 1413 C: 6571
+R: 3482 G: 2135 B: 1620 C: 7530
+R: 3919 G: 2408 B: 1826 C: 8486
+R: 4360 G: 2685 B: 2035 C: 9454
+
+
+
+COLORI CALIBRATI:
+R: 201 G: 100 B: 89COLORI CALIBRATI:
+R: 192 G: 128 B: 64
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":128,"b":64,"name":"Arancio Chiaro"}
+getting colorR: 441 G: 293 B: 229 C: 1004
+R: 883 G: 588 B: 457 C: 2011
+R: 1322 G: 881 B: 683 C: 3011
+R: 1762 G: 1177 B: 910 C: 4018
+R: 2204 G: 1471 B: 1138 C: 5024
+R: 2643 G: 1764 B: 1364 C: 6025
+R: 3082 G: 2059 B: 1591 C: 7029
+R: 3519 G: 2351 B: 1816 C: 8027
+R: 3960 G: 2645 B: 2043 C: 9032
+R: 4397 G: 2935 B: 2266 C: 10025
+
+
+
+COLORI CALIBRATI:
+R: 203 G: 109 B: 99COLORI CALIBRATI:
+R: 192 G: 128 B: 128
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":128,"b":128,"name":"Arancio Chiaro"}
+getting colorR: 286 G: 82 B: 68 C: 425
+R: 574 G: 165 B: 136 C: 852
+R: 863 G: 248 B: 205 C: 1282
+R: 1155 G: 334 B: 276 C: 1721
+R: 1446 G: 420 B: 347 C: 2158
+R: 1739 G: 507 B: 419 C: 2600
+R: 2033 G: 594 B: 491 C: 3042
+R: 2327 G: 681 B: 564 C: 3485
+R: 2619 G: 768 B: 636 C: 3926
+R: 2913 G: 855 B: 708 C: 4368
+
+
+
+COLORI CALIBRATI:
+R: 135 G: 32 B: 31COLORI CALIBRATI:
+R: 128 G: 64 B: 0
+
+
+Sending to WS: COLOR_JSON:{"r":128,"g":64,"b":0,"name":"Arancio Scuro"}
+getting colorR: 333 G: 156 B: 328 C: 814
+R: 666 G: 312 B: 656 C: 1627
+R: 1004 G: 472 B: 989 C: 2455
+R: 1340 G: 631 B: 1320 C: 3278
+R: 1674 G: 788 B: 1649 C: 4096
+R: 2009 G: 946 B: 1978 C: 4915
+R: 2343 G: 1103 B: 2307 C: 5731
+R: 2680 G: 1262 B: 2638 C: 6553
+R: 3016 G: 1420 B: 2968 C: 7373
+R: 3352 G: 1579 B: 3298 C: 8195
+
+
+
+COLORI CALIBRATI:
+R: 155 G: 59 B: 144COLORI CALIBRATI:
+R: 128 G: 64 B: 128
+
+
+Sending to WS: COLOR_JSON:{"r":128,"g":64,"b":128,"name":"Magenta Scuro"}
