@@ -3,50 +3,99 @@
 
 #include <LittleFS.h>
 
-
 WebManager::WebType WebManager::begin() {
 
-    // 1. Gestione della ROOT (Home Page) senza redirect per stabilità su iPad
-    server.on("/", HTTP_GET, [this](AsyncWebServerRequest *request){
-        const char* path;
-        if (request->client()->localIP() == WiFi.softAPIP()) {
-            path = "/esp32_webapp/index.html";
-        } else {
-            path = "/external_webapp/index.html";
-        }
-        // Invio diretto del file. Il 'false' finale impedisce la ricerca di .gz
-        request->send(LittleFS, path, "text/html", false);
+    // --- 1. SEZIONE APPLE CAPTIVE PORTAL & STABILITÀ SAFARI ---
+    // Questi devono essere i primi per intercettare i test di rete di iPadOS
+    
+    server.on("/hotspot-detect.html", HTTP_GET, [](AsyncWebServerRequest *request){
+        request->send(200, "text/html", "<html><body>Success</body></html>");
     });
 
-    // 2. Risposta immediata per la favicon (evita caricamenti infiniti su iOS/iPadOS)
-    server.on("/favicon.ico", HTTP_GET, [](AsyncWebServerRequest *request){
+    server.on("/generate_204", HTTP_GET, [](AsyncWebServerRequest *request){
         request->send(204);
     });
 
-    server.on("/test", HTTP_GET, [](AsyncWebServerRequest *request){
-        request->send(200, "text/plain", "Il server funziona!");
+    server.on("/favicon.ico", HTTP_GET, [](AsyncWebServerRequest *request){
+        request->send(204); 
     });
 
-    // Serve static files (CSS, JS) from LittleFS
-    server.serveStatic(ac_webapp_path.c_str(), LittleFS, ac_webapp_path.c_str()).setCacheControl("max-age=600"); 
-    server.serveStatic(wifi_webapp_path.c_str(), LittleFS, wifi_webapp_path.c_str()).setCacheControl("max-age=600");
-    server.serveStatic("/", LittleFS, "/");
+    // --- 2. GESTIONE DELLA ROOT (HOME PAGE) ---
+    server.on("/", HTTP_GET, [this](AsyncWebServerRequest *request){
+        String path;
+        if (request->client()->localIP() == WiFi.softAPIP()) {
+            path = "/esp32_webapp/index.html";
+            Serial.println("Web: Accesso da Access Point -> esp32_webapp");
+        } else {
+            path = "/external_webapp/index.html";
+            Serial.println("Web: Accesso da Station -> external_webapp");
+        }
+        
+        if (LittleFS.exists(path)) {
+            // Per iPad è meglio usare beginResponse anche qui per aggiungere Connection: close
+            AsyncWebServerResponse *response = request->beginResponse(LittleFS, path, "text/html");
+            response->addHeader("Connection", "close");
+            request->send(response);
+        } else {
+            request->send(404, "text/plain", "Errore: File Index non trovato");
+        }
+    });
 
-    // --- Parte WebSocket (Inalterata come richiesto) ---
+    // --- 3. HANDLER DINAMICO PER RISORSE (CSS, JS, IMMAGINI) ---
+    server.onNotFound([this](AsyncWebServerRequest *request){
+        String url = request->url();
+        
+        // Evitiamo richieste per directory
+        if (url.endsWith("/")) {
+            request->send(404);
+            return;
+        }
+
+        String fullPath = "";
+        String folderAP = "/esp32_webapp";
+        String folderSTA = "/external_webapp";
+
+        // Verifica se l'URL ha già il prefisso (per evitare raddoppi)
+        if (url.startsWith(folderAP) || url.startsWith(folderSTA)) {
+            fullPath = url;
+        } else {
+            String prefix = (request->client()->localIP() == WiFi.softAPIP()) ? folderAP : folderSTA;
+            fullPath = prefix + url;
+        }
+
+        fullPath.replace("//", "/");
+
+        if (LittleFS.exists(fullPath)) {
+            // String() come terzo parametro lascia che la libreria deduca il Mime-Type dall'estensione
+            AsyncWebServerResponse *response = request->beginResponse(LittleFS, fullPath, String(), false);
+            
+            // Header cruciali per iPadOS e Safari
+            response->addHeader("Connection", "close"); 
+            response->addHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            response->addHeader("Pragma", "no-cache");
+            response->addHeader("Expires", "0");
+            
+            request->send(response);
+        } else {
+            Serial.printf("Web: 404 Not Found -> %s\n", fullPath.c_str());
+            request->send(404);
+        }
+    });
+
+    // --- 4. CONFIGURAZIONE WEBSOCKET ---
     ws.onEvent([this](AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len) {
         
         if (type == WS_EVT_CONNECT) {
-            Serial.printf("WebSocket client #%u connesso da %s\n", client->id(), client->remoteIP().toString().c_str());
+            Serial.printf("WS: Client #%u connesso da %s\n", client->id(), client->remoteIP().toString().c_str());
             client->text("STATUS:online");
         } 
         
         else if (type == WS_EVT_DISCONNECT) {
-            Serial.printf("WebSocket client #%u disconnesso\n", client->id());
+            Serial.printf("WS: Client #%u disconnesso\n", client->id());
         } 
         
         else if (type == WS_EVT_DATA) {
             AwsFrameInfo *info = (AwsFrameInfo*)arg;
-            
             if (info->final && info->index == 0 && info->len == len && info->opcode == WS_TEXT) {
                 data[len] = 0; 
                 this->getData(arg, data, len);
@@ -54,14 +103,17 @@ WebManager::WebType WebManager::begin() {
         }
         
         else if (type == WS_EVT_PONG) {
-            Serial.printf("WebSocket client #%u ha risposto al ping\n", client->id());
+            Serial.printf("WS: Client #%u PONG\n", client->id());
         }
     });
 
     server.addHandler(&ws);
     server.begin();
+    
+    Serial.println("Web Server Online");
     return SERVER_ONLINE;
 }
+
 WebManager::WebType WebManager::updateColor(RGB rgb) {
     JsonDocument doc;
     doc["r"] = rgb.r;

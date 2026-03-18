@@ -1,0 +1,378 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DOUT, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   wifi.json (75 bytes)
+loading data
+ESP32_ACCES
+ESP32_PSW
+
+
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   
+psw_wifi   
+AC online! IP : 192.168.4.1
+[  6458][E][vfs_api.cpp:105] open(): /littlefs/sensor_config.json does not exist, no permits for creation
+File path not found!
+[ 94588][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/index.html.gz does not exist, no permits for creation
+[ 95226][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/style.css.gz does not exist, no permits for creation
+[ 95273][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/script.js.gz does not exist, no permits for creation
+[133164][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/index.html.gz does not exist, no permits for creation
+WebSocket client #1 connesso da 192.168.4.2
+WebSocket client #2 connesso da 192.168.4.2
+[137549][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/index.html.gz does not exist, no permits for creation
+WebSocket client #3 connesso da 192.168.4.2
+--- JSON Update (Object Input) ---
+--- JSON Merge & Save Completato ---
+Credenziali salvate e conferma inviata al client.
+Thomas's Galaxy s25 Edge
+Password
+data loaded succesfully!
+WIFI CONNECTION
+Connecting toThomas's Galaxy s25 EdgePassword##
+Cannot connceted to WIFI! IP:0.0.0.0#1#
+����������������������������������������������������������������--
+--- JSON Merge & Save Completato ---
+Credenziali salvate e conferma inviata al client.
+Casa Colombo
+c0l0mb0Family!
+data loaded succesfully!
+WIFI CONNECTION
+Connecting toCasa Colomboc0l0mb0Family!##
+Cannot connceted to WIFI! IP:0.0.0.0#6#
+--- JSON Update (Object Input) ---
+--- JSON Merge & Save Completato ---
+Credenziali salvate e conferma inviata al client.
+Casa Colombo
+C0l0mb0Family!
+data loaded succesfully!
+WIFI CONNECTION
+Connecting toCasa ColomboC0l0mb0Family!##
+Succesfully connceted to WIFI! IP: 
+192.168.1.15Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+404485395
+406488397
+403485396
+403485395
+404485395
+405486396
+406488397
+405486396
+402484393
+405487395
+406488397
+406488397
+407490398
+406488397
+404487395
+406489397
+407489398
+407489398
+408490398
+405486395
+404486395
+406489397
+407490398
+407490398
+408490398
+405487396
+405487395
+407489397
+407489397
+408490397
+408490398
+405487395
+406487395
+407489396
+407490397
+410493400
+410492400
+407489397
+408490398
+408490398
+407490397
+409491398
+407490397
+409492399
+411493400
+409491399
+408490398
+408490397
+408490398
+411493400
+Max value:488
+
+color adjustation: 1.201.001.23
+
+
+Calibration Done
+getting colorR: 279 G: 96 B: 73 C: 449
+R: 558 G: 193 B: 147 C: 900
+R: 837 G: 290 B: 220 C: 1349
+R: 1115 G: 385 B: 292 C: 1796
+R: 1393 G: 482 B: 365 C: 2244
+R: 1669 G: 576 B: 437 C: 2686
+R: 1946 G: 671 B: 509 C: 3131
+R: 2221 G: 766 B: 581 C: 3573
+R: 2492 G: 859 B: 651 C: 4008
+R: 2767 G: 954 B: 723 C: 4450
+
+
+
+COLORI CALIBRATI:
+R: 174 G: 50 B: 46COLORI CALIBRATI:
+R: 192 G: 64 B: 64
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":64,"b":64,"name":"Rosso Scuro"}
+getting colorR: 284 G: 135 B: 240 C: 666
+R: 565 G: 268 B: 478 C: 1324
+R: 849 G: 404 B: 717 C: 1990
+R: 1134 G: 541 B: 957 C: 2659
+R: 1414 G: 675 B: 1194 C: 3317
+R: 1694 G: 810 B: 1431 C: 3978
+R: 1977 G: 947 B: 1670 C: 4644
+R: 2255 G: 1081 B: 1906 C: 5300
+R: 2531 G: 1213 B: 2140 C: 5949
+R: 2809 G: 1346 B: 2375 C: 6602
+
+
+
+COLORI CALIBRATI:
+R: 176 G: 70 B: 153COLORI CALIBRATI:
+R: 192 G: 64 B: 128
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":64,"b":128,"name":"Rosso Magenta Chiaro"}
+getting colorR: 50 G: 86 B: 203 C: 346
+R: 85 G: 158 B: 395 C: 651
+R: 144 G: 252 B: 601 C: 1019
+R: 201 G: 344 B: 804 C: 1381
+R: 260 G: 438 B: 1009 C: 1749
+R: 321 G: 533 B: 1214 C: 2120
+R: 383 G: 629 B: 1418 C: 2492
+R: 443 G: 724 B: 1622 C: 2860
+R: 501 G: 816 B: 1824 C: 3220
+R: 558 G: 907 B: 2024 C: 3577
+
+
+
+COLORI CALIBRATI:
+R: 35 G: 47 B: 130COLORI CALIBRATI:
+R: 64 G: 64 B: 128
+
+
+Sending to WS: COLOR_JSON:{"r":64,"g":64,"b":128,"name":"Blu Magenta Scuro"}
+����������������������������������������������������������������oint your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+WebSocket client #4 connesso da 192.168.4.2
+Calibrating!!
+281341280
+280339279
+281340279
+280339278
+279338277
+277334275
+276333274
+277334275
+275333274
+276333275
+274331272
+273330271
+271328270
+271328270
+271327269
+272329270
+273329270
+270326268
+270325267
+268323265
+268322265
+267322264
+267321263
+266320262
+263316259
+263316258
+261314257
+262316258
+262315257
+261313256
+260312255
+258311254
+258310252
+259312253
+259311254
+257308252
+256306250
+256307250
+257308251
+257309251
+257308251
+255306249
+255307249
+253303247
+253303246
+252303246
+253303246
+251301245
+251300244
+251300243
+Max value:318
+
+color adjustation: 1.201.001.22
+
+
+Calibration Done
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+421532452
+423534454
+421533454
+423534454
+422534454
+426538457
+425537457
+422534454
+421532452
+422533453
+423535455
+424536456
+422534454
+423535455
+423535455
+421534455
+422534455
+420533454
+419531451
+421534453
+422534454
+420533453
+419532452
+419532452
+421534454
+423536455
+421534453
+420532452
+420532452
+420533453
+422535455
+420532453
+418530451
+424536455
+425537457
+424537456
+422534454
+420532453
+421533453
+423535455
+421532454
+419528450
+415525447
+418529449
+421532452
+421531451
+419529450
+419530451
+420530451
+421532453
+Max value:533
+
+color adjustation: 1.271.001.18
+
+
+Calibration Done
+getting colorR: 282 G: 85 B: 67 C: 429
+R: 566 G: 171 B: 134 C: 861
+R: 849 G: 256 B: 201 C: 1290
+R: 1132 G: 341 B: 268 C: 1720
+R: 1414 G: 424 B: 333 C: 2146
+R: 1698 G: 509 B: 399 C: 2576
+R: 1981 G: 594 B: 466 C: 3006
+R: 2264 G: 680 B: 534 C: 3439
+R: 2550 G: 767 B: 603 C: 3876
+R: 2836 G: 854 B: 672 C: 4313
+
+
+
+COLORI CALIBRATI:
+R: 172 G: 41 B: 38COLORI CALIBRATI:
+R: 192 G: 64 B: 64
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":64,"b":64,"name":"Rosso Scuro"}
+--- JSON Update (Object Input) ---
+--- JSON Merge & Save Completato ---
+Credenziali salvate e conferma inviata al client.
+Casa Colombo
+C0l0mb0Family!
+data loaded succesfully!
+WIFI CONNECTION
+Connecting toCasa ColomboC0l0mb0Family!##
+Succesfully connceted to WIFI! IP: 
+192.168.1.15[1375106][E][vfs_api.cpp:105] open(): /littlefs/style.css.gz does not exist, no permits for creation
+[1375120][E][vfs_api.cpp:105] open(): /littlefs/style.css does not exist, no permits for creation
+[1375133][E][vfs_api.cpp:105] open(): /littlefs/style.css/index.htm.gz does not exist, no permits for creation
+[1375146][E][vfs_api.cpp:105] open(): /littlefs/style.css/index.htm does not exist, no permits for creation
+[1375168][E][vfs_api.cpp:105] open(): /littlefs/script.js.gz does not exist, no permits for creation
+[1375181][E][vfs_api.cpp:105] open(): /littlefs/script.js does not exist, no permits for creation
+[1375194][E][vfs_api.cpp:105] open(): /littlefs/script.js/index.htm.gz does not exist, no permits for creation
+[1375209][E][vfs_api.cpp:105] open(): /littlefs/script.js/index.htm does not exist, no permits for creation
+[1380323][E][vfs_api.cpp:105] open(): /littlefs/style.css.gz does not exist, no permits for creation
+[1380336][E][vfs_api.cpp:105] open(): /littlefs/style.css does not exist, no permits for creation
+[1380349][E][vfs_api.cpp:105] open(): /littlefs/style.css/index.htm.gz does not exist, no permits for creation
+[1380363][E][vfs_api.cpp:105] open(): /littlefs/style.css/index.htm does not exist, no permits for creation
+[1380386][E][vfs_api.cpp:105] open(): /littlefs/script.js.gz does not exist, no permits for creation
+[1380399][E][vfs_api.cpp:105] open(): /littlefs/script.js does not exist, no permits for creation
+[1380412][E][vfs_api.cpp:105] open(): /littlefs/script.js/index.htm.gz does not exist, no permits for creation
+[1380426][E][vfs_api.cpp:105] open(): /littlefs/script.js/index.htm does not exist, no permits for creation
+[1400618][E][vfs_api.cpp:105] open(): /littlefs/index.html.gz does not exist, no permits for creation
+[1400631][E][vfs_api.cpp:105] open(): /littlefs/index.html does not exist, no permits for creation
+[1400644][E][vfs_api.cpp:105] open(): /littlefs/index.html/index.htm.gz does not exist, no permits for creation
+[1400657][E][vfs_api.cpp:105] open(): /littlefs/index.html/index.htm does not exist, no permits for creation
+[1442284][E][vfs_api.cpp:105] open(): /littlefs/style.css.gz does not exist, no permits for creation
+[1442297][E][vfs_api.cpp:105] open(): /littlefs/style.css does not exist, no permits for creation
+[1442310][E][vfs_api.cpp:105] open(): /littlefs/style.css/index.htm.gz does not exist, no permits for creation
+[1442324][E][vfs_api.cpp:105] open(): /littlefs/style.css/index.htm does not exist, no permits for creation
+[1442349][E][vfs_api.cpp:105] open(): /littlefs/script.js.gz does not exist, no permits for creation
+[1442362][E][vfs_api.cpp:105] open(): /littlefs/script.js does not exist, no permits for creation
+[1442375][E][vfs_api.cpp:105] open(): /littlefs/script.js/index.htm.gz does not exist, no permits for creation
+[1442389][E][vfs_api.cpp:105] open(): /littlefs/script.js/index.htm does not exist, no permits for creation

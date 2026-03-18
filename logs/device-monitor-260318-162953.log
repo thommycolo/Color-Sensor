@@ -1,0 +1,262 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DOUT, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+  #0  0x40080400 in _init at ??:?
+
+entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   sensor_config.json (68 bytes)
+   wifi.json (101 bytes)
+loading data
+ESP32_ACCES
+ESP32_PSW
+Casa Colombo
+C0l0mb0Family!
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Casa Colombo
+psw_wifi   C0l0mb0Family!
+AC online! IP : 192.168.4.1
+WIFI CONNECTION
+Connecting toCasa ColomboC0l0mb0Family!##
+Succesfully connceted to WIFI! IP: 
+192.168.1.151.266033
+1
+1.1766
+533
+data loaded succesfully!
+WebSocket client #1 connesso da 192.168.1.24
+[ 23349][E][vfs_api.cpp:105] open(): /littlefs/external_webapp/favicon.ico does not exist, no permits for creation
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+119132104
+119133104
+119133104
+121133104
+120132103
+122134105
+360425352
+378446369
+371438363
+371441366
+370441366
+369441367
+369442367
+367440366
+367442367
+366439365
+367440366
+367440366
+367439365
+365438364
+364436363
+364437363
+364437363
+362435362
+350425356
+350423355
+357424354
+363427357
+364430359
+364432361
+368435362
+372434363
+365426357
+361422354
+366430361
+361424357
+349411347
+355417351
+360422355
+360424356
+350418350
+349420351
+354423353
+358425355
+361428357
+364429358
+361427356
+361425354
+361425354
+360423353
+Max value:394
+
+color adjustation: 1.181.001.20
+
+
+Calibration Done
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+243286232
+244286231
+204248205
+202244202
+198240199
+200242200
+199240198
+203242199
+203243200
+206246202
+208248203
+220259211
+220259211
+222261212
+222261212
+222261212
+221260211
+221260211
+220258210
+221259210
+218256208
+219256207
+217254206
+219257208
+219257208
+220258209
+218256208
+219256208
+218256208
+221259209
+219257208
+220258209
+218256208
+220258209
+220258209
+219257208
+217255207
+219256208
+219256208
+221260210
+219257208
+221259209
+220258209
+221259210
+220258209
+220257208
+219257208
+221259210
+220258209
+220258209
+Max value:256
+
+color adjustation: 1.181.001.23
+
+
+Calibration Done
+Starting calibration process!
+point your sensor to a white surface
+Calibration starting in:
+5
+4
+3
+2
+1
+Calibrating!!
+393472395
+393473395
+398477399
+403482402
+401480401
+400478399
+399478399
+402481401
+401480400
+399478399
+400478399
+398478399
+403482402
+400479400
+400480400
+398477398
+401480400
+402481402
+401480400
+400479400
+399478399
+402482401
+401481401
+401480400
+398478399
+404483402
+406485403
+406486404
+405484403
+403482402
+405484403
+405484403
+406486404
+402481401
+405484402
+404484403
+407487405
+404484403
+404482401
+403483401
+402482402
+400481401
+399480400
+401481401
+400480400
+405485404
+402482402
+403483402
+401481401
+404484402
+Max value:481
+
+color adjustation: 1.201.001.20
+
+
+Calibration Done
+getting colorR: 269 G: 66 B: 54 C: 381
+R: 535 G: 131 B: 107 C: 757
+R: 803 G: 197 B: 161 C: 1139
+R: 1071 G: 263 B: 215 C: 1522
+R: 1341 G: 331 B: 270 C: 1909
+R: 1614 G: 401 B: 327 C: 2304
+R: 1886 G: 470 B: 383 C: 2696
+R: 2160 G: 540 B: 440 C: 3091
+R: 2435 G: 610 B: 496 C: 3487
+R: 2712 G: 682 B: 554 C: 3889
+
+
+
+COLORI CALIBRATI:
+R: 172 G: 36 B: 35COLORI CALIBRATI:
+R: 192 G: 64 B: 64
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":64,"b":64,"name":"Rosso Scuro"}
+[166639][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/esp32_webapp/index.html does not exist, no permits for creation
+[203512][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/esp32_webapp/index.html does not exist, no permits for creation
+[206983][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/esp32_webapp/style.css does not exist, no permits for creation
+[207010][E][vfs_api.cpp:105] open(): /littlefs/esp32_webapp/esp32_webapp/script.js does not exist, no permits for creation

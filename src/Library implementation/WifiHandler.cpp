@@ -30,7 +30,8 @@ void WifiHandler :: begin(){
             Serial.print("psw_ac   ");Serial.println(psw);
             Serial.print("ssid_wifi   ");Serial.println(data[2]);
             Serial.print("psw_wifi   ");Serial.println(data[3]);
-            
+            WiFi.disconnect(true);
+            delay(500);
             WiFi.mode(WIFI_AP_STA); //act as an AccesPoint as a Client
             delay(100);
             if(!ACturnOn(ssid,psw))
@@ -73,9 +74,13 @@ bool WifiHandler :: WifiConnect(String ssid, String psw){
     }
 
     display.print("Connecting to ",ssid);
+    Serial.print("Connecting to");Serial.print(ssid);Serial.print(psw);Serial.println("##");
     ssid.trim();
     psw.trim();
-    delay(500);
+    delay(1000);
+
+    
+
     WiFi.begin(ssid.c_str(), psw.c_str());
     
 
@@ -85,14 +90,16 @@ bool WifiHandler :: WifiConnect(String ssid, String psw){
         //Serial.print(WiFi.status());
         display.print("connecting");
         delay(500);
-        if(millis()-start > 20000)
-            display.print("Cannot connceted to WIFI!", "IP: " + WiFi.localIP().toString());
-            Serial.println("Cannot connceted to WIFI!");
-            return false;
+        //Serial.println(millis()-start);
+        if(millis()-start > 20000){
+                display.print("Cannot connceted to WIFI!", "IP: " + WiFi.localIP().toString());
+                Serial.print("Cannot connceted to WIFI! IP:");Serial.print(WiFi.localIP().toString());Serial.print("#");Serial.print(WiFi.status());Serial.println("#");
+                return false;
+            }
     }
 
     display.print("Succesfully connceted to WIFI!", "IP: " + WiFi.localIP().toString());
-    Serial.println("Succesfully connceted to WIFI!");
+    Serial.println("Succesfully connceted to WIFI! IP: ");Serial.print(WiFi.localIP().toString());
 
     return true;
 }
