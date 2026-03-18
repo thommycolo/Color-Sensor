@@ -90,10 +90,9 @@ bool WifiHandler :: WifiConnect(String ssid, String psw){
         //Serial.print(WiFi.status());
         display.print("connecting");
         delay(500);
-        //Serial.println(millis()-start);
         if(millis()-start > 20000){
                 display.print("Cannot connceted to WIFI!", "IP: " + WiFi.localIP().toString());
-                Serial.print("Cannot connceted to WIFI! IP:");Serial.print(WiFi.localIP().toString());Serial.print("#");Serial.print(WiFi.status());Serial.println("#");
+                Serial.print("Cannot connceted to WIFI! Status: ");Serial.print(WiFi.status());
                 return false;
             }
     }

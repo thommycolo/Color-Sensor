@@ -10,3 +10,169 @@ load:0x40080400,len:3028
   #0  0x40080400 in _init at ??:?
 
 entry 0x400805e4
+LittleFS montato correttamente!
+-> esp32_webapp/
+       index.html (3694 bytes)
+       script.js (4394 bytes)
+       style.css (6840 bytes)
+-> external_webapp/
+       index.html (1613 bytes)
+       script.js (5027 bytes)
+       style.css (3872 bytes)
+   sensor_config.json (68 bytes)
+   wifi.json (101 bytes)
+loading data
+ESP32_ACCES
+ESP32_PSW
+Casa Colombo
+C0l0mb0Family!
+data loaded succesfully!
+ssid_ac   ESP32_ACCES
+psw_ac   ESP32_PSW
+ssid_wifi   Casa Colombo
+psw_wifi   C0l0mb0Family!
+AC online! IP : 192.168.4.1
+WIFI CONNECTION
+Connecting toCasa ColomboC0l0mb0Family!##
+Succesfully connceted to WIFI! IP: 
+192.168.1.15Web Server Online
+1.199501
+1
+1.2025
+481
+data loaded succesfully!
+Web: Accesso da Access Point -> esp32_webapp
+Web: Accesso da Access Point -> esp32_webapp
+WS: Client #1 connesso da 192.168.4.4
+Web: Accesso da Access Point -> esp32_webapp
+WS: Client #2 connesso da 192.168.4.4
+Web: Accesso da Access Point -> esp32_webapp
+Web: Accesso da Access Point -> esp32_webapp
+Web: Accesso da Access Point -> esp32_webapp
+Web: Accesso da Access Point -> esp32_webapp
+WS: Client #3 connesso da 192.168.4.4
+����������������������������������������������������������������esp32_webapp
+WS: Client #4 connesso da 192.168.4.5
+����������������������������������������������������������������--
+--- JSON Merge & Save Completato ---
+Credenziali salvate e conferma inviata al client.
+Casa Colombo
+C0l0mb0Family!
+data loaded succesfully!
+WIFI CONNECTION
+Connecting toCasa ColomboC0l0mb0Family!##
+Succesfully connceted to WIFI! IP: 
+192.168.1.15getting colorR: 39 G: 35 B: 23 C: 93
+R: 74 G: 66 B: 44 C: 177
+R: 110 G: 98 B: 65 C: 262
+R: 146 G: 131 B: 87 C: 348
+R: 182 G: 163 B: 109 C: 433
+R: 218 G: 196 B: 131 C: 520
+R: 254 G: 228 B: 153 C: 606
+R: 290 G: 261 B: 175 C: 693
+R: 326 G: 294 B: 197 C: 780
+R: 362 G: 326 B: 219 C: 866
+
+
+
+COLORI CALIBRATI:
+R: 23 G: 17 B: 14COLORI CALIBRATI:
+R: 0 G: 0 B: 0
+
+
+Sending to WS: COLOR_JSON:{"r":0,"g":0,"b":0,"name":"Nero"}
+����������������������������������������������������������������8.4.4
+����������������������������������������������������������������nal_webapp
+WS: Client #6 connesso da 192.168.1.24
+WS: Client #7 connesso da 192.168.4.5
+Web: Accesso da Access Point -> esp32_webapp
+WS: Client #8 connesso da 192.168.4.5
+����������������������������������������������������������������esp32_webapp
+WS: Client #9 connesso da 192.168.4.9
+getting colorR: 211 G: 42 B: 34 C: 283
+R: 419 G: 81 B: 66 C: 557
+R: 633 G: 122 B: 100 C: 842
+R: 857 G: 163 B: 134 C: 1138
+R: 1089 G: 205 B: 169 C: 1442
+R: 1327 G: 248 B: 206 C: 1756
+R: 1570 G: 296 B: 245 C: 2084
+R: 1820 G: 350 B: 288 C: 2429
+R: 2061 G: 398 B: 328 C: 2755
+R: 2300 G: 445 B: 366 C: 3076
+
+
+
+COLORI CALIBRATI:
+R: 146 G: 24 B: 23COLORI CALIBRATI:
+R: 128 G: 0 B: 0
+
+
+Sending to WS: COLOR_JSON:{"r":128,"g":0,"b":0,"name":"Rosso Scuro"}
+--- JSON Update (Object Input) ---
+--- JSON Merge & Save Completato ---
+Credenziali salvate e conferma inviata al client.
+Casa Colombo
+C0l0mb0Family!
+data loaded succesfully!
+WIFI CONNECTION
+Connecting toCasa ColomboC0l0mb0Family!##
+Succesfully connceted to WIFI! IP: 
+192.168.1.15Web: Accesso da Station -> external_webapp
+WS: Client #10 connesso da 192.168.1.24
+getting colorR: 208 G: 36 B: 31 C: 271
+R: 419 G: 74 B: 63 C: 548
+R: 635 G: 115 B: 97 C: 836
+R: 844 G: 150 B: 128 C: 1107
+R: 1054 G: 185 B: 159 C: 1379
+R: 1258 G: 217 B: 188 C: 1640
+R: 1468 G: 254 B: 219 C: 1915
+R: 1689 G: 300 B: 255 C: 2216
+R: 1908 G: 345 B: 291 C: 2514
+R: 2126 G: 390 B: 326 C: 2810
+
+
+
+COLORI CALIBRATI:
+R: 135 G: 21 B: 21COLORI CALIBRATI:
+R: 128 G: 0 B: 0
+
+
+Sending to WS: COLOR_JSON:{"r":128,"g":0,"b":0,"name":"Rosso Scuro"}
+getting colorR: 259 G: 98 B: 237 C: 599
+R: 525 G: 202 B: 475 C: 1214
+R: 778 G: 296 B: 710 C: 1801
+R: 1033 G: 392 B: 945 C: 2392
+R: 1287 G: 488 B: 1179 C: 2981
+R: 1541 G: 584 B: 1413 C: 3571
+R: 1797 G: 680 B: 1648 C: 4163
+R: 2053 G: 776 B: 1882 C: 4754
+R: 2308 G: 872 B: 2116 C: 5344
+R: 2563 G: 968 B: 2351 C: 5935
+
+
+
+COLORI CALIBRATI:
+R: 163 G: 51 B: 150COLORI CALIBRATI:
+R: 192 G: 64 B: 128
+
+
+Sending to WS: COLOR_JSON:{"r":192,"g":64,"b":128,"name":"Rosso Magenta Chiaro"}
+getting colorR: 29 G: 68 B: 217 C: 322
+R: 42 G: 124 B: 430 C: 611
+R: 60 G: 185 B: 644 C: 911
+R: 89 G: 254 B: 861 C: 1234
+R: 115 G: 322 B: 1077 C: 1552
+R: 145 G: 392 B: 1293 C: 1876
+R: 175 G: 462 B: 1508 C: 2199
+R: 206 G: 532 B: 1723 C: 2524
+R: 235 G: 600 B: 1936 C: 2843
+R: 255 G: 662 B: 2146 C: 3141
+
+
+
+COLORI CALIBRATI:
+R: 16 G: 35 B: 137COLORI CALIBRATI:
+R: 0 G: 64 B: 128
+
+
+Sending to WS: COLOR_JSON:{"r":0,"g":64,"b":128,"name":"Blu Ciano Scuro"}

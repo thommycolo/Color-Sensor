@@ -4,10 +4,8 @@
 #include <LittleFS.h>
 
 WebManager::WebType WebManager::begin() {
-
-    // --- 1. SEZIONE APPLE CAPTIVE PORTAL & STABILITÀ SAFARI ---
-    // Questi devono essere i primi per intercettare i test di rete di iPadOS
     
+    // handle some IOS conflict
     server.on("/hotspot-detect.html", HTTP_GET, [](AsyncWebServerRequest *request){
         request->send(200, "text/html", "<html><body>Success</body></html>");
     });
@@ -20,7 +18,7 @@ WebManager::WebType WebManager::begin() {
         request->send(204); 
     });
 
-    // --- 2. GESTIONE DELLA ROOT (HOME PAGE) ---
+    //dynamic redirecting
     server.on("/", HTTP_GET, [this](AsyncWebServerRequest *request){
         String path;
         if (request->client()->localIP() == WiFi.softAPIP()) {
@@ -32,7 +30,7 @@ WebManager::WebType WebManager::begin() {
         }
         
         if (LittleFS.exists(path)) {
-            // Per iPad è meglio usare beginResponse anche qui per aggiungere Connection: close
+            
             AsyncWebServerResponse *response = request->beginResponse(LittleFS, path, "text/html");
             response->addHeader("Connection", "close");
             request->send(response);
@@ -41,11 +39,9 @@ WebManager::WebType WebManager::begin() {
         }
     });
 
-    // --- 3. HANDLER DINAMICO PER RISORSE (CSS, JS, IMMAGINI) ---
     server.onNotFound([this](AsyncWebServerRequest *request){
         String url = request->url();
         
-        // Evitiamo richieste per directory
         if (url.endsWith("/")) {
             request->send(404);
             return;
@@ -55,7 +51,6 @@ WebManager::WebType WebManager::begin() {
         String folderAP = "/esp32_webapp";
         String folderSTA = "/external_webapp";
 
-        // Verifica se l'URL ha già il prefisso (per evitare raddoppi)
         if (url.startsWith(folderAP) || url.startsWith(folderSTA)) {
             fullPath = url;
         } else {
@@ -66,10 +61,8 @@ WebManager::WebType WebManager::begin() {
         fullPath.replace("//", "/");
 
         if (LittleFS.exists(fullPath)) {
-            // String() come terzo parametro lascia che la libreria deduca il Mime-Type dall'estensione
             AsyncWebServerResponse *response = request->beginResponse(LittleFS, fullPath, String(), false);
-            
-            // Header cruciali per iPadOS e Safari
+            //Safari handler
             response->addHeader("Connection", "close"); 
             response->addHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             response->addHeader("Pragma", "no-cache");
@@ -81,8 +74,8 @@ WebManager::WebType WebManager::begin() {
             request->send(404);
         }
     });
-
-    // --- 4. CONFIGURAZIONE WEBSOCKET ---
+    
+    //Websocket configuration
     ws.onEvent([this](AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len) {
         
         if (type == WS_EVT_CONNECT) {
