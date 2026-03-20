@@ -3,6 +3,7 @@
 
 #include <ESPAsyncWebServer.h>
 #include <ArduinoJson.h>
+#include <LittleFS.h>
 
 #include "Types.h"
 #include "WifiHandler.h"
@@ -11,24 +12,28 @@
 
 /**
  * @class WebManager
- * @brief Handles WebSocket communication and HTTP serving for the web interface.
- * * This class manages the asynchronous web server and WebSocket events,
- * allowing real-time data exchange between the microcontroller and a web client.
+ * @brief Handles HTTP serving and real-time WebSocket communication.
+ * 
+ * This class manages an asynchronous web server that dynamically serves different 
+ * web applications based on the connection type (Access Point vs. Station).
+ * It also handles WebSocket events for real-time data exchange (e.g., RGB updates, WiFi setup).
  */
 class WebManager {
 private:
-    
-    AsyncWebServer server;
-    AsyncWebSocket ws;
-    String ac_webapp_path;
-    String wifi_webapp_path;
+    AsyncWebServer server;      ///< Asynchronous HTTP server instance on port 80.
+    AsyncWebSocket ws;          ///< WebSocket instance mapped to "/ws".
+    String ac_webapp_path;      ///< Path to the webapp served when in AP mode.
+    String wifi_webapp_path;    ///< Path to the webapp served when in STA mode.
 
 public:
-    bool new_credentials = false;
-    
     /**
-     * @brief Construct a new Web Manager object.
-     * Initializes the server on port 80 and the WebSocket on the "/ws" endpoint.
+     * @brief Flag indicating if new WiFi credentials have been received via WebSocket.
+     */
+    bool new_credentials = false;
+
+    /**
+     * @brief Constructor for WebManager.
+     * Initializes the server on port 80 and the WebSocket endpoint at "/ws".
      */
     WebManager() : server(80), ws("/ws") {
         ac_webapp_path = "/esp32_webapp";
@@ -36,46 +41,60 @@ public:
     }
 
     /**
-     * @brief Return types for WebManager operations.
+     * @enum WebType
+     * @brief Return status codes for WebManager operations.
      */
     typedef enum {
-        SERVER_ONLINE,      ///< Server started successfully
-        FAILED_TO_CONNECT,  ///< Reserved for connection errors
-        COLOR_UPDATED       ///< Color data was successfully broadcasted
+        SERVER_ONLINE,      ///< Server and WebSocket started successfully.
+        FAILED_TO_CONNECT,  ///< Reserved for potential connection errors.
+        COLOR_UPDATED       ///< RGB data was successfully broadcasted to clients.
     } WebType;
 
     /**
-     * @brief Initializes the web server and WebSocket handlers.
-     * * Sets up LittleFS to serve static files from the provided path and 
-     * attaches event listeners for WebSocket connections, disconnections, and data.
-     * @return WebType SERVER_ONLINE upon successful setup.
+     * @brief Configures and starts the Web Server and WebSocket handler.
+     * 
+     * Key functionalities:
+     * - Fixes captive portal detection for iOS (hotspot-detect.html).
+     * - Implements dynamic routing: serves index.html from `/esp32_webapp` if the user 
+     *   is on the AP, or from `/external_webapp` if on the local network.
+     * - Sets up the global `onNotFound` handler to serve static assets from the 
+     *   correct folder based on the client's IP.
+     * - Configures WebSocket events (Connect, Disconnect, Data, Pong).
+     * 
+     * @return SERVER_ONLINE upon successful initialization.
      */
     WebType begin();
     
     /**
-     * @brief Broadcasts an RGB color update to all connected WebSocket clients.
-     * * Encapsulates the RGB data into a JSON object prefixed with "COLOR_JSON:".
-     * * @param rgb A struct containing red, green, blue values and the color name.
-     * @return WebType COLOR_UPDATED.
+     * @brief Broadcasts RGB color data to all connected WebSocket clients.
+     * 
+     * Serializes an RGB object into a JSON string prefixed with "COLOR_JSON:".
+     * 
+     * @param rgb The RGB structure containing r, g, b values and an optional color name.
+     * @return COLOR_UPDATED after the message is sent.
      */
     WebType updateColor(RGB rgb);
 
     /**
-     * @brief Processes incoming WebSocket data packets.
-     * * Parses incoming JSON messages. Currently supports:
-     * - "SET_WIFI": Saves SSID and Password to LittleFS via LittleFS_Handler.
-     * * @param arg Pointer to the client session or event context.
-     * @param data Pointer to the raw byte buffer received.
-     * @param len Length of the data buffer.
+     * @brief Internal handler for processing incoming WebSocket data.
+     * 
+     * Specifically handles:
+     * - "SET_WIFI" packets: extracts SSID/Password and saves them to "/wifi.json".
+     * - Sets the `new_credentials` flag to true upon successful save.
+     * 
+     * @param arg Pointer to frame info.
+     * @param data The raw data buffer received.
+     * @param len The length of the data buffer.
      */
     void getData(void *arg, uint8_t *data, size_t len);
 
     /**
-     * @brief Performs maintenance on WebSocket clients.
-     * * Should be called periodically (usually in the main loop) to clear 
-     * closed connections and free up memory.
+     * @brief Performs periodic WebSocket cleanup.
+     * 
+     * Should be called in the main loop to clear stale client connections 
+     * and manage memory efficiency.
      */
     void cleanup();
 };
 
-#endif
+#endif 
